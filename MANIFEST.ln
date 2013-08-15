@@ -1,0 +1,7 @@
+include surrealism.py
+include setup.py
+include readme.rst
+include README.md
+include LICENSE.txt
+include surrealism.sqlite
+recursive-include doc *.html *.txt *.png *.css *.js *.rst
