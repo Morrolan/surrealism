@@ -200,6 +200,7 @@ var/
 sdist/
 develop-eggs/
 .installed.cfg
+c9revisions/
 
 # Installer logs
 pip-log.txt
