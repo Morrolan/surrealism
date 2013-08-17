@@ -79,3 +79,12 @@ Still to do:
 Please feel free to leave bug reports and feature requests on the github homepage at https://github.com/Morrolan/surrealism.
 
 All comments are welcome!
+
+
+Changelog
+---------
+
+0.4
+---
+
+Urgent bug fix to getfault where returned result was incomplete.

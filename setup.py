@@ -30,11 +30,11 @@ from setuptools import setup
 long_desc = open('readme.rst').read()
 
 setup(name = 'surrealism',
-      version = '0.3',
+      version = '0.4',
       py_modules = ['surrealism'],
       author = 'Morrolan',
       author_email = 'morrolan@icloud.com',
-      url = 'https://pypi.python.org/pypi/surrealism',
+      url = 'https://github.com/Morrolan/surrealism',
       license = 'GNU General Public License (GPL)',
       description = 'Surreal sentence and error message generator.',
       long_description = long_desc,
@@ -43,6 +43,8 @@ setup(name = 'surrealism',
       keywords = ["surreal", "surrealism", "error message"],
       classifiers = [
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
         "Development Status :: 4 - Beta",
         "Environment :: Other Environment",
         "Intended Audience :: Developers",
