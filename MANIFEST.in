@@ -1,0 +1,6 @@
+include surrealism.py
+include setup.py
+include readme.rst
+include readme.md
+include LICENSE.txt
+include surrealism.sqlite
