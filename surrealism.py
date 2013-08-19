@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #############################################################################
-#    surrealism.py - Surreal sentence generator
+#    surrealism.py - Surreal sentence and error message generator
 #    Copyright (C) 2013  Ian Havelock
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 #
 #############################################################################
 
-__ALL__ = ['getfault', 'getsentence', 'Surrealism']
+__ALL__ = ['getfault', 'getsentence']
 
 
 # IMPORTS ###################################################################
