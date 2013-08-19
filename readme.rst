@@ -77,6 +77,11 @@ All comments are welcome!
 Changelog
 ---------
 
+0.5.2
+-----
+Fixed bug with adjectives.
+
+
 0.5.1
 -----
 Added basic docstrings.

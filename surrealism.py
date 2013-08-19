@@ -78,10 +78,46 @@ def getsentence():
     return _result 
     
     
+def test():
+    _counts = _gettablelimits()
+    
+    for sentence_id in range(_counts['sen_count']):
+        
+        print type(sentence_id)
+        
+        if sentence_id == 0:
+            pass
+        else:
+            print sentence_id
+            
+            _sentence = _gettestsentence(sentence_id)
+        
+            print type(_sentence)
+            print _sentence[0]
+        
+            if _sentence[0] == 'n':
+                print "Disabled sentence - ignoring..."
+            if _sentence[0] == 'y':
+                print "yes"
+                _result = _process_sentence(_sentence, _counts)
+                print _result
+            return _result
+   
+    
     
 #############################################################################
 
 #  INTERNAL METHODS BELOW
+
+def _gettestsentence(sentence_id):
+    # Let's fetch the sentence that we then need to substitute bits of!
+    cursor = CONN.cursor()
+    #_rand = random.randint(1,_counts['sen_count'])
+    _query = """select * from sursentences where sen_id = {0}""".format(sentence_id)
+    cursor.execute(_query)
+    _result = cursor.fetchone()
+    return _result
+    
 
 def _getsentence(_counts):
     # Let's fetch the sentence that we then need to substitute bits of!
