@@ -1,3 +1,0 @@
-import surrealism
-
-surrealism.test()
