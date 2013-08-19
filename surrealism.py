@@ -25,7 +25,7 @@
 #
 #############################################################################
 
-__ALL__ = ['test', 'getfault', 'getsentence', 'Surrealism']
+__ALL__ = ['getfault', 'getsentence', 'Surrealism']
 
 
 # IMPORTS ###################################################################
@@ -53,11 +53,9 @@ CONN = sqlite3.connect('surrealism.sqlite')
 
 #  EXTERNAL METHODS BELOW
 
-def test():
-    pass
-    
-    
+
 def getfault():
+    """Retrieve a randomly-generated error message as a unicode string."""
     _counts = _gettablelimits()
     _sentence = _getfault(_counts)
     
@@ -69,6 +67,7 @@ def getfault():
     
 
 def getsentence():
+    """Retrieve a randomly-generated sentence as a unicode string."""
     _counts = _gettablelimits()
     _sentence = _getsentence(_counts)
     
@@ -79,7 +78,7 @@ def getsentence():
     return _result 
     
     
-
+    
 #############################################################################
 
 #  INTERNAL METHODS BELOW

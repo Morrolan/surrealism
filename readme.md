@@ -77,6 +77,10 @@ All comments are welcome!
 Changelog
 ---------
 
+0.5.1
+-----
+Added basic 
+
 0.5.0
 -----
 
