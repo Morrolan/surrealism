@@ -1,8 +1,0 @@
-{"ts":1376904965897,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
-{"contributors":[],"silentsave":true,"ts":1376905000634,"patch":[[{"diffs":[[1,"*.py[cod]\n\n# C extensions\n*.so\n\n# Packages\n*.egg\n*.egg-info\ndist\nbuild\neggs\nparts\nbin\nvar\nsdist\ndevelop-eggs\n.installed.cfg\nlib\nlib64\n__pycache__\n\n# Installer logs\npip-log.txt\n\n# Unit test / coverage reports\n.coverage\n.tox\nnosetests.xml\n\n# Translations\n*.mo\n\n# Mr Developer\n.mr.developer.cfg\n.project\n.pydevproject\n"]],"start1":0,"start2":0,"length1":0,"length2":315}]],"length":315,"saved":false}
-{"contributors":[],"silentsave":true,"ts":1376905110218,"patch":[[{"diffs":[[0,"t\n.pydevproject\n"],[1,"\n\n"]],"start1":299,"start2":299,"length1":16,"length2":18}]],"length":317,"saved":false}
-{"ts":1376905111433,"patch":[[{"diffs":[[0,"roject\n\n"],[1,"# "],[0,"\n"]],"start1":308,"start2":308,"length1":9,"length2":11}]],"length":319,"saved":false}
-{"ts":1376905113023,"patch":[[{"diffs":[[0,"ject\n\n# "],[1,"c9"],[0,"\n"]],"start1":310,"start2":310,"length1":9,"length2":11}]],"length":321,"saved":false}
-{"ts":1376905114838,"patch":[[{"diffs":[[0,"ct\n\n# c9"],[1,".io\n"],[0,"\n"]],"start1":312,"start2":312,"length1":9,"length2":13}]],"length":325,"saved":false}
-{"ts":1376905117543,"patch":[[{"diffs":[[0,"# c9.io\n"],[1,"c9"],[0,"\n"]],"start1":316,"start2":316,"length1":9,"length2":11}]],"length":327,"saved":false}
-{"ts":1376905119900,"patch":[[{"diffs":[[0,"c9.io\nc9"],[1,"revisions/"],[0,"\n"]],"start1":318,"start2":318,"length1":9,"length2":19}]],"length":337,"saved":false}
