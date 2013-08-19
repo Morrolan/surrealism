@@ -81,27 +81,49 @@ def getsentence():
 def test():
     _counts = _gettablelimits()
     
-    for sentence_id in range(_counts['sen_count']):
+    max_num = 98
+    
+    a = 0
+    
+    while a < max_num: 
+    
         
-        print type(sentence_id)
+        a = a + 1
         
-        if sentence_id == 0:
-            pass
-        else:
-            print sentence_id
+        print a
+        _sentence = _gettest(a)
+        
+        if _sentence[0] == 'n':
+            print "Disabled sentence - ignoring..."
+        
+        if _sentence[0] == 'y':
+            print "yes"
+            _result = _process_sentence(_sentence, _counts)
+            print _result
             
-            _sentence = _gettestsentence(sentence_id)
-        
-            print type(_sentence)
-            print _sentence[0]
-        
-            if _sentence[0] == 'n':
-                print "Disabled sentence - ignoring..."
-            if _sentence[0] == 'y':
-                print "yes"
-                _result = _process_sentence(_sentence, _counts)
-                print _result
-            return _result
+    
+    
+    #for sentence_id in range(_counts['sen_count']):
+    #    
+    #    print type(sentence_id)
+    #    
+    #    if sentence_id == 0:
+    #        pass
+    #    else:
+    #        print sentence_id
+    #        
+    #        _sentence = _gettestsentence(sentence_id)
+    #    
+    #        print type(_sentence)
+    #        print _sentence[0]
+    #    
+    #        if _sentence[0] == 'n':
+    #            print "Disabled sentence - ignoring..."
+    #        if _sentence[0] == 'y':
+    #            print "yes"
+    #            _result = _process_sentence(_sentence, _counts)
+    #            print _result
+    #        return _result
    
     
     
@@ -109,7 +131,7 @@ def test():
 
 #  INTERNAL METHODS BELOW
 
-def _gettestsentence(sentence_id):
+def _gettest(sentence_id):
     # Let's fetch the sentence that we then need to substitute bits of!
     cursor = CONN.cursor()
     #_rand = random.randint(1,_counts['sen_count'])

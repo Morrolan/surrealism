@@ -79,7 +79,7 @@ Changelog
 
 0.5.2
 -----
-Fixed bug with adjectives.
+Fixed bug with adjectives and tidied database.
 
 
 0.5.1
