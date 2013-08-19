@@ -34,7 +34,16 @@ If you can use and install Python Egg's, you can do:
    $ easy_install surrealism
 
 
-And it will download the latest version from the Python Package Index.
+And it will download and install the latest version from the Python Package Index.
+
+You can also do:
+
+::
+
+   $ pip install surrealism
+
+
+And it will download and install the latest version from the Python Package Index.
 
 
 
@@ -67,6 +76,15 @@ Usage Examples
    
 Still to do:
 
-- Add ability to read nested #RANDOM elements
-- Add the ability to be able to re-use nouns and verbs in the same sentence rather than generating new ones.
-- Add more sentences to the database.
+Please feel free to leave bug reports and feature requests on the github homepage at https://github.com/Morrolan/surrealism.
+
+All comments are welcome!
+
+
+Changelog
+---------
+
+0.4
+---
+
+Urgent bug fix to getfault where returned result was incomplete.
