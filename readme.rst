@@ -56,9 +56,8 @@ Usage Examples
 ::
 
    >>> import surrealism
-   >>> surr = surrealism.Surrealism()
-   >>> sen = surr.getsentence()
-   
+   >>> sentence = surrealism.getsentence()
+   >>> print sentence
    >>> Why did the Gallifreyan helmet hide apples behind the bright porridge-bowl?  Because it was being penetrated by the will-o'-the-wisp!
    
 
@@ -68,10 +67,9 @@ Usage Examples
 ::
 
    >>> import surrealism
-   >>> surr = surrealism.Surrealism()
-   >>> sen = surr.getfault()
-   
-   >>> jump-lead .c:147: sleepy error before 'stick insect' - 'salt crystal' undeclared.
+   >>> sentence = surrealism.getfault()
+   >>> print sentence
+   >>> obelisk.c:471: empty error in 'Spaniard()' - poltergeist is not set to an instance of a triffid.
    
    
 Still to do:
@@ -83,6 +81,18 @@ All comments are welcome!
 
 Changelog
 ---------
+
+0.5.0
+-----
+
+Removed unnecessary Class, now making it even easier and simpler to use.
+
+
+0.4.1
+-----
+
+Minor bug fix to the getfault sentences where 2 periods were printing instead of 1.
+
 
 0.4
 ---
