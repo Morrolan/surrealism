@@ -30,7 +30,7 @@ from setuptools import setup
 long_desc = open('readme.rst').read()
 
 setup(name = 'surrealism',
-      version = '0.4',
+      version = '0.4.1',
       py_modules = ['surrealism'],
       author = 'Morrolan',
       author_email = 'morrolan@icloud.com',
@@ -45,6 +45,7 @@ setup(name = 'surrealism',
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.3",
         "Development Status :: 4 - Beta",
         "Environment :: Other Environment",
         "Intended Audience :: Developers",

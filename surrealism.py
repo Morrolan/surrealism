@@ -328,7 +328,6 @@ class Surrealism(object):
     
 
     def _replace_capitalise(self, _sentence):
-        #print "\nReplacing CAPITALISE:  "
         
         if _sentence is not None:
             while _sentence.find('#CAPITALISE') != -1:

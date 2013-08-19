@@ -8,9 +8,6 @@ surrealism module for Python
 This module allows you to generate surreal sentences and error messages very easily from within your python programs.  
 
 
-Many thanks go to Raven Black from www.ravenblack.net.  
-
-
 This module is a derivative work (used with permission) from www.ravenblack.net.  
 
 
@@ -27,7 +24,7 @@ If you have downloaded the source distribution, to install do the following at t
    $ python setup.py install
 
 
-If you can use and install Python Egg's, you can do:
+Or using easy_install:
 
 ::
 
@@ -36,7 +33,7 @@ If you can use and install Python Egg's, you can do:
 
 And it will download and install the latest version from the Python Package Index.
 
-You can also do:
+Or pip:
 
 ::
 
@@ -56,10 +53,10 @@ Usage Examples
 ::
 
    >>> import surrealism
-   >>> surr = surrealism.Surrealism()
-   >>> sen = surr.getsentence()
+   >>> surreal = surrealism.Surrealism()
+   >>> sentence = surreal.getsentence()
    
-   >>> Why did the Gallifreyan helmet hide apples behind the bright porridge-bowl?  Because it was being penetrated by the will-o'-the-wisp!
+   >>> If I can get the Pot Noodle to enter Radiohead's Lead Singer, the lego-brick will dilute Julian Assange and I'll be able to spy on Neil Armstrong!
    
 
    
@@ -68,13 +65,11 @@ Usage Examples
 ::
 
    >>> import surrealism
-   >>> surr = surrealism.Surrealism()
-   >>> sen = surr.getfault()
+   >>> surreal = surrealism.Surrealism()
+   >>> fault = surreal.getfault()
    
    >>> jump-lead .c:147: sleepy error before 'stick insect' - 'salt crystal' undeclared.
    
-   
-Still to do:
 
 Please feel free to leave bug reports and feature requests on the github homepage at https://github.com/Morrolan/surrealism.
 
@@ -83,6 +78,12 @@ All comments are welcome!
 
 Changelog
 ---------
+
+0.4.1
+-----
+
+Minor database tweak for error messages.
+
 
 0.4
 ---
