@@ -76,54 +76,6 @@ def getsentence():
     if _sentence[0] == 'y':
         _result = _process_sentence(_sentence, _counts)
     return _result 
-    
-    
-def test():
-    _counts = _gettablelimits()
-    
-    max_num = 98
-    
-    a = 0
-    
-    while a < max_num: 
-    
-        
-        a = a + 1
-        
-        print a
-        _sentence = _gettest(a)
-        
-        if _sentence[0] == 'n':
-            print "Disabled sentence - ignoring..."
-        
-        if _sentence[0] == 'y':
-            print "yes"
-            _result = _process_sentence(_sentence, _counts)
-            print _result
-            
-    
-    
-    #for sentence_id in range(_counts['sen_count']):
-    #    
-    #    print type(sentence_id)
-    #    
-    #    if sentence_id == 0:
-    #        pass
-    #    else:
-    #        print sentence_id
-    #        
-    #        _sentence = _gettestsentence(sentence_id)
-    #    
-    #        print type(_sentence)
-    #        print _sentence[0]
-    #    
-    #        if _sentence[0] == 'n':
-    #            print "Disabled sentence - ignoring..."
-    #        if _sentence[0] == 'y':
-    #            print "yes"
-    #            _result = _process_sentence(_sentence, _counts)
-    #            print _result
-    #        return _result
    
     
     
@@ -131,7 +83,7 @@ def test():
 
 #  INTERNAL METHODS BELOW
 
-def _gettest(sentence_id):
+def _get_sentence_by_id(sentence_id):
     # Let's fetch the sentence that we then need to substitute bits of!
     cursor = CONN.cursor()
     #_rand = random.randint(1,_counts['sen_count'])
