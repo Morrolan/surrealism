@@ -77,6 +77,11 @@ All comments are welcome!
 Changelog
 ---------
 
+0.5.3
+-----
+Added seperate script (sentence_test) 
+
+
 0.5.2
 -----
 Fixed bug with adjectives and tidied database.
