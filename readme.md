@@ -77,6 +77,17 @@ All comments are welcome!
 Changelog
 ---------
 
+0.5.4
+-----
+Added pkg_resources to manage sqlite file installation (particularly a problem when using virtualenv).
+Thanks go to TokenMacGuy on the StackOverflow forums for the help and advice.
+
+
+0.5.3
+-----
+Added seperate script (sentence_test) 
+
+
 0.5.2
 -----
 Fixed bug with adjectives.

@@ -5,8 +5,8 @@ from setuptools import setup
 long_desc = open('readme.rst').read()
 
 setup(name = 'surrealism',
-      version = '0.5.3',
-      py_modules = ['surrealism'],
+      version = '0.5.4',
+      packages=["surrealism"],
       author = 'Morrolan',
       author_email = 'morrolan@icloud.com',
       url = 'http://morrolan.github.io/surrealism/',
@@ -31,5 +31,7 @@ setup(name = 'surrealism',
         "Topic :: Software Development :: Libraries :: Python Modules",
          ],
       install_requires=['setuptools'],
+      package_data={'surrealism': ['surrealism.sqlite']},
+      zip_safe=False,
       
       )

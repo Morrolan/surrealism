@@ -30,16 +30,17 @@ __ALL__ = ['getfault', 'getsentence']
 
 # IMPORTS ###################################################################
 
-import sqlite3
-import random
+
 
 # PARTICULAR IMPORTS ########################################################
 
-from pkg_resources import resource_filename
+import sqlite3
+import random
+import pkg_resources
 
 # CONSTANTS #################################################################
 
-CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
+CONN = sqlite3.connect('surrealism.sqlite')
 
 # VARIABLES #################################################################
 
@@ -53,9 +54,6 @@ CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
 
 #  EXTERNAL METHODS BELOW
 
-def getversion():
-    print 'surrealism 0.5.4'
-    
 
 def getfault():
     """Retrieve a randomly-generated error message as a unicode string."""
