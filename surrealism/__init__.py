@@ -54,7 +54,7 @@ CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
 #  EXTERNAL METHODS BELOW
 
 def getversion():
-    print 'surrealism 0.5.4'
+    print('surrealism 0.5.5')
     
 
 def getfault():

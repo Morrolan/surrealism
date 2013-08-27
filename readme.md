@@ -77,10 +77,14 @@ All comments are welcome!
 Changelog
 ---------
 
+0.5.5
+-----
+Fixed print statement which prevented installation and use on Python 3x.
+
+
 0.5.4
 -----
 Added pkg_resources to manage sqlite file installation (particularly a problem when using virtualenv).
-Thanks go to TokenMacGuy on the StackOverflow forums for the help and advice.
 
 
 0.5.3
