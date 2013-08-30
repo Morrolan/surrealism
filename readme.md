@@ -77,6 +77,11 @@ All comments are welcome!
 Changelog
 ---------
 
+0.5.6
+-----
+More database tweaks to fix spacing issues.
+
+
 0.5.5
 -----
 Fixed print statement which prevented installation and use on Python 3x.

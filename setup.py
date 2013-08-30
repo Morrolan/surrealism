@@ -5,9 +5,9 @@ from setuptools import setup
 long_desc = open('readme.rst').read()
 
 setup(name = 'surrealism',
-      version = '0.5.5',
+      version = '0.5.6',
       packages=["surrealism"],
-      author = 'Morrolan',
+      author = 'Ian Havelock',
       author_email = 'morrolan@icloud.com',
       url = 'http://morrolan.github.io/surrealism/',
       license = 'GNU General Public License (GPL)',
@@ -18,7 +18,6 @@ setup(name = 'surrealism',
       keywords = ["surreal", "surrealism", "error message"],
       classifiers = [
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.3",
         "Development Status :: 4 - Beta",
