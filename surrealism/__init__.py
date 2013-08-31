@@ -56,6 +56,24 @@ CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
 def getversion():
     print('surrealism 0.5.5')
     
+    
+def sentencetest():
+    _counts = _gettablelimits()
+    max_num = 98
+    a = 0
+    
+    while a < max_num: 
+        a = a + 1
+        print "\nSentence ID:  " + str(a)
+        _sentence = _get_sentence_by_id(a)
+        
+        if _sentence[0] == 'n':
+            print "Sentence is DISABLED - ignoring..."
+        
+        if _sentence[0] == 'y':
+            _result = _process_sentence(_sentence, _counts)
+            print _result
+    
 
 def getfault():
     """Retrieve a randomly-generated error message as a unicode string."""
