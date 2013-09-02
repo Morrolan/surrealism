@@ -77,6 +77,11 @@ All comments are welcome!
 Changelog
 ---------
 
+0.6.0
+-----
+Added the ability to have the entire sentence in uppercase (some sentences require it) and tripled the size of the 'names' table.
+
+
 0.5.6
 -----
 More database tweaks to fix spacing issues.

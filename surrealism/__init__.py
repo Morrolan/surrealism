@@ -54,7 +54,7 @@ CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
 #  EXTERNAL METHODS BELOW
 
 def getversion():
-    print('surrealism 0.5.5')
+    print('surrealism 0.6.0')
     
     
 def sentencetest():
@@ -222,6 +222,7 @@ def _process_sentence(_sentence_tuple, _counts):
     _sentence = _replace_an(_sentence, _counts)
     _sentence = _replace_random(_sentence)
     _sentence = _replace_capitalise(_sentence)
+    _sentence = _replace_capall(_sentence)
     
     return _sentence
     
@@ -366,6 +367,22 @@ def _replace_capitalise(_sentence):
             _sentence = _sentence.replace('#CAPITALISE ', '', 1)
                 
         if _sentence.find('#CAPITALISE') == -1:
+                return _sentence
+        return _sentence
+    else:
+        return _sentence
+        
+
+def _replace_capall(_sentence):
+    #print "\nReplacing CAPITALISE:  "
+    
+    if _sentence is not None:
+        while _sentence.find('#CAPALL') != -1:
+            _cap_index = _sentence.find('#CAPALL')
+            _sentence = _sentence.upper()    
+            _sentence = _sentence.replace('#CAPALL ', '', 1)
+                
+        if _sentence.find('#CAPALL') == -1:
                 return _sentence
         return _sentence
     else:
