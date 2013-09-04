@@ -64,9 +64,8 @@ Usage Examples
 ::
 
    >>> import surrealism
-   >>> sentence = surrealism.getfault()
-   >>> print sentence
-   >>> obelisk.c:471: empty error in 'Spaniard()' - poltergeist is not set to an instance of a triffid.
+   >>> print surrealism.getfault()
+   >>> thing.c:466: fearsome error in 'blow-up doll()' - missing thing-a-ma-jig.
 
 
 Please feel free to leave bug reports and feature requests on the github homepage at https://github.com/Morrolan/surrealism.
@@ -76,6 +75,11 @@ All comments are welcome!
 
 Changelog
 ---------
+
+0.7.0
+-----
+Added a new table which allows more faults rather than just the C++ syntax fault.  Also added faulttest() and sentencetest() so you can print out all sentences and faults.
+
 
 0.6.0
 -----
