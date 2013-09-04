@@ -77,7 +77,7 @@ def sentencetest():
             
 def faulttest():
     _counts = _gettablelimits()
-    max_num = 98
+    max_num = 2
     a = 0
     
     while a < max_num: 
