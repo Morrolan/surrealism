@@ -25,7 +25,7 @@
 #
 #############################################################################
 
-__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest']
+__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest','faulttest']
 
 
 # IMPORTS ###################################################################
@@ -73,6 +73,24 @@ def sentencetest():
         if _sentence[0] == 'y':
             _result = _process_sentence(_sentence, _counts)
             print _result
+            
+            
+def faulttest():
+    _counts = _gettablelimits()
+    max_num = 98
+    a = 0
+    
+    while a < max_num: 
+        a = a + 1
+        print "\nFault ID:  " + str(a)
+        _fault = _get_fault_by_id(a)
+        
+        if _fault[0] == 'n':
+            print "Fault is DISABLED - ignoring..."
+        
+        if _fault[0] == 'y':
+            _result = _process_sentence(_fault, _counts)
+            print _result
     
 
 def getfault():
@@ -104,6 +122,16 @@ def getsentence():
 
 #  INTERNAL METHODS BELOW
 
+def _get_fault_by_id(fault_id):
+    # Let's fetch the sentence that we then need to substitute bits of!
+    cursor = CONN.cursor()
+    #_rand = random.randint(1,_counts['sen_count'])
+    _query = """select * from surfaults where fau_id = {0}""".format(fault_id)
+    cursor.execute(_query)
+    _result = cursor.fetchone()
+    return _result
+    
+    
 def _get_sentence_by_id(sentence_id):
     # Let's fetch the sentence that we then need to substitute bits of!
     cursor = CONN.cursor()
