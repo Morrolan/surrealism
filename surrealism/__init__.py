@@ -59,7 +59,7 @@ def version():
     
 def sentencetest():
     _counts = _gettablelimits()
-    max_num = 98
+    max_num = _counts['sen_count']
     a = 0
     
     while a < max_num: 
@@ -77,7 +77,7 @@ def sentencetest():
             
 def faulttest():
     _counts = _gettablelimits()
-    max_num = 2
+    max_num = _counts['fau_count']
     a = 0
     
     while a < max_num: 
@@ -96,6 +96,7 @@ def faulttest():
 def getfault():
     """Retrieve a randomly-generated error message as a unicode string."""
     _counts = _gettablelimits()
+    
     _sentence = _getfault(_counts)
     
     while _sentence[0] == 'n':
@@ -217,27 +218,27 @@ def _gettablelimits():
     
     cursor.execute('select count(*) from suradjs')
     _table_counts['adj_count'] = cursor.fetchone()
-    _table_counts['adj_count'] = _table_counts['adj_count'][0] -1
+    _table_counts['adj_count'] = _table_counts['adj_count'][0]
 
     cursor.execute('select count(*) from surnames')
     _table_counts['name_count'] = cursor.fetchone()
-    _table_counts['name_count'] = _table_counts['name_count'][0] -1
+    _table_counts['name_count'] = _table_counts['name_count'][0]
 
     cursor.execute('select count(*) from surnouns')
     _table_counts['noun_count'] = cursor.fetchone()
-    _table_counts['noun_count'] = _table_counts['noun_count'][0] -1
+    _table_counts['noun_count'] = _table_counts['noun_count'][0]
 
     cursor.execute('select count(*) from sursentences')
     _table_counts['sen_count'] = cursor.fetchone()
-    _table_counts['sen_count'] = _table_counts['sen_count'][0] -1
+    _table_counts['sen_count'] = _table_counts['sen_count'][0]
     
     cursor.execute('select count(*) from surfaults')
     _table_counts['fau_count'] = cursor.fetchone()
-    _table_counts['fau_count'] = _table_counts['fau_count'][0] -1
+    _table_counts['fau_count'] = _table_counts['fau_count'][0]
 
     cursor.execute('select count(*) from surverbs')
     _table_counts['verb_count'] = cursor.fetchone()
-    _table_counts['verb_count'] = _table_counts['verb_count'][0] -1
+    _table_counts['verb_count'] = _table_counts['verb_count'][0]
 
     return _table_counts
 
