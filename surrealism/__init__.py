@@ -25,7 +25,7 @@
 #
 #############################################################################
 
-__ALL__ = ['getfault', 'getsentence', 'getversion']
+__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest']
 
 
 # IMPORTS ###################################################################
@@ -53,8 +53,8 @@ CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
 
 #  EXTERNAL METHODS BELOW
 
-def getversion():
-    print('surrealism 0.6.0')
+def version():
+    print('surrealism 0.7.0')
     
     
 def sentencetest():
@@ -127,8 +127,8 @@ def _getsentence(_counts):
 def _getfault(_counts):
     # Let's fetch the sentence that we then need to substitute bits of!
     cursor = CONN.cursor()
-    _counts = _gettablelimits()
-    _query = """select * from sursentences where sen_id = 46"""
+    _rand = random.randint(1,_counts['fau_count'])
+    _query = """select * from surfaults where fau_id = {0}""".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
     return _result
@@ -181,6 +181,7 @@ def _gettablelimits():
                     'name_count' : None,
                     'noun_count' : None,
                     'sen_count' : None,
+                    'fau_count' : None,
                     'verb_count' : None        
                     }
     
@@ -201,6 +202,10 @@ def _gettablelimits():
     cursor.execute('select count(*) from sursentences')
     _table_counts['sen_count'] = cursor.fetchone()
     _table_counts['sen_count'] = _table_counts['sen_count'][0] -1
+    
+    cursor.execute('select count(*) from surfaults')
+    _table_counts['fau_count'] = cursor.fetchone()
+    _table_counts['fau_count'] = _table_counts['fau_count'][0] -1
 
     cursor.execute('select count(*) from surverbs')
     _table_counts['verb_count'] = cursor.fetchone()
