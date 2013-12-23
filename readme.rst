@@ -76,6 +76,11 @@ All comments are welcome!
 Changelog
 ---------
 
+0.8.0
+-----
+Added comments to code and fixed some dodgy sentences in the database.
+
+
 0.7.0
 -----
 Added a new table which allows more faults rather than just the C++ syntax fault.  Also added faulttest() and sentencetest() so you can print out all sentences and faults.

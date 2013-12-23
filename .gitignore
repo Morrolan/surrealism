@@ -39,6 +39,7 @@ nosetests.xml
 
 # c9.io
 .c9revisions/
+.c9/
 
 # OSX
 .DS_Store
