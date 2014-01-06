@@ -25,7 +25,7 @@
 #
 #############################################################################
 
-__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest','faulttest']
+__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest', '_get_sentence_by_id']
 
 
 # IMPORTS ###################################################################
@@ -40,6 +40,8 @@ from pkg_resources import resource_filename
 # CONSTANTS #################################################################
 
 CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
+
+DEBUG = True
 
 # VARIABLES #################################################################
 
@@ -131,8 +133,17 @@ def getsentence():
 
 #  INTERNAL METHODS BELOW
 
+def _debug_setup():
+    global DEBUG
+    
+    if DEBUG == True:
+        print "\n\n########################### DEBUG ####################################\n"
+    
+
 def _get_fault_by_id(fault_id):
     # Let's fetch the base fault that we then need to substitute bits of by providing the fault_id...
+    _debug_setup()
+    
     cursor = CONN.cursor()
     #_rand = random.randint(1,_counts['sen_count'])
     _query = """select * from surfaults where fau_id = {0}""".format(fault_id)
@@ -143,6 +154,8 @@ def _get_fault_by_id(fault_id):
     
 def _get_sentence_by_id(sentence_id):
     # Let's fetch the sentence that we then need to substitute bits of by providing the sentence_id...
+    _debug_setup()
+    
     cursor = CONN.cursor()
     #_rand = random.randint(1,_counts['sen_count'])
     _query = """select * from sursentences where sen_id = {0}""".format(sentence_id)
@@ -153,6 +166,8 @@ def _get_sentence_by_id(sentence_id):
     
 def _getfault(_counts):
     # Let's fetch a random fault that we then need to substitute bits of...
+    _debug_setup()
+    
     cursor = CONN.cursor()
     _rand = random.randint(1,_counts['fau_count'])
     _query = """select * from surfaults where fau_id = {0}""".format(_rand)
@@ -163,6 +178,8 @@ def _getfault(_counts):
 
 def _getsentence(_counts):
     # Let's fetch a random sentence that we then need to substitute bits of...
+    _debug_setup()
+    
     cursor = CONN.cursor()
     _rand = random.randint(1,_counts['sen_count'])
     _query = """select * from sursentences where sen_id = {0}""".format(_rand)
@@ -208,6 +225,11 @@ def _getname(_counts):
     _query = """select * from surnames where name_id = {0}""".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
+    
+    # global DEBUG
+    # if DEBUG == True:
+    #     print 'getname._result: ' + str(_result)
+        
     return _result[1]
 
 
@@ -256,33 +278,60 @@ def _gettablelimits():
 def _process_sentence(_sentence_tuple, _counts):
     
     # pull the actual sentence from the tupe (tuple contains additional data such as ID)
+    global DEBUG
+    
+    if DEBUG == True:
+        print 'Sentence Tuple: ' + str(_sentence_tuple)
+        
     _sentence = _sentence_tuple[2]
     
     # now we start replacing words one type at a time...
     _sentence = _replace_verbs(_sentence, _counts)
+    if DEBUG == True:
+        print 'replace_verbs: ' + str(_sentence)
+        
     _sentence = _replace_nouns(_sentence, _counts)
+    if DEBUG == True:
+        print 'replace_nouns: ' + str(_sentence)
+        
     _sentence = _replace_adjective_maybe(_sentence, _counts)
+    if DEBUG == True:
+        print 'replace_adjective_maybe: ' + str(_sentence)
+        
     _sentence = _replace_adjectives(_sentence, _counts)
+    if DEBUG == True:
+        print 'replace_adjectives: ' + str(_sentence)
+        
     _sentence = _replace_names(_sentence, _counts)
+    if DEBUG == True:
+        print 'replace_names: ' + str(_sentence)
     
     # here we perform a check to see if we need to use A or AN depending on the first letter
     # of the following word...
     _sentence = _replace_an(_sentence, _counts)
+    if DEBUG == True:
+        print 'replace_an: ' + str(_sentence)
     
     # now we will read, choose and substitute  each of the RANDOM sentence tuples
     _sentence = _replace_random(_sentence)
+    if DEBUG == True:
+        print 'replace_random: ' + str(_sentence)
     
     # now we are going to choose whether to capitalize words/sentences or not
     ############
     #NOTE:  Buggy as hell, as it doesn't account for words that are already capitalized
     ############
     _sentence = _replace_capitalise(_sentence)
+    if DEBUG == True:
+        print 'replace_capitalise: ' + str(_sentence)
     
     # here we will choose whether to capitalize all words in the sentence
     ############
     #NOTE:  Buggy as hell, as it doesn't account for words that are already capitalized
     ############
     _sentence = _replace_capall(_sentence)
+    if DEBUG == True:
+        print 'replace_capall: ' + str(_sentence)
     
     return _sentence
     
@@ -402,6 +451,20 @@ def _replace_random(_sentence):
             if _sentence.find('#RANDOM') is not None:
                 
                 _sub_list = _sentence[_start_index:_end_index].split(',')
+                
+                global DEBUG
+                
+                if DEBUG == True:
+                    print '_replace_random._sentence: ' + str(_sentence)
+                    print '_start_index: ' + str(_start_index)
+                    print _sentence[_start_index]
+                    
+                    print '_end_index: ' + str(_end_index)
+                    print _sentence[_end_index]
+                    
+                    print '_sub_list: ' + str(_sub_list)
+                    print '\n'
+                
                 _choice = random.randint(1, int(_sub_list[0]))
                 _sub_list[_choice]
             
