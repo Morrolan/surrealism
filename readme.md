@@ -58,6 +58,15 @@ Usage Examples
    >>> print sentence
    >>> If I can get the Pot Noodle to enter Radiohead's Lead Singer, the lego-brick will dilute Julian Assange and I'll be able to spy on Neil Armstrong!
 
+You can also specify an integer representing the relevant row ID from the database in order to return a specific sentence:
+
+::
+
+   >>> import surrealism
+   >>> sentence = surrealism.getsentence(39)
+   >>> print sentence
+   >>> Don't drop things on X-Wings - get blood out of deep-fat friers!
+
    
 **Generate a surreal error message**:
 
@@ -67,6 +76,14 @@ Usage Examples
    >>> print surrealism.getfault()
    >>> thing.c:466: fearsome error in 'blow-up doll()' - missing thing-a-ma-jig.
 
+You can also specify an integer representing the relevant row ID from the database in order to return a specific sentence:
+
+::
+
+   >>> import surrealism
+   >>> print surrealism.getfault(3)
+   >>> Traceback (most recent call last):  File '/party popper/fighter plane/glistening_seashell/anti-depressant.py', line 20, in straggly_particle accelerator.  waterproofError: salmon mousse did not deep-fry hand-drill.
+
 
 Please feel free to leave bug reports and feature requests on the github homepage at https://github.com/Morrolan/surrealism.
 
@@ -75,6 +92,14 @@ All comments are welcome!
 
 Changelog
 ---------
+0.9.0
+-----
+Added the ability to override getfault() and getsentence() allowing you to now specify a fault_id or sentence_id from within the database. 
+
+0.8.0
+-----
+Added comments to code and fixed some dodgy sentences in the database.
+
 
 0.7.0
 -----
