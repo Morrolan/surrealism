@@ -5,7 +5,7 @@ from setuptools import setup
 long_desc = open('readme.rst').read()
 
 setup(name = 'surrealism',
-      version = '0.8.0',
+      version = '0.9.0',
       packages=["surrealism"],
       author = 'Ian Havelock',
       author_email = 'morrolan@icloud.com',

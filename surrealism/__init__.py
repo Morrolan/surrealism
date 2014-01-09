@@ -25,7 +25,7 @@
 #
 #############################################################################
 
-__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest', '_get_sentence_by_id']
+__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest', '_get_fault_by_id']
 
 
 # IMPORTS ###################################################################
@@ -41,7 +41,7 @@ from pkg_resources import resource_filename
 
 CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
 
-DEBUG = True
+DEBUG = False
 
 # VARIABLES #################################################################
 
@@ -58,7 +58,7 @@ DEBUG = True
 def version():
     """Returns the current version of the Surrealism module."""
     
-    print('surrealism 0.8.0')
+    return('surrealism 0.9.0')
     
     
 def sentencetest():
@@ -101,28 +101,69 @@ def faulttest():
             print _result
     
 
-def getfault():
-    """Retrieve a randomly-generated error message as a unicode string."""
+def getfault(fault_id=None):
+    """Retrieve a randomly-generated error message as a unicode string.
+    
+        getfault(fault_id=None)"""
     
     _counts = _gettablelimits()
     
-    _sentence = _getfault(_counts)
+    try:
+        isinstance(fault_id, int)
+
+        _id = fault_id
+        
+        if fault_id <= _counts['fau_count']:
+            _id = fault_id
+        else:
+            print "\nError: Specified Fault ID not within range - accepted value range is between 1 and " + str(_counts['fau_count']) + ". Your value is '" + str(fault_id) + "'.  Exiting...\n"
+            exit()
+            
+    except TypeError, e:
+        print "TypeError: " + str(e)
+        _id = _counts['fau_count']
+        
+    _sentence = _getfault(_counts, fault_id=_id)
     
     while _sentence[0] == 'n':
-        _sentence = _getfault(_counts)
+        if _id is not None:
+            print "Sentence with ID: '" + str(_id) + "' is disabled in the database and will not be returned.  Exiting...\n"
+            exit()
+        else:
+            _sentence = _getfault(_counts, _id)
     if _sentence[0] == 'y':
         _result = _process_sentence(_sentence, _counts)
     return _result
     
 
-def getsentence():
+def getsentence(sentence_id=None):
     """Retrieve a randomly-generated sentence as a unicode string."""
     
     _counts = _gettablelimits()
-    _sentence = _getsentence(_counts)
+    
+    try:
+        isinstance(sentence_id, int)
+
+        _id = sentence_id
+        
+        if sentence_id <= _counts['sen_count']:
+            _id = sentence_id
+        else:
+            print "\nError: Specified Sentence ID not within range - accepted value range is between 1 and " + str(_counts['sen_count']) + ". Your value is '" + str(sentence_id) + "'.  Exiting...\n"
+            exit()
+            
+    except TypeError, e:
+        print "TypeError: " + str(e)
+        _id = _counts['sen_count']
+    
+    _sentence = _getsentence(_counts, sentence_id=_id)
     
     while _sentence[0] == 'n':
-        _sentence = _getsentence(_counts)
+        if _id is not None:
+            print "Sentence with ID: '" + str(_id) + "' is disabled in the database and will not be returned.  Exiting...\n"
+            exit()
+        else:
+            _sentence = _getsentence(_counts, _id)
     if _sentence[0] == 'y':
         _result = _process_sentence(_sentence, _counts)
     return _result 
@@ -138,51 +179,37 @@ def _debug_setup():
     
     if DEBUG == True:
         print "\n\n########################### DEBUG ####################################\n"
-    
 
-def _get_fault_by_id(fault_id):
-    # Let's fetch the base fault that we then need to substitute bits of by providing the fault_id...
-    _debug_setup()
     
-    cursor = CONN.cursor()
-    #_rand = random.randint(1,_counts['sen_count'])
-    _query = """select * from surfaults where fau_id = {0}""".format(fault_id)
-    cursor.execute(_query)
-    _result = cursor.fetchone()
-    return _result
-    
-    
-def _get_sentence_by_id(sentence_id):
-    # Let's fetch the sentence that we then need to substitute bits of by providing the sentence_id...
-    _debug_setup()
-    
-    cursor = CONN.cursor()
-    #_rand = random.randint(1,_counts['sen_count'])
-    _query = """select * from sursentences where sen_id = {0}""".format(sentence_id)
-    cursor.execute(_query)
-    _result = cursor.fetchone()
-    return _result
-    
-    
-def _getfault(_counts):
+def _getfault(_counts, fault_id=None):
     # Let's fetch a random fault that we then need to substitute bits of...
     _debug_setup()
     
     cursor = CONN.cursor()
-    _rand = random.randint(1,_counts['fau_count'])
-    _query = """select * from surfaults where fau_id = {0}""".format(_rand)
+    
+    if fault_id >= 0:
+        _id_to_fetch = fault_id
+    else:
+        _id_to_fetch = random.randint(1,_counts['fau_count'])
+    
+    _query = """select * from surfaults where fau_id = {0}""".format(_id_to_fetch)
     cursor.execute(_query)
     _result = cursor.fetchone()
     return _result
     
 
-def _getsentence(_counts):
+def _getsentence(_counts, sentence_id=None):
     # Let's fetch a random sentence that we then need to substitute bits of...
     _debug_setup()
     
     cursor = CONN.cursor()
-    _rand = random.randint(1,_counts['sen_count'])
-    _query = """select * from sursentences where sen_id = {0}""".format(_rand)
+    
+    if sentence_id >= 0:
+        _id_to_fetch = sentence_id
+    else:
+        _id_to_fetch = random.randint(1,_counts['sen_count'])
+    
+    _query = """select * from sursentences where sen_id = {0}""".format(_id_to_fetch)
     cursor.execute(_query)
     _result = cursor.fetchone()
     return _result
