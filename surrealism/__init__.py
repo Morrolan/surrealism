@@ -104,7 +104,10 @@ def faulttest():
 def getfault(fault_id=None):
     """Retrieve a randomly-generated error message as a unicode string.
     
-        getfault(fault_id=None)"""
+        getfault(fault_id=None)
+        
+        Allows you to optionally specify an integer representing the fault_id from the database table.
+        This allows you to retrieve a specific fault each time, albeit with different keywords."""
     
     _counts = _gettablelimits()
     
@@ -137,7 +140,12 @@ def getfault(fault_id=None):
     
 
 def getsentence(sentence_id=None):
-    """Retrieve a randomly-generated sentence as a unicode string."""
+    """Retrieve a randomly-generated sentence as a unicode string.
+    
+        getsentence(sentence_id=None)
+        
+        Allows you to optionally specify an integer representing the sentence_id from the database table.
+        This allows you to retrieve a specific sentence each time, albeit with different keywords."""
     
     _counts = _gettablelimits()
     
