@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Surrealism : surreal sentence and error message generator for Python." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Surrealism</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Morrolan/surrealism">View on GitHub</a>
+
+          <h1 id="project_title">Surrealism</h1>
+          <h2 id="project_tagline">surreal sentence and error message generator for Python.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Morrolan/surrealism/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Morrolan/surrealism/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="surrealism" class="anchor" href="#surrealism"><span class="octicon octicon-link"></span></a>surrealism</h1>
+
+<h2>
+<a name="surrealism-module-for-python" class="anchor" href="#surrealism-module-for-python"><span class="octicon octicon-link"></span></a>surrealism module for Python</h2>
+
+<p>This module allows you to generate surreal sentences and error messages very easily from within your python programs.  </p>
+
+<p>This module is a derivative work (used with permission) from <a href="http://www.ravenblack.net">www.ravenblack.net</a>.  </p>
+
+<p>Credit also goes to Kevan Davis on whose work the surrealism generator at <a href="http://www.ravenblack.net">www.ravenblack.net</a> is based on.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>If you have downloaded the source distribution, to install do the following at the commandline: </p>
+
+<p>::</p>
+
+<p>$ python setup.py install</p>
+
+<p>Or using easy_install:</p>
+
+<p>::</p>
+
+<p>$ easy_install surrealism</p>
+
+<p>And it will download and install the latest version from the Python Package Index.</p>
+
+<p>Or pip:</p>
+
+<p>::</p>
+
+<p>$ pip install surrealism</p>
+
+<p>And it will download and install the latest version from the Python Package Index.</p>
+
+<h2>
+<a name="usage-examples" class="anchor" href="#usage-examples"><span class="octicon octicon-link"></span></a>Usage Examples</h2>
+
+<p><strong>Generate a surreal sentence</strong>:</p>
+
+<p>::</p>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import surrealism
+sentence = surrealism.getsentence()
+print sentence
+If I can get the Pot Noodle to enter Radiohead's Lead Singer, the lego-brick will dilute Julian Assange and I'll be able to spy on Neil Armstrong!</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+<p>You can also specify an integer representing the relevant row ID from the database in order to return a specific sentence:</p>
+
+<p>::</p>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import surrealism
+sentence = surrealism.getsentence(39)
+print sentence
+Don't drop things on X-Wings - get blood out of deep-fat friers!</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+<p><strong>Generate a surreal error message</strong>:</p>
+
+<p>::</p>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import surrealism
+print surrealism.getfault()
+thing.c:466: fearsome error in 'blow-up doll()' - missing thing-a-ma-jig.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+<p>You can also specify an integer representing the relevant row ID from the database in order to return a specific sentence:</p>
+
+<p>::</p>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import surrealism
+print surrealism.getfault(3)
+Traceback (most recent call last):  File '/party popper/fighter plane/glistening_seashell/anti-depressant.py', line 20, in straggly_particle accelerator.  waterproofError: salmon mousse did not deep-fry hand-drill.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+<p>Please feel free to leave bug reports and feature requests on the github homepage at <a href="https://github.com/Morrolan/surrealism">https://github.com/Morrolan/surrealism</a>.</p>
+
+<p>All comments are welcome!</p>
+
+<h2>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<h2>
+<a name="090" class="anchor" href="#090"><span class="octicon octicon-link"></span></a>0.9.0</h2>
+
+<p>Added the ability to override getfault() and getsentence() allowing you to now specify a fault_id or sentence_id from within the database. </p>
+
+<h2>
+<a name="080" class="anchor" href="#080"><span class="octicon octicon-link"></span></a>0.8.0</h2>
+
+<p>Added comments to code and fixed some dodgy sentences in the database.</p>
+
+<h2>
+<a name="070" class="anchor" href="#070"><span class="octicon octicon-link"></span></a>0.7.0</h2>
+
+<p>Added a new table which allows more faults rather than just the C++ syntax fault.  Also added faulttest() and sentencetest() so you can print out all sentences and faults.</p>
+
+<h2>
+<a name="060" class="anchor" href="#060"><span class="octicon octicon-link"></span></a>0.6.0</h2>
+
+<p>Added the ability to have the entire sentence in uppercase (some sentences require it) and tripled the size of the 'names' table.</p>
+
+<h2>
+<a name="056" class="anchor" href="#056"><span class="octicon octicon-link"></span></a>0.5.6</h2>
+
+<p>More database tweaks to fix spacing issues.</p>
+
+<h2>
+<a name="055" class="anchor" href="#055"><span class="octicon octicon-link"></span></a>0.5.5</h2>
+
+<p>Fixed print statement which prevented installation and use on Python 3x.</p>
+
+<h2>
+<a name="054" class="anchor" href="#054"><span class="octicon octicon-link"></span></a>0.5.4</h2>
+
+<p>Added pkg_resources to manage sqlite file installation (particularly a problem when using virtualenv).</p>
+
+<h2>
+<a name="053" class="anchor" href="#053"><span class="octicon octicon-link"></span></a>0.5.3</h2>
+
+<p>Added seperate script (sentence_test) </p>
+
+<h2>
+<a name="052" class="anchor" href="#052"><span class="octicon octicon-link"></span></a>0.5.2</h2>
+
+<p>Fixed bug with adjectives.</p>
+
+<h2>
+<a name="051" class="anchor" href="#051"><span class="octicon octicon-link"></span></a>0.5.1</h2>
+
+<p>Added basic docstrings.</p>
+
+<h2>
+<a name="050" class="anchor" href="#050"><span class="octicon octicon-link"></span></a>0.5.0</h2>
+
+<p>Removed unnecessary Class, now making it even easier and simpler to use.</p>
+
+<h2>
+<a name="041" class="anchor" href="#041"><span class="octicon octicon-link"></span></a>0.4.1</h2>
+
+<p>Minor bug fix to the getfault sentences where 2 periods were printing instead of 1.</p>
+
+<h2>
+<a name="04" class="anchor" href="#04"><span class="octicon octicon-link"></span></a>0.4</h2>
+
+<p>Urgent bug fix to getfault where returned result was incomplete.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Surrealism maintained by <a href="https://github.com/Morrolan">Morrolan</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
