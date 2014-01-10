@@ -72,8 +72,7 @@ class SurrealError(Exception):
 def version():
     """Returns the current version of the Surrealism module."""
     
-    for v in pkg_resources.require('surrealism'):
-        print v.version
+    return pkg_resources.require('surrealism')[0].version
     
     
 def sentencetest():
