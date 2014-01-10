@@ -2,7 +2,7 @@
 
 #############################################################################
 #    surrealism.py - Surreal sentence and error message generator
-#    Copyright (C) 2013  Ian Havelock
+#    Copyright (C) 2014  Ian Havelock
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 #
 #############################################################################
 
-__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest', '_get_fault_by_id']
+__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest']
 
 
 # IMPORTS ###################################################################
@@ -53,12 +53,25 @@ DEBUG = False
 
 #############################################################################
 
+# EXCEPTION CLASS HANDLER
+
+class SurrealError(Exception):
+    """Custom Exception handler so that I can raise real errors instead of just printing.
+    This allows other devs to silently bypass my errors if they wish to, rather than
+    me forcing the code to exit."""
+    
+    def __init__(self, value):
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
+        
+
 #  EXTERNAL METHODS BELOW
 
 def version():
     """Returns the current version of the Surrealism module."""
     
-    return('surrealism 0.9.0')
+    return('surrealism 0.9.1')
     
     
 def sentencetest():
@@ -112,19 +125,23 @@ def getfault(fault_id=None):
     _counts = _gettablelimits()
     
     try:
-        isinstance(fault_id, int)
+        isinstance(fault_id, (int, long))
 
         _id = fault_id
         
         if fault_id <= _counts['fau_count']:
             _id = fault_id
         else:
-            print "\nError: Specified Fault ID not within range - accepted value range is between 1 and " + str(_counts['fau_count']) + ". Your value is '" + str(fault_id) + "'.  Exiting...\n"
-            exit()
+            _id = None
+            try:
+                raise SurrealError(fault_id)
+            except SurrealError, e:
+                print "SurrealError: Specified Fault ID '{0}' not within range.  Accepted value range is an integer between 1 and {1}.".format(e.value, _counts['fau_count'])
+                exit()
             
     except TypeError, e:
-        print "TypeError: " + str(e)
-        _id = _counts['fau_count']
+        print "TypeError: " + str(e) + ".  Will generate random phrase instead."
+        _id = None
         
     _sentence = _getfault(_counts, fault_id=_id)
     
