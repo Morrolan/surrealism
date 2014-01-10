@@ -32,6 +32,7 @@ __ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest']
 
 import sqlite3
 import random
+import pkg_resources
 
 # PARTICULAR IMPORTS ########################################################
 
@@ -71,7 +72,8 @@ class SurrealError(Exception):
 def version():
     """Returns the current version of the Surrealism module."""
     
-    return('surrealism 0.9.1')
+    for v in pkg_resources.require('surrealism'):
+        print v.version
     
     
 def sentencetest():
@@ -167,20 +169,24 @@ def getsentence(sentence_id=None):
     _counts = _gettablelimits()
     
     try:
-        isinstance(sentence_id, int)
+        isinstance(sentence_id, (int, long))
 
         _id = sentence_id
         
         if sentence_id <= _counts['sen_count']:
             _id = sentence_id
         else:
-            print "\nError: Specified Sentence ID not within range - accepted value range is between 1 and " + str(_counts['sen_count']) + ". Your value is '" + str(sentence_id) + "'.  Exiting...\n"
-            exit()
+            _id = None
+            try:
+                raise SurrealError(sentence_id)
+            except SurrealError, e:
+                print "SurrealError: Specified Sentence ID '{0}' not within range.  Accepted value range is an integer between 1 and {1}.".format(e.value, _counts['sen_count'])
+                exit()
             
     except TypeError, e:
-        print "TypeError: " + str(e)
-        _id = _counts['sen_count']
-    
+        print "TypeError: " + str(e) + ".  Will generate random sentence instead."
+        _id = None
+        
     _sentence = _getsentence(_counts, sentence_id=_id)
     
     while _sentence[0] == 'n':
