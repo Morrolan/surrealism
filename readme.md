@@ -45,10 +45,12 @@ Usage Examples
 
 **Generate a surreal sentence**:
 
-`import surrealism`
-`sentence = surrealism.getsentence()`
-`print sentence`
-`If I can get the Pot Noodle to enter Radiohead's Lead Singer, the lego-brick will dilute Julian Assange and I'll be able to spy on Neil Armstrong!`
+::
+
+   >>> import surrealism
+   >>> sentence = surrealism.getsentence()
+   >>> print sentence
+   >>> If I can get the Pot Noodle to enter Radiohead's Lead Singer, the lego-brick will dilute Julian Assange and I'll be able to spy on Neil Armstrong!
 
 You can also specify an integer representing the relevant row ID from the database in order to return a specific sentence:
 
