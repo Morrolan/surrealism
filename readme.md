@@ -8,12 +8,6 @@ surrealism module for Python
 This module allows you to generate surreal sentences and error messages very easily from within your python programs.  
 
 
-This module is a derivative work (used with permission) from www.ravenblack.net.  
-
-
-Credit also goes to Kevan Davis on whose work the surrealism generator at www.ravenblack.net is based on.
-
-
 Installation
 ------------
 
@@ -51,12 +45,10 @@ Usage Examples
 
 **Generate a surreal sentence**:
 
-::
-
-   >>> import surrealism
-   >>> sentence = surrealism.getsentence()
-   >>> print sentence
-   >>> If I can get the Pot Noodle to enter Radiohead's Lead Singer, the lego-brick will dilute Julian Assange and I'll be able to spy on Neil Armstrong!
+`import surrealism
+sentence = surrealism.getsentence()
+print sentence
+If I can get the Pot Noodle to enter Radiohead's Lead Singer, the lego-brick will dilute Julian Assange and I'll be able to spy on Neil Armstrong!`
 
 You can also specify an integer representing the relevant row ID from the database in order to return a specific sentence:
 
@@ -84,77 +76,13 @@ You can also specify an integer representing the relevant row ID from the databa
    >>> print surrealism.getfault(3)
    >>> Traceback (most recent call last):  File '/party popper/fighter plane/glistening_seashell/anti-depressant.py', line 20, in straggly_particle accelerator.  waterproofError: salmon mousse did not deep-fry hand-drill.
 
+Errors
+------
+
+If you try to pass a non-integer into either function, you will generate a *SurrealError*.  This is defined as a standard *Exception* and therefore can be handled appropriately.
+
 
 Please feel free to leave bug reports and feature requests on the github homepage at https://github.com/Morrolan/surrealism.
 
 All comments are welcome!
 
-
-Changelog
----------
-
-
-0.9.0
------
-Added the ability to override getfault() and getsentence() allowing you to now specify a fault_id or sentence_id from within the database. 
-
-0.8.0
------
-Added comments to code and fixed some dodgy sentences in the database.
-
-
-0.7.0
------
-Added a new table which allows more faults rather than just the C++ syntax fault.  Also added faulttest() and sentencetest() so you can print out all sentences and faults.
-
-
-0.6.0
------
-Added the ability to have the entire sentence in uppercase (some sentences require it) and tripled the size of the 'names' table.
-
-
-0.5.6
------
-More database tweaks to fix spacing issues.
-
-
-0.5.5
------
-Fixed print statement which prevented installation and use on Python 3x.
-
-
-0.5.4
------
-Added pkg_resources to manage sqlite file installation (particularly a problem when using virtualenv).
-
-
-0.5.3
------
-Added seperate script (sentence_test) 
-
-
-0.5.2
------
-Fixed bug with adjectives.
-
-
-0.5.1
------
-Added basic docstrings.
-
-0.5.0
------
-
-Removed unnecessary Class, now making it even easier and simpler to use.
-
-
-0.4.1
------
-
-Minor bug fix to the getfault sentences where 2 periods were printing instead of 1.
-
-
-0.4
----
-
-Urgent bug fix to getfault where returned result was incomplete.
