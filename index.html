@@ -39,10 +39,6 @@
 
 <p>This module allows you to generate surreal sentences and error messages very easily from within your python programs.  </p>
 
-<p>This module is a derivative work (used with permission) from <a href="http://www.ravenblack.net">www.ravenblack.net</a>.  </p>
-
-<p>Credit also goes to Kevan Davis on whose work the surrealism generator at <a href="http://www.ravenblack.net">www.ravenblack.net</a> is based on.</p>
-
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
@@ -129,77 +125,14 @@ Traceback (most recent call last):  File '/party popper/fighter plane/glistening
 </blockquote>
 </blockquote>
 
+<h2>
+<a name="errors" class="anchor" href="#errors"><span class="octicon octicon-link"></span></a>Errors</h2>
+
+<p>If you try to pass a non-integer into either function, you will generate a <em>SurrealError</em>.  This is defined as a standard <em>Exception</em> and therefore can be handled appropriately.</p>
+
 <p>Please feel free to leave bug reports and feature requests on the github homepage at <a href="https://github.com/Morrolan/surrealism">https://github.com/Morrolan/surrealism</a>.</p>
 
 <p>All comments are welcome!</p>
-
-<h2>
-<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h2>
-
-<h2>
-<a name="090" class="anchor" href="#090"><span class="octicon octicon-link"></span></a>0.9.0</h2>
-
-<p>Added the ability to override getfault() and getsentence() allowing you to now specify a fault_id or sentence_id from within the database. </p>
-
-<h2>
-<a name="080" class="anchor" href="#080"><span class="octicon octicon-link"></span></a>0.8.0</h2>
-
-<p>Added comments to code and fixed some dodgy sentences in the database.</p>
-
-<h2>
-<a name="070" class="anchor" href="#070"><span class="octicon octicon-link"></span></a>0.7.0</h2>
-
-<p>Added a new table which allows more faults rather than just the C++ syntax fault.  Also added faulttest() and sentencetest() so you can print out all sentences and faults.</p>
-
-<h2>
-<a name="060" class="anchor" href="#060"><span class="octicon octicon-link"></span></a>0.6.0</h2>
-
-<p>Added the ability to have the entire sentence in uppercase (some sentences require it) and tripled the size of the 'names' table.</p>
-
-<h2>
-<a name="056" class="anchor" href="#056"><span class="octicon octicon-link"></span></a>0.5.6</h2>
-
-<p>More database tweaks to fix spacing issues.</p>
-
-<h2>
-<a name="055" class="anchor" href="#055"><span class="octicon octicon-link"></span></a>0.5.5</h2>
-
-<p>Fixed print statement which prevented installation and use on Python 3x.</p>
-
-<h2>
-<a name="054" class="anchor" href="#054"><span class="octicon octicon-link"></span></a>0.5.4</h2>
-
-<p>Added pkg_resources to manage sqlite file installation (particularly a problem when using virtualenv).</p>
-
-<h2>
-<a name="053" class="anchor" href="#053"><span class="octicon octicon-link"></span></a>0.5.3</h2>
-
-<p>Added seperate script (sentence_test) </p>
-
-<h2>
-<a name="052" class="anchor" href="#052"><span class="octicon octicon-link"></span></a>0.5.2</h2>
-
-<p>Fixed bug with adjectives.</p>
-
-<h2>
-<a name="051" class="anchor" href="#051"><span class="octicon octicon-link"></span></a>0.5.1</h2>
-
-<p>Added basic docstrings.</p>
-
-<h2>
-<a name="050" class="anchor" href="#050"><span class="octicon octicon-link"></span></a>0.5.0</h2>
-
-<p>Removed unnecessary Class, now making it even easier and simpler to use.</p>
-
-<h2>
-<a name="041" class="anchor" href="#041"><span class="octicon octicon-link"></span></a>0.4.1</h2>
-
-<p>Minor bug fix to the getfault sentences where 2 periods were printing instead of 1.</p>
-
-<h2>
-<a name="04" class="anchor" href="#04"><span class="octicon octicon-link"></span></a>0.4</h2>
-
-<p>Urgent bug fix to getfault where returned result was incomplete.</p>
       </section>
     </div>
 
