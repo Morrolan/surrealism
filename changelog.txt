@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+0.9.2
+-----
+Used pylint to tidy code.  Pylint score now 10/10.
+
+
 0.9.1
 -----
 Fixes to improve Exception generation.

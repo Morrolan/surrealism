@@ -6,7 +6,7 @@ long_desc = open('readme.rst').read()
 
 setup(name = 'surrealism',
       version = '0.9.1',
-      packages=["surrealism"],
+      #packages=["surrealism"],
       author = 'Ian Havelock',
       author_email = 'morrolan@icloud.com',
       url = 'http://morrolan.github.io/surrealism/',
