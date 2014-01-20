@@ -60,8 +60,8 @@ class SurrealError(Exception):
     printing.  This allows other devs to silently bypass my errors if they wish 
     to, rather than me forcing the code to exit."""
     
-    #def __init__(self, value):
-    #    self.value = value
+    def __init__(self, value):
+        self.value = value
     def __str__(self):
         return repr(self.value)
         
@@ -189,7 +189,7 @@ def getsentence(sentence_id=None):
                 print ("""SurrealError: Specified Sentence ID '{0}' not within 
                         range.  Accepted value range is an integer between 1 
                         and {1}.""".format(err.value, _counts['sen_count']))
-                exit()
+                #exit()
             
     except TypeError, err:
         print ("TypeError: " + str(err) + 
@@ -203,7 +203,7 @@ def getsentence(sentence_id=None):
             print ("Sentence with ID: '" + str(_id) + 
                 """' is disabled in the database and will not be returned.  
                 Exiting...\n""")
-            exit()
+            #exit()
         else:
             _sentence = _getsentence(_counts, _id)
     if _sentence[0] == 'y':
@@ -501,6 +501,7 @@ def _replace_random(_sentence):
             if _sentence.find('#RANDOM') is not None:
                 
                 _sub_list = _sentence[_start_index:_end_index].split(',')
+
                 
                 _choice = random.randint(1, int(_sub_list[0]))
                 #_sub_list[_choice]

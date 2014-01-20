@@ -30,6 +30,4 @@ class SurrealismUnittests(unittest.TestCase):
     def test_getsentence_returns_a_unicode_string_over_integer_upper_limit(self):
         limits = s._gettablelimits()
         over_limit = limits['sen_count'] + 1
-        #sentence = s.getsentence(over_limit)
-        self.assertRaises(AttributeError, sentence = s.getsentence(over_limit)
-        
+        self.assertRaises(s.SurrealError, (s.getsentence(over_limit)))
