@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 long_desc = open('readme.rst').read()
 
 setup(name = 'surrealism',
-      version = '0.9.1',
-      #packages=["surrealism"],
+      version = '0.9.3',
+      #packages = find_packages(),
+      packages=["surrealism"],
       author = 'Ian Havelock',
       author_email = 'morrolan@icloud.com',
-      url = 'http://morrolan.github.io/surrealism/',
+      url = 'http://www.morrolan.com',
       license = 'GNU General Public License (GPL)',
       description = 'Surreal sentence and error message generator.',
       long_description = long_desc,
