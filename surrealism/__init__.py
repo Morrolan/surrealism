@@ -55,15 +55,15 @@ CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
 
 # EXCEPTION CLASS HANDLER
 
-class SurrealError(Exception):
-    """Custom Exception handler so that I can raise real errors instead of just 
-    printing.  This allows other devs to silently bypass my errors if they wish 
-    to, rather than me forcing the code to exit."""
-    
-    def __init__(self, value):
-        self.value = value
-    def __str__(self):
-        return repr(self.value)
+#class SurrealError(Exception):
+#    """Custom Exception handler so that I can raise real errors instead of just 
+#    printing.  This allows other devs to silently bypass my errors if they wish 
+#    to, rather than me forcing the code to exit."""
+#    
+#    def __init__(self, value):
+#        self.value = value
+#    def __str__(self):
+#        return repr(self.value)
         
 
 #  EXTERNAL METHODS BELOW
@@ -130,18 +130,14 @@ def getfault(fault_id=None):
 
         _id = fault_id
         
-        if fault_id <= _counts['fau_count']:
-            _id = fault_id
-        else:
-            _id = None
-            try:
-                raise SurrealError(fault_id)
-            except SurrealError, err:
-                print ("""SurrealError: Specified Fault ID '{0}' 
-                        not within range.  Accepted value range is an integer 
-                        between 1 and {1}.""".format(err.value, 
-                        _counts['fau_count']))
-                exit()
+        try:
+            if fault_id <= _counts['fau_count']:
+                _id = fault_id
+            else:
+                _id = None
+        except TypeError:
+            pass
+                
             
     except TypeError, err:
         print ("TypeError: " + str(err) + 
@@ -183,14 +179,7 @@ def getsentence(sentence_id=None):
             _id = sentence_id
         else:
             _id = None
-            try:
-                raise SurrealError(sentence_id)
-            except SurrealError, err:
-                print ("""SurrealError: Specified Sentence ID '{0}' not within 
-                        range.  Accepted value range is an integer between 1 
-                        and {1}.""".format(err.value, _counts['sen_count']))
-                #exit()
-            
+                        
     except TypeError, err:
         print ("TypeError: " + str(err) + 
                 ".  Will generate random sentence instead.")
