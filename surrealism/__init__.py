@@ -124,39 +124,38 @@ def getfault(fault_id=None):
         each time, albeit with different keywords."""
     
     _counts = _gettablelimits()
+    _fault = None
+    _id = None
     
-    try:
-        isinstance(fault_id, (int, long))
 
-        _id = fault_id
-        
-        try:
-            if fault_id <= _counts['fau_count']:
-                _id = fault_id
-            else:
-                _id = None
-        except TypeError:
-            pass
-                
+    try:
+        if isinstance(fault_id, (int, long)):
+            _id = fault_id
+        elif isinstance(fault_id, float):
+            print "ValueError:  Floating point number detected.  Rounding number to 0 decimal places."
+            temp_id = round(fault_id)
             
-    except TypeError, err:
-        print ("TypeError: " + str(err) + 
-            ".  Will generate random phrase instead.")
-        _id = None
-        
-    _sentence = _getfault(_counts, fault_id=_id)
+    except ValueError:
+        print "So long, and thanks for all the fish."
     
-    while _sentence[0] == 'n':
+    if _id <= _counts['fau_count']:
+        _fault = _getfault(_counts, fault_id = _id)
+    else:
+        print "ValueError:  Parameter integer is too high.  Maximum permitted value is {0}.".format(str(_counts['fau_count']))
+        _id = _counts['fau_count']
+        _fault = _getfault(_counts, fault_id = _id)
+    
+    
+    while _fault[0] == 'n':
         if _id is not None:
-            print ("Sentence with ID: '" + str(_id) + 
+            print ("Fault with ID: '" + str(_id) + 
                 """' is disabled in the database and will not be returned.  
-                Exiting...\n""")
-            exit()
+                \n""")
         else:
-            _sentence = _getfault(_counts, _id)
-    if _sentence[0] == 'y':
-        _result = _process_sentence(_sentence, _counts)
-    return _result
+            _fault = _getfault(_counts, _id)
+    if _fault[0] == 'y':
+        _result = _process_sentence(_fault, _counts)
+    return _result 
     
 
 def getsentence(sentence_id=None):
@@ -169,30 +168,36 @@ def getsentence(sentence_id=None):
         sentence each time, albeit with different keywords."""
     
     _counts = _gettablelimits()
+    _sentence = None
+    _id = None
     
-    try:
-        isinstance(sentence_id, (int, long))
 
-        _id = sentence_id
-        
-        if sentence_id <= _counts['sen_count']:
+    try:
+        if isinstance(sentence_id, (int, long)):
             _id = sentence_id
+        elif isinstance(sentence_id, float):
+            print """ValueError:  Floating point number detected.
+                    Rounding number to 0 decimal places."""
+            _id = round(sentence_id)
         else:
-            _id = None
-                        
-    except TypeError, err:
-        print ("TypeError: " + str(err) + 
-                ".  Will generate random sentence instead.")
-        _id = None
-        
-    _sentence = _getsentence(_counts, sentence_id=_id)
+            pass
+            
+    except ValueError:
+        print "So long, and thanks for all the fish."
+    
+    if _id <= _counts['sen_count']:
+        _sentence = _getsentence(_counts, sentence_id = _id)
+    else:
+        print """ValueError:  Parameter integer is too high.
+                Maximum permitted value is {0}.""".format(str(_counts['sen_count']))
+        _id = _counts['sen_count']
+        _sentence = _getsentence(_counts, sentence_id = _id)
     
     while _sentence[0] == 'n':
         if _id is not None:
             print ("Sentence with ID: '" + str(_id) + 
                 """' is disabled in the database and will not be returned.  
-                Exiting...\n""")
-            #exit()
+                \n""")
         else:
             _sentence = _getsentence(_counts, _id)
     if _sentence[0] == 'y':
