@@ -68,10 +68,6 @@ You can also specify an integer representing the relevant row ID from the databa
     >>> print surrealism.getfault(3)
     >>> Traceback (most recent call last):  File '/party popper/fighter plane/glistening_seashell/anti-depressant.py', line 20, in straggly_particle accelerator.  waterproofError: salmon mousse did not deep-fry hand-drill.
 
-Errors
-------
-
-If you try to pass a non-integer into either function, you will generate a *SurrealError*.  This is defined as a standard *Exception* and therefore can be handled appropriately.
 
 
 Please feel free to leave bug reports and feature requests on the github homepage at https://github.com/Morrolan/surrealism.

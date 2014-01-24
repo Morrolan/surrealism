@@ -83,15 +83,15 @@ def sentencetest():
     
     while counter < max_num: 
         counter = counter + 1
-        print "\nSentence ID:  " + str(counter)
+        print("\nSentence ID:  " + str(counter))
         _sentence = _getsentence(counter)
         
         if _sentence[0] == 'n':
-            print "Sentence is DISABLED - ignoring..."
+            print("Sentence is DISABLED - ignoring...")
         
         if _sentence[0] == 'y':
             _result = _process_sentence(_sentence, _counts)
-            print _result
+            print(_result)
             
             
 def faulttest():
@@ -103,15 +103,15 @@ def faulttest():
     
     while counter < max_num: 
         counter = counter + 1
-        print "\nFault ID:  " + str(counter)
+        print("\nFault ID:  " + str(counter))
         _fault = _getfault(counter)
         
         if _fault[0] == 'n':
-            print "Fault is DISABLED - ignoring..."
+            print("Fault is DISABLED - ignoring...")
         
         if _fault[0] == 'y':
             _result = _process_sentence(_fault, _counts)
-            print _result
+            print(_result)
     
 
 def getfault(fault_id=None):
@@ -125,37 +125,41 @@ def getfault(fault_id=None):
     
     _counts = _gettablelimits()
     _fault = None
-    _id = None
+    _id = 0
     
 
     try:
-        if isinstance(fault_id, (int, long)):
+        if isinstance(fault_id, int):
             _id = fault_id
         elif isinstance(fault_id, float):
-            print "ValueError:  Floating point number detected.  Rounding number to 0 decimal places."
-            temp_id = round(fault_id)
+            print("""ValueError:  Floating point number detected.
+                  Rounding number to 0 decimal places.""")
+            _id = round(fault_id)
+        else:
+            _id = random.randint(1, _counts['fau_count'])
             
     except ValueError:
-        print "So long, and thanks for all the fish."
+        print("ValueError:  Incorrect parameter type detected.")
     
     if _id <= _counts['fau_count']:
         _fault = _getfault(_counts, fault_id = _id)
     else:
-        print "ValueError:  Parameter integer is too high.  Maximum permitted value is {0}.".format(str(_counts['fau_count']))
+        print("""ValueError:  Parameter integer is too high.
+              Maximum permitted value is {0}.""".format(str(_counts['fau_count'])))
         _id = _counts['fau_count']
         _fault = _getfault(_counts, fault_id = _id)
     
-    
-    while _fault[0] == 'n':
-        if _id is not None:
-            print ("Fault with ID: '" + str(_id) + 
-                """' is disabled in the database and will not be returned.  
-                \n""")
-        else:
-            _fault = _getfault(_counts, _id)
-    if _fault[0] == 'y':
-        _result = _process_sentence(_fault, _counts)
-    return _result 
+    if _fault is not None:
+        while _fault[0] == 'n':
+            if _id is not None:
+                _fault = _getfault(_counts, None)
+            else:
+                _fault = _getfault(_counts, _id)
+        if _fault[0] == 'y':
+            _result = _process_sentence(_fault, _counts)
+        return _result
+    else:
+        print('ValueError: _fault cannot be None.')
     
 
 def getsentence(sentence_id=None):
@@ -169,40 +173,42 @@ def getsentence(sentence_id=None):
     
     _counts = _gettablelimits()
     _sentence = None
-    _id = None
+    _id = 0
     
 
     try:
-        if isinstance(sentence_id, (int, long)):
+        if isinstance(sentence_id, int):
             _id = sentence_id
         elif isinstance(sentence_id, float):
-            print """ValueError:  Floating point number detected.
-                    Rounding number to 0 decimal places."""
+            print("""ValueError:  Floating point number detected.
+                  Rounding number to 0 decimal places.""")
             _id = round(sentence_id)
         else:
-            pass
+            _id = random.randint(1, _counts['sen_count'])
             
     except ValueError:
-        print "So long, and thanks for all the fish."
+        print("ValueError:  Incorrect parameter type detected.")
     
     if _id <= _counts['sen_count']:
         _sentence = _getsentence(_counts, sentence_id = _id)
     else:
-        print """ValueError:  Parameter integer is too high.
-                Maximum permitted value is {0}.""".format(str(_counts['sen_count']))
+        print("""ValueError:  Parameter integer is too high.
+              Maximum permitted value is {0}.""".format(str(_counts['sen_count'])))
         _id = _counts['sen_count']
         _sentence = _getsentence(_counts, sentence_id = _id)
     
-    while _sentence[0] == 'n':
-        if _id is not None:
-            print ("Sentence with ID: '" + str(_id) + 
-                """' is disabled in the database and will not be returned.  
-                \n""")
-        else:
-            _sentence = _getsentence(_counts, _id)
-    if _sentence[0] == 'y':
-        _result = _process_sentence(_sentence, _counts)
-    return _result 
+    if _sentence is not None:
+        while _sentence[0] == 'n': 
+            if _id is not None:
+                _sentence = _getsentence(_counts, None)
+            else:
+                _sentence = _getsentence(_counts, _id)
+        if _sentence[0] == 'y':
+            _result = _process_sentence(_sentence, _counts)
+        return _result
+    else:
+        print('ValueError: _sentence cannot be None.')
+
    
     
     
@@ -216,7 +222,7 @@ def _getfault(_counts, fault_id=None):
     
     cursor = CONN.cursor()
     
-    if fault_id >= 0:
+    if fault_id is not None:
         _id_to_fetch = fault_id
     else:
         _id_to_fetch = random.randint(1, _counts['fau_count'])
@@ -233,7 +239,7 @@ def _getsentence(_counts, sentence_id=None):
     
     cursor = CONN.cursor()
     
-    if sentence_id >= 0:
+    if sentence_id is not None:
         _id_to_fetch = sentence_id
     else:
         _id_to_fetch = random.randint(1, _counts['sen_count'])
