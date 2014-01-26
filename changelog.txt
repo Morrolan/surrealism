@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+0.9.4
+-----
+Fixed a bug where #CAPITALISE wasn't being replaced properly.
+
+
 0.9.3
 -----
 Added unittests and also Python3 support.

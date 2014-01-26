@@ -525,7 +525,6 @@ def _replace_capitalise(_sentence):
     #capitalized
     ############"""
     
-    #print "\nReplacing CAPITALISE:  "
     
     if _sentence is not None:
         while _sentence.find('#CAPITALISE') != -1:
@@ -534,10 +533,12 @@ def _replace_capitalise(_sentence):
             _part2 = _sentence[_cap_index+12:]
             _sentence = _part1 + _part2.capitalize()    
             _sentence = _sentence.replace('#CAPITALISE ', '', 1)
+            
+            if _sentence.find('#capitalise'):
+                _sentence = _sentence.replace('#capitalise', '#CAPITALISE')
                 
         if _sentence.find('#CAPITALISE') == -1:
             return _sentence
-        return _sentence
     else:
         return _sentence
         
@@ -559,6 +560,6 @@ def _replace_capall(_sentence):
                 
         if _sentence.find('#CAPALL') == -1:
             return _sentence
-        return _sentence
+        #return _sentence
     else:
         return _sentence
