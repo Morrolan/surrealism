@@ -2,10 +2,11 @@
 
 from setuptools import setup, find_packages
 
-long_desc = open('readme.rst').read()
+with open('readme.rst') as file_desc:
+    long_desc = file_desc.read()
 
 setup(name = 'surrealism',
-      version = '0.9.4',
+      version = '0.9.5',
       #packages = find_packages(),
       packages=["surrealism"],
       author = 'Ian Havelock',
