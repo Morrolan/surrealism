@@ -1,0 +1,39 @@
+What to do for releases
+
+
+rebuild virtualenvs:
+
+virtualenv --clear --no-site-packages --python=/usr/local/bin/Python2.7 ~/Documents/Development/Python/virtualenvs/surrealism27
+
+source ~/Documents/Development/Python/virtualenvs/surrealism27/bin/activate
+
+git clone https://github.com/Morrolan/surrealism.git
+
+pip install nosetests
+pip install rednose
+
+nosetests --rednose test_surrealism.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+virtualenv --clear --no-site-packages --python=/usr/local/bin/Python3.3 /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism33
+
