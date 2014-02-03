@@ -82,7 +82,7 @@ def sentencetest():
     counter = 0
     
     while counter < max_num: 
-        counter = counter + 1
+        counter += 1
         print("\nSentence ID:  " + str(counter))
         _sentence = _getsentence(counter)
         
@@ -102,7 +102,7 @@ def faulttest():
     counter = 0
     
     while counter < max_num: 
-        counter = counter + 1
+        counter += 1
         print("\nFault ID:  " + str(counter))
         _fault = _getfault(counter)
         
@@ -122,9 +122,9 @@ def getfault(fault_id=None):
         Allows you to optionally specify an integer representing the fault_id 
         from the database table.  This allows you to retrieve a specific fault 
         each time, albeit with different keywords."""
-    
+
     _counts = _gettablelimits()
-    _fault = None
+    _result = None
     _id = 0
     
 
@@ -172,7 +172,7 @@ def getsentence(sentence_id=None):
         sentence each time, albeit with different keywords."""
     
     _counts = _gettablelimits()
-    _sentence = None
+    _result = None
     _id = 0
     
 
@@ -359,7 +359,7 @@ def _process_sentence(_sentence_tuple, _counts):
     
     # here we perform a check to see if we need to use A or AN depending on the 
     # first letter of the following word...
-    _sentence = _replace_an(_sentence, _counts)
+    _sentence = _replace_an(_sentence)
     
     # now we will read, choose and substitute each of the RANDOM sentence tuples
     _sentence = _replace_random(_sentence)
@@ -463,7 +463,7 @@ def _replace_names(_sentence, _counts):
         return _sentence
 
 
-def _replace_an(_sentence, _counts):
+def _replace_an(_sentence):
     """Lets find and replace all instances of #AN
     This is a little different, as this depends on whether the next 
     word starts with a vowel or a consonant."""
@@ -473,7 +473,7 @@ def _replace_an(_sentence, _counts):
             _an_index = _sentence.find('#AN')
             
             if _an_index > -1:
-                _an_index = _an_index + 4
+                _an_index += 4
                 
                 if _sentence[_an_index] in 'aeiouAEIOU':
                     _sentence = _sentence.replace('#AN', str('an'), 1)
@@ -489,7 +489,10 @@ def _replace_an(_sentence, _counts):
 
 def _replace_random(_sentence):
     """Lets find and replace all instances of #RANDOM"""
-    
+
+    _sub_list = None
+    _choice = None
+
     if _sentence is not None:
         
         while _sentence.find('#RANDOM') != -1:
@@ -554,7 +557,7 @@ def _replace_capall(_sentence):
     
     if _sentence is not None:
         while _sentence.find('#CAPALL') != -1:
-            _cap_index = _sentence.find('#CAPALL')
+            #_cap_index = _sentence.find('#CAPALL')
             _sentence = _sentence.upper()    
             _sentence = _sentence.replace('#CAPALL ', '', 1)
                 
