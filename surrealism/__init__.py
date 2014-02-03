@@ -104,10 +104,10 @@ def faulttest():
 def getfault(fault_id=None):
     """Retrieve a randomly-generated error message as a unicode string.
     
-        getfault(fault_id=None)
+    :param fault_id:
         
         Allows you to optionally specify an integer representing the fault_id 
-        from the database table.  This allows you to retrieve a specific fault 
+        from the database table.  This allows you to retrieve a specific fault
         each time, albeit with different keywords."""
 
     _counts = _gettablelimits()
@@ -151,10 +151,10 @@ def getfault(fault_id=None):
 def getsentence(sentence_id=None):
     """Retrieve a randomly-generated sentence as a unicode string.
     
-        getsentence(sentence_id=None)
+    :param sentence_id:
         
         Allows you to optionally specify an integer representing the sentence_id
-        from the database table.  This allows you to retrieve a specific 
+        from the database table.  This allows you to retrieve a specific
         sentence each time, albeit with different keywords."""
 
     _counts = _gettablelimits()
@@ -201,7 +201,10 @@ def getsentence(sentence_id=None):
 
 
 def _getfault(_counts, fault_id=None):
-    """Let's fetch a random fault that we then need to substitute bits of..."""
+    """Let's fetch a random fault that we then need to substitute bits of...
+    :param _counts:
+    :param fault_id:
+    """
 
     cursor = CONN.cursor()
 
@@ -217,8 +220,10 @@ def _getfault(_counts, fault_id=None):
 
 
 def _getsentence(_counts, sentence_id=None):
-    """Let's fetch a random sentence that we then need to substitute bits 
-    of..."""
+    """Let's fetch a random sentence that we then need to substitute bits of...
+    :param _counts:
+    :param sentence_id:
+    """
 
     cursor = CONN.cursor()
 
@@ -235,7 +240,9 @@ def _getsentence(_counts, sentence_id=None):
 
 
 def _getverb(_counts):
-    """Let's fetch a VERB"""
+    """Let's fetch a VERB
+    :param _counts:
+    """
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['verb_count'])
@@ -246,7 +253,9 @@ def _getverb(_counts):
 
 
 def _getnoun(_counts):
-    """Let's fetch a NOUN from the database..."""
+    """Let's fetch a NOUN from the database...
+    :param _counts:
+    """
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['noun_count'])
@@ -257,7 +266,9 @@ def _getnoun(_counts):
 
 
 def _getadjective(_counts):
-    """Let's fetch an ADJECTIVE from the database..."""
+    """Let's fetch an ADJECTIVE from the database...
+    :param _counts:
+    """
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['adj_count'])
@@ -268,7 +279,9 @@ def _getadjective(_counts):
 
 
 def _getname(_counts):
-    """Let's fetch a NAME from the database..."""
+    """Let's fetch a NAME from the database...
+    :param _counts:
+    """
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['name_count'])
@@ -323,8 +336,10 @@ def _gettablelimits():
 
 
 def _process_sentence(_sentence_tuple, _counts):
-    """pull the actual sentence from the tuple (tuple contains additional 
-    data such as ID)"""
+    """pull the actual sentence from the tuple (tuple contains additional data such as ID)
+    :param _sentence_tuple:
+    :param _counts:
+    """
 
     _sentence = _sentence_tuple[2]
 
@@ -364,7 +379,10 @@ def _process_sentence(_sentence_tuple, _counts):
 
 
 def _replace_verbs(_sentence, _counts):
-    """Lets find and replace all instances of #VERB"""
+    """Lets find and replace all instances of #VERB
+    :param _sentence:
+    :param _counts:
+    """
 
     if _sentence is not None:
         while _sentence.find('#VERB') != -1:
@@ -378,7 +396,10 @@ def _replace_verbs(_sentence, _counts):
 
 
 def _replace_nouns(_sentence, _counts):
-    """Lets find and replace all instances of #NOUN"""
+    """Lets find and replace all instances of #NOUN
+    :param _sentence:
+    :param _counts:
+    """
 
     if _sentence is not None:
         while _sentence.find('#NOUN') != -1:
@@ -393,7 +414,10 @@ def _replace_nouns(_sentence, _counts):
 
 
 def _replace_adjective_maybe(_sentence, _counts):
-    """Lets find and replace all instances of #ADJECTIVE_MAYBE"""
+    """Lets find and replace all instances of #ADJECTIVE_MAYBE
+    :param _sentence:
+    :param _counts:
+    """
 
     _random_decision = random.randint(0, 1)
 
@@ -415,7 +439,10 @@ def _replace_adjective_maybe(_sentence, _counts):
 
 
 def _replace_adjectives(_sentence, _counts):
-    """Lets find and replace all instances of #ADJECTIVE"""
+    """Lets find and replace all instances of #ADJECTIVE
+    :param _sentence:
+    :param _counts:
+    """
 
     if _sentence is not None:
 
@@ -431,7 +458,10 @@ def _replace_adjectives(_sentence, _counts):
 
 
 def _replace_names(_sentence, _counts):
-    """Lets find and replace all instances of #NAME"""
+    """Lets find and replace all instances of #NAME
+    :param _sentence:
+    :param _counts:
+    """
 
     if _sentence is not None:
 
@@ -447,8 +477,11 @@ def _replace_names(_sentence, _counts):
 
 def _replace_an(_sentence):
     """Lets find and replace all instances of #AN
-    This is a little different, as this depends on whether the next 
-    word starts with a vowel or a consonant."""
+    This is a little different, as this depends on whether the next
+    word starts with a vowel or a consonant.
+
+    :param _sentence:
+    """
 
     if _sentence is not None:
         while _sentence.find('#AN') != -1:
@@ -470,7 +503,9 @@ def _replace_an(_sentence):
 
 
 def _replace_random(_sentence):
-    """Lets find and replace all instances of #RANDOM"""
+    """Lets find and replace all instances of #RANDOM
+    :param _sentence:
+    """
 
     _sub_list = None
     _choice = None
@@ -504,9 +539,13 @@ def _replace_random(_sentence):
 def _replace_capitalise(_sentence):
     """here we replace all instances of #CAPITALISE and cap the next word.
     ############
-    #NOTE:  Buggy as hell, as it doesn't account for words that are already 
+
+    #NOTE:  Buggy as hell, as it doesn't account for words that are already
     #capitalized
-    ############"""
+    ############
+
+    :param _sentence:
+    """
 
     if _sentence is not None:
         while _sentence.find('#CAPITALISE') != -1:
@@ -528,9 +567,12 @@ def _replace_capitalise(_sentence):
 def _replace_capall(_sentence):
     """here we replace all instances of #CAPALL and cap the entire sentence.
     ############
-    #NOTE:  Buggy as hell, as it doesn't account for words that are already 
+    #NOTE:  Buggy as hell, as it doesn't account for words that are already
     #capitalized
-    ############"""
+    ############
+
+    :param _sentence:
+        """
 
     #print "\nReplacing CAPITALISE:  "
 
