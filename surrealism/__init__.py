@@ -344,6 +344,8 @@ def _process_sentence(_sentence_tuple, _counts):
     _sentence = _sentence_tuple[2]
 
     # now we start replacing words one type at a time...
+    _sentence = _replace_repeat(_sentence)
+
     _sentence = _replace_verbs(_sentence, _counts)
 
     _sentence = _replace_nouns(_sentence, _counts)
@@ -376,6 +378,17 @@ def _process_sentence(_sentence_tuple, _counts):
     _sentence = _replace_capall(_sentence)
 
     return _sentence
+
+
+def _replace_repeat(_sentence):
+    """
+    Here we are going to go hunting for repeating elements
+    :param _sentence:
+    """
+    if _sentence is not None:
+        while _sentence.find('#REPEAT') != -1:
+            pass
+    pass
 
 
 def _replace_verbs(_sentence, _counts):
