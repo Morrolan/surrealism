@@ -221,6 +221,7 @@ def _getfault(_counts, fault_id=None):
 
 def _getsentence(_counts, sentence_id=None):
     """Let's fetch a random sentence that we then need to substitute bits of...
+    @
     :param _counts:
     :param sentence_id:
     """
