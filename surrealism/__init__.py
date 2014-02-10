@@ -388,7 +388,7 @@ def _replace_repeat(_sentence):
     if _sentence is not None:
         while _sentence.find('#REPEAT') != -1:
             pass
-    pass
+    return _sentence
 
 
 def _replace_verbs(_sentence, _counts):
