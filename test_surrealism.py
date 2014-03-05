@@ -2,7 +2,13 @@ import surrealism as s
 import unittest
 import random
 
-# noinspection PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences
+# noinspection PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,
+# PyProtectedMember,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,
+# PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,
+# PyUnresolvedReferences
+
+
+# noinspection PyProtectedMember,PyUnresolvedReferences
 class SurrealismUnittests(unittest.TestCase):
     """getsentence() unititests"""
 
@@ -12,7 +18,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, var_types)
 
     def test_getsentence_returns_a_unicode_string_with_integer_upper_limit(self):
-        limits = s._gettablelimits()
+        limits = s.__gettablelimits__()
         upper_limit = limits['sen_count']
         sentence = s.getsentence(upper_limit)
         var_types = (unicode, str)
@@ -25,7 +31,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, var_types)
         
     def test_getsentence_with_a_random_integer(self):
-        limits = s._gettablelimits()
+        limits = s.__gettablelimits__()
         upper_sentence_limit = limits['sen_count']
         sen_id = random.randint(1, upper_sentence_limit)
         sentence = s.getsentence(sen_id)
@@ -33,7 +39,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, var_types)
 
     def test_getsentence_returns_a_unicode_string_over_integer_upper_limit(self):
-        limits = s._gettablelimits()
+        limits = s.__gettablelimits__()
         over_limit = limits['sen_count'] + 1
         self.assertRaises(TypeError, (s.getsentence(over_limit)))
 
@@ -57,11 +63,11 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, var_types)
 
     def test_that_no_hashed_keywords_remain_in_sentence(self):
-        keywords = ['#VERB','#NOUN','#ADJECTIVE','#NAME','#ADJECTIVE_MAYBE','#AN','#RANDOM','#CAPITALISE','#CAPALL']
+        keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME',
+                    '#ADJECTIVE_MAYBE', '#AN', '#RANDOM', '#CAPITALISE', '#CAPALL']
         sentence = s.getsentence()       
         for keyword in keywords:
             self.assertNotIn(keyword, sentence)
-
 
     # noinspection PyStatementEffect
     """getfault() unit tests"""
@@ -72,7 +78,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, var_types)
         
     def test_getfault_returns_a_unicode_string_with_integer_upper_limit(self):
-        limits = s._gettablelimits()
+        limits = s.__gettablelimits__()
         upper_limit = limits['fau_count']
         fault = s.getfault(upper_limit)
         var_types = (unicode, str)
@@ -85,7 +91,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, var_types)
         
     def test_getfault_with_a_random_integer(self):
-        limits = s._gettablelimits()
+        limits = s.__gettablelimits__()
         upper_fault_limit = limits['fau_count']
         fau_id = random.randint(1, upper_fault_limit)
         fault = s.getfault(fau_id)
@@ -93,7 +99,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, var_types)
     
     def test_getfault_returns_a_unicode_string_over_integer_upper_limit(self):
-        limits = s._gettablelimits()
+        limits = s.__gettablelimits__()
         over_limit = limits['fau_count'] + 1
         self.assertRaises(TypeError, (s.getsentence(over_limit)))
 
@@ -117,7 +123,8 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, var_types)
 
     def test_that_no_hashed_keywords_remain_in_fault(self):
-        keywords = ['#VERB','#NOUN','#ADJECTIVE','#NAME','#ADJECTIVE_MAYBE','#AN','#RANDOM','#CAPITALISE','#CAPALL']
+        keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME',
+                    '#ADJECTIVE_MAYBE', '#AN', '#RANDOM', '#CAPITALISE', '#CAPALL']
         fault = s.getfault()       
         for keyword in keywords:
             self.assertNotIn(keyword, fault) 
