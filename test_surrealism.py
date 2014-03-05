@@ -2,9 +2,6 @@ import surrealism as s
 import unittest
 import random
 
-<<<<<<< HEAD
-
-=======
 # noinspection PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,
 # PyProtectedMember,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,
 # PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,
@@ -12,7 +9,7 @@ import random
 
 
 # noinspection PyProtectedMember,PyUnresolvedReferences
->>>>>>> repeat-local
+
 class SurrealismUnittests(unittest.TestCase):
     """getsentence() unititests"""
 
@@ -67,15 +64,9 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, var_types)
 
     def test_that_no_hashed_keywords_remain_in_sentence(self):
-<<<<<<< HEAD
-        keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME', '#ADJECTIVE_MAYBE', '#AN', '#RANDOM', '#CAPITALISE',
-                    '#CAPALL']
-        sentence = s.getsentence()
-=======
         keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME',
                     '#ADJECTIVE_MAYBE', '#AN', '#RANDOM', '#CAPITALISE', '#CAPALL']
-        sentence = s.getsentence()       
->>>>>>> repeat-local
+        sentence = s.getsentence()
         for keyword in keywords:
             self.assertNotIn(keyword, sentence)
 
@@ -133,14 +124,8 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, var_types)
 
     def test_that_no_hashed_keywords_remain_in_fault(self):
-<<<<<<< HEAD
-        keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME', '#ADJECTIVE_MAYBE', '#AN', '#RANDOM', '#CAPITALISE',
-                    '#CAPALL', '#REPEAT']
-        fault = s.getfault()
-=======
         keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME',
                     '#ADJECTIVE_MAYBE', '#AN', '#RANDOM', '#CAPITALISE', '#CAPALL']
-        fault = s.getfault()       
->>>>>>> repeat-local
+        fault = s.getfault()
         for keyword in keywords:
             self.assertNotIn(keyword, fault) 
