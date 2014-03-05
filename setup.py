@@ -6,11 +6,11 @@ with open('log.rst') as file_desc:
     long_desc = file_desc.read()
 
 setup(name='surrealism',
-      version='0.9.5',
+      version='0.9.6',
       #packages = find_packages(),
       packages=["surrealism"],
-      author='Ian Havelock',
-      author_email='ian@morrolan.com',
+      uthor='Ian Havelock',
+      auhor_email='ian@morrolan.com',
       url='http://www.morrolan.com',
       license='GNU General Public License (GPL)',
       description='Surreal sentence and error message generator.',
@@ -18,7 +18,8 @@ setup(name='surrealism',
       platforms=['Windows', 'Unix', 'OS X'],
       download_url="https://pypi.python.org/pypi/surrealism/",
       keywords=["surreal", "surrealism", "error message"],
-      classifiers=[
+      classifiers=
+      [
           'Programming Language :: Python',
           'Programming Language :: Python :: 2.7',
           'Programming Language :: Python :: 3.3',
@@ -34,5 +35,4 @@ setup(name='surrealism',
       install_requires=['setuptools'],
       package_data={'surrealism': ['surrealism.sqlite']},
       zip_safe=False,
-
-)
+      )
