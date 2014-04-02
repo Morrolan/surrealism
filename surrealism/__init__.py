@@ -342,8 +342,6 @@ def __process_sentence__(_sentence_tuple, _counts):
     _sentence = _sentence_tuple[2]
 
     # now we start replacing words one type at a time...
-    _sentence = __replace_repeat__(_sentence)
-
     _sentence = __replace_verbs__(_sentence, _counts)
 
     _sentence = __replace_nouns__(_sentence, _counts)
@@ -375,31 +373,10 @@ def __process_sentence__(_sentence_tuple, _counts):
     ############
     _sentence = __replace_capall__(_sentence)
 
+    # replace the new repeating segments
+    _sentence = __replace_repeat__(_sentence)
+
     return _sentence
-
-
-def __replace_repeat__(_sentence):
-    """
-    HERE BE DRAGONS!
-
-    :param _sentence:
-    """
-
-    ######### USE SENTENCE_ID 47 for testing!
-
-    if _sentence is not None:
-
-        while _sentence.find('#REPEAT') != -1:
-            # need to go and find our shit when we get repeating segments, which will be interesting!
-            #_sentence = _sentence.replace('#REPEAT', 'WHATEVER WE ARE REPLACING IT WITH HERE'), 1)
-            #  obviously this is wrong!
-            pass
-
-        if _sentence.find('#REPEAT') == -1:
-                return _sentence
-        return _sentence
-    else:
-        return _sentence
 
 
 def __replace_verbs__(_sentence, _counts):
@@ -609,5 +586,51 @@ def __replace_capall__(_sentence):
         if _sentence.find('#CAPALL') == -1:
             return _sentence
             #return _sentence
+    else:
+        return _sentence
+
+
+def __replace_repeat__(_sentence):
+    """
+    HERE BE DRAGONS!
+
+    :param _sentence:
+    """
+
+    ######### USE SENTENCE_ID 47 for testing!
+
+    _repeat_dict = {}
+
+    if _sentence is not None:
+
+        while _sentence.find('#DEFINE_REPEAT') != -1:
+            _start_index = _sentence.find('#DEFINE_REPEAT') + 15
+            _end_index = _sentence.find(']')
+
+            _sub_sentence = _sentence[_start_index:_end_index]
+            print(_sub_sentence)
+
+            #_sentence = _sentence.replace('#DEFINE_REPEAT', _sub_sentence, 1)
+            print _sentence
+
+            if _sentence.find('#DEFINE_REPEAT') is not None:
+                _sub_list = _sentence[_start_index:_end_index].split(',')
+                print _sub_list
+                _choice = _sub_list[0]
+                print _choice
+                _repeat_text = _sub_list[1]
+                print _repeat_text
+                _repeat_dict[_choice] = _repeat_text
+                print _repeat_dict
+
+        while _sentence.find('#REPEAT') != -1:
+            if _sentence.find('#REPEAT') is not None:
+                _start_index = _sentence.find('#REPEAT') + 8
+                _end_index = _sentence.find(']')
+                print(_sentence[_start_index:_end_index])
+
+        if _sentence.find('#REPEAT') == -1:
+                return _sentence
+        return _sentence
     else:
         return _sentence
