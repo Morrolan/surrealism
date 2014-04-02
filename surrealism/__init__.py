@@ -200,6 +200,7 @@ def getsentence(sentence_id=None):
 
 def __getfault__(_counts, fault_id=None):
     """Let's fetch a random fault that we then need to substitute bits of...
+
     :param _counts:
     :param fault_id:
     """
@@ -219,7 +220,7 @@ def __getfault__(_counts, fault_id=None):
 
 def __getsentence__(_counts, sentence_id=None):
     """Let's fetch a random sentence that we then need to substitute bits of...
-    @
+
     :param _counts:
     :param sentence_id:
     """
@@ -240,6 +241,7 @@ def __getsentence__(_counts, sentence_id=None):
 
 def __getverb__(_counts):
     """Let's fetch a VERB
+
     :param _counts:
     """
 
@@ -253,6 +255,7 @@ def __getverb__(_counts):
 
 def __getnoun__(_counts):
     """Let's fetch a NOUN from the database...
+
     :param _counts:
     """
 
@@ -266,6 +269,7 @@ def __getnoun__(_counts):
 
 def __getadjective__(_counts):
     """Let's fetch an ADJECTIVE from the database...
+
     :param _counts:
     """
 
@@ -279,6 +283,7 @@ def __getadjective__(_counts):
 
 def __getname__(_counts):
     """Let's fetch a NAME from the database...
+
     :param _counts:
     """
 
@@ -336,6 +341,7 @@ def __gettablelimits__():
 
 def __process_sentence__(_sentence_tuple, _counts):
     """pull the actual sentence from the tuple (tuple contains additional data such as ID)
+
     :param _sentence_tuple:
     :param _counts:
     """
@@ -382,6 +388,7 @@ def __process_sentence__(_sentence_tuple, _counts):
 def __replace_repeat__(_sentence):
     """
     Here we are going to go hunting for repeating elements
+
     :param _sentence:
     """
     if _sentence is not None:
@@ -392,6 +399,7 @@ def __replace_repeat__(_sentence):
 
 def __replace_verbs__(_sentence, _counts):
     """Lets find and replace all instances of #VERB
+
     :param _sentence:
     :param _counts:
     """
@@ -409,6 +417,7 @@ def __replace_verbs__(_sentence, _counts):
 
 def __replace_nouns__(_sentence, _counts):
     """Lets find and replace all instances of #NOUN
+
     :param _sentence:
     :param _counts:
     """
@@ -427,6 +436,7 @@ def __replace_nouns__(_sentence, _counts):
 
 def ___replace_adjective_maybe__(_sentence, _counts):
     """Lets find and replace all instances of #ADJECTIVE_MAYBE
+
     :param _sentence:
     :param _counts:
     """
@@ -452,6 +462,7 @@ def ___replace_adjective_maybe__(_sentence, _counts):
 
 def __replace_adjective__(_sentence, _counts):
     """Lets find and replace all instances of #ADJECTIVE
+
     :param _sentence:
     :param _counts:
     """
@@ -471,6 +482,7 @@ def __replace_adjective__(_sentence, _counts):
 
 def __replace_names__(_sentence, _counts):
     """Lets find and replace all instances of #NAME
+
     :param _sentence:
     :param _counts:
     """
@@ -488,7 +500,8 @@ def __replace_names__(_sentence, _counts):
 
 
 def __replace_an__(_sentence):
-    """Lets find and replace all instances of #AN
+    """Lets find and replace all instances of #AN.
+
     This is a little different, as this depends on whether the next
     word starts with a vowel or a consonant.
 
@@ -516,6 +529,7 @@ def __replace_an__(_sentence):
 
 def __replace_random__(_sentence):
     """Lets find and replace all instances of #RANDOM
+
     :param _sentence:
     """
 
@@ -548,10 +562,20 @@ def __replace_random__(_sentence):
         return _sentence
 
 
+def __replace_repeat__(_sentence):
+    """
+    HERE BE DRAGONS!
+
+    :param _sentence:
+    """
+    ######### USE SENTENCE_ID 47 for testing!
+    pass
+
+
 def __replace_capitalise__(_sentence):
     """here we replace all instances of #CAPITALISE and cap the next word.
-    ############
 
+    ############
     #NOTE:  Buggy as hell, as it doesn't account for words that are already
     #capitalized
     ############
@@ -578,6 +602,7 @@ def __replace_capitalise__(_sentence):
 
 def __replace_capall__(_sentence):
     """here we replace all instances of #CAPALL and cap the entire sentence.
+
     ############
     #NOTE:  Buggy as hell, as it doesn't account for words that are already
     #capitalized
