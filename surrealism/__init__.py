@@ -380,13 +380,26 @@ def __process_sentence__(_sentence_tuple, _counts):
 
 def __replace_repeat__(_sentence):
     """
-    Here we are going to go hunting for repeating elements
+    HERE BE DRAGONS!
+
     :param _sentence:
     """
+
+    ######### USE SENTENCE_ID 47 for testing!
+
     if _sentence is not None:
+
         while _sentence.find('#REPEAT') != -1:
+            # need to go and find our shit when we get repeating segments, which will be interesting!
+            #_sentence = _sentence.replace('#REPEAT', 'WHATEVER WE ARE REPLACING IT WITH HERE'), 1)
+            #  obviously this is wrong!
             pass
-    return _sentence
+
+        if _sentence.find('#REPEAT') == -1:
+                return _sentence
+        return _sentence
+    else:
+        return _sentence
 
 
 def __replace_verbs__(_sentence, _counts):
@@ -545,32 +558,6 @@ def __replace_random__(_sentence):
         return _sentence
     else:
         return _sentence
-
-
-def __replace_repeat__(_sentence):
-    """
-    HERE BE DRAGONS!
-
-    :param _sentence:
-    """
-
-    ######### USE SENTENCE_ID 47 for testing!
-
-    if _sentence is not None:
-
-        while _sentence.find('#REPEAT') != -1:
-            # need to go and find our shit when we get repeating segments, which will be interesting!
-            #_sentence = _sentence.replace('#REPEAT', 'WHATEVER WE ARE REPLACING IT WITH HERE'), 1)
-            #  obviously this is wrong!
-            pass
-
-        if _sentence.find('#REPEAT') == -1:
-                return _sentence
-        return _sentence
-    else:
-        return _sentence
-
-
 
 
 def __replace_capitalise__(_sentence):
