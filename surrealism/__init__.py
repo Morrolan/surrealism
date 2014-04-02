@@ -547,8 +547,6 @@ def __replace_random__(_sentence):
         return _sentence
 
 
-<<<<<<< HEAD
-=======
 def __replace_repeat__(_sentence):
     """
     HERE BE DRAGONS!
@@ -560,7 +558,6 @@ def __replace_repeat__(_sentence):
     pass
 
 
->>>>>>> origin/repeat-dev
 def __replace_capitalise__(_sentence):
     """here we replace all instances of #CAPITALISE and cap the next word.
     ############
