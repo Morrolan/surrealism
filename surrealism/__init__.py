@@ -555,7 +555,22 @@ def __replace_repeat__(_sentence):
     """
 
     ######### USE SENTENCE_ID 47 for testing!
-    pass
+
+    if _sentence is not None:
+
+        while _sentence.find('#REPEAT') != -1:
+            # need to go and find our shit when we get repeating segments, which will be interesting!
+            #_sentence = _sentence.replace('#REPEAT', 'WHATEVER WE ARE REPLACING IT WITH HERE'), 1)
+            #  obviously this is wrong!
+            pass
+
+        if _sentence.find('#REPEAT') == -1:
+                return _sentence
+        return _sentence
+    else:
+        return _sentence
+
+
 
 
 def __replace_capitalise__(_sentence):
