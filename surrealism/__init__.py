@@ -568,6 +568,7 @@ def __replace_repeat__(_sentence):
 
     :param _sentence:
     """
+
     ######### USE SENTENCE_ID 47 for testing!
     pass
 
