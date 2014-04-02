@@ -279,8 +279,7 @@ def __getadjective__(_counts):
 
 def __getname__(_counts):
     """Let's fetch a NAME from the database...
-    :param _counts:
-    """
+    :param _counts:"""
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['name_count'])
