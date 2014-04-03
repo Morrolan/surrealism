@@ -58,6 +58,15 @@ class SurrealismUnittests(unittest.TestCase):
         for keyword in keywords:
             self.assertNotIn(keyword, sentence)
 
+    def test_that_repeating_elements_actually_are_replaced(self):
+        _number = 47
+        sentence = s.getsentence(_number)
+        self.assertIsInstance(sentence, str)
+        keywords = ['#REPEAT', '#DEFINE_REPEAT']
+        sentence = s.getsentence()
+        for keyword in keywords:
+            self.assertNotIn(keyword, sentence)
+
     # noinspection PyStatementEffect
     """getfault() unit tests"""
 

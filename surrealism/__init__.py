@@ -356,9 +356,6 @@ def __process_sentence__(_sentence_tuple, _counts):
     # first letter of the following word...
     _sentence = __replace_an__(_sentence)
 
-    # now we will read, choose and substitute each of the RANDOM sentence tuples
-    _sentence = __replace_random__(_sentence)
-
     # now we are going to choose whether to capitalize words/sentences or not
     ############
     #NOTE:  Buggy as hell, as it doesn't account for words that are already 
@@ -375,6 +372,9 @@ def __process_sentence__(_sentence_tuple, _counts):
 
     # replace the new repeating segments
     _sentence = __replace_repeat__(_sentence)
+
+    # now we will read, choose and substitute each of the RANDOM sentence tuples
+    _sentence = __replace_random__(_sentence)
 
     return _sentence
 
