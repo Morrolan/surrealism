@@ -607,19 +607,9 @@ def __replace_repeat__(_sentence):
             _begin_index = _sentence.find('#DEFINE_REPEAT')
             _start_index = _begin_index + 15
             _end_index = _sentence.find(']')
-            print(_end_index)
-
-            print('\n')
-            print('\n')
-            print(_sentence)
-            print('\n')
-            print(_sentence.replace(_sentence[_begin_index:_end_index + 1], '', 1))
-            print("###########################")
-
 
             if _sentence.find('#DEFINE_REPEAT') is not None:
                 _sub_list = _sentence[_start_index:_end_index].split(',')
-                print(_sub_list)
                 _choice = _sub_list[0]
                 _repeat_text = _sub_list[1]
                 _repeat_dict[_choice] = _repeat_text
