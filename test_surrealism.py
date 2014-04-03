@@ -11,6 +11,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.variable_types = ''
 
         if sys.version_info[0] < 3:
+            # noinspection PyUnresolvedReferences
             self.variable_types = (unicode, str)
         else:
             self.variable_types = str
