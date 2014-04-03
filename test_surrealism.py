@@ -2,42 +2,31 @@ import surrealism as s
 import unittest
 import random
 
-# noinspection PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,PyProtectedMember,
-# PyProtectedMember,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,
-# PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,PyUnresolvedReferences,
-# PyUnresolvedReferences
-
-
-# noinspection PyProtectedMember,PyUnresolvedReferences
 
 class SurrealismUnittests(unittest.TestCase):
     """getsentence() unititests"""
 
     def test_getsentence_returns_a_unicode_string(self):
         sentence = s.getsentence()
-        var_types = (unicode, str)
-        self.assertIsInstance(sentence, var_types)
+        self.assertIsInstance(sentence, str)
 
     def test_getsentence_returns_a_unicode_string_with_integer_upper_limit(self):
         limits = s.__gettablelimits__()
         upper_limit = limits['sen_count']
         sentence = s.getsentence(upper_limit)
-        var_types = (unicode, str)
-        self.assertIsInstance(sentence, var_types)
+        self.assertIsInstance(sentence, str)
 
     def test_getsentence_returns_a_unicode_string_with_integer_lower_limit(self):
         lower_limit = 1
         sentence = s.getsentence(lower_limit)
-        var_types = (unicode, str)
-        self.assertIsInstance(sentence, var_types)
+        self.assertIsInstance(sentence, str)
 
     def test_getsentence_with_a_random_integer(self):
         limits = s.__gettablelimits__()
         upper_sentence_limit = limits['sen_count']
         sen_id = random.randint(1, upper_sentence_limit)
         sentence = s.getsentence(sen_id)
-        var_types = (unicode, str)
-        self.assertIsInstance(sentence, var_types)
+        self.assertIsInstance(sentence, str)
 
     def test_getsentence_returns_a_unicode_string_over_integer_upper_limit(self):
         limits = s.__gettablelimits__()
@@ -60,8 +49,7 @@ class SurrealismUnittests(unittest.TestCase):
         _number = 98.9
         sentence = s.getsentence(_number)
         print(sentence)
-        var_types = (unicode, str)
-        self.assertIsInstance(sentence, var_types)
+        self.assertIsInstance(sentence, str)
 
     def test_that_no_hashed_keywords_remain_in_sentence(self):
         keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME',
@@ -75,29 +63,25 @@ class SurrealismUnittests(unittest.TestCase):
 
     def test_getfault_returns_a_unicode_string(self):
         fault = s.getfault()
-        var_types = (unicode, str)
-        self.assertIsInstance(fault, var_types)
+        self.assertIsInstance(fault, str)
 
     def test_getfault_returns_a_unicode_string_with_integer_upper_limit(self):
         limits = s.__gettablelimits__()
         upper_limit = limits['fau_count']
         fault = s.getfault(upper_limit)
-        var_types = (unicode, str)
-        self.assertIsInstance(fault, var_types)
+        self.assertIsInstance(fault, str)
 
     def test_getfault_returns_a_unicode_string_with_integer_lower_limit(self):
         lower_limit = 1
         fault = s.getfault(lower_limit)
-        var_types = (unicode, str)
-        self.assertIsInstance(fault, var_types)
+        self.assertIsInstance(fault, str)
 
     def test_getfault_with_a_random_integer(self):
         limits = s.__gettablelimits__()
         upper_fault_limit = limits['fau_count']
         fau_id = random.randint(1, upper_fault_limit)
         fault = s.getfault(fau_id)
-        var_types = (unicode, str)
-        self.assertIsInstance(fault, var_types)
+        self.assertIsInstance(fault, str)
 
     def test_getfault_returns_a_unicode_string_over_integer_upper_limit(self):
         limits = s.__gettablelimits__()
@@ -120,8 +104,7 @@ class SurrealismUnittests(unittest.TestCase):
         _number = 98.9
         fault = s.getfault(_number)
         print(fault)
-        var_types = (unicode, str)
-        self.assertIsInstance(fault, var_types)
+        self.assertIsInstance(fault, str)
 
     def test_that_no_hashed_keywords_remain_in_fault(self):
         keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME',

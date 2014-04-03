@@ -604,30 +604,37 @@ def __replace_repeat__(_sentence):
     if _sentence is not None:
 
         while _sentence.find('#DEFINE_REPEAT') != -1:
-            _start_index = _sentence.find('#DEFINE_REPEAT') + 15
+            _begin_index = _sentence.find('#DEFINE_REPEAT')
+            _start_index = _begin_index + 15
             _end_index = _sentence.find(']')
+            print(_end_index)
 
-            _sub_sentence = _sentence[_start_index:_end_index]
-            print(_sub_sentence)
+            print('\n')
+            print('\n')
+            print(_sentence)
+            print('\n')
+            print(_sentence.replace(_sentence[_begin_index:_end_index + 1], '', 1))
+            print("###########################")
 
-            #_sentence = _sentence.replace('#DEFINE_REPEAT', _sub_sentence, 1)
-            print _sentence
 
             if _sentence.find('#DEFINE_REPEAT') is not None:
                 _sub_list = _sentence[_start_index:_end_index].split(',')
-                print _sub_list
+                print(_sub_list)
                 _choice = _sub_list[0]
-                print _choice
                 _repeat_text = _sub_list[1]
-                print _repeat_text
                 _repeat_dict[_choice] = _repeat_text
-                print _repeat_dict
+                _sentence = _sentence.replace(_sentence[_begin_index:_end_index + 1], '', 1)
 
         while _sentence.find('#REPEAT') != -1:
             if _sentence.find('#REPEAT') is not None:
-                _start_index = _sentence.find('#REPEAT') + 8
-                _end_index = _sentence.find(']')
-                print(_sentence[_start_index:_end_index])
+                _repeat_begin_index = _sentence.find('#REPEAT')
+                _repeat_start_index = _repeat_begin_index + 8
+                _repeat_end_index = _sentence.find(']')
+                _repeat_index = _sentence[_repeat_start_index:_repeat_end_index]
+
+                if _repeat_index in _repeat_dict:
+                    _sentence = _sentence.replace(_sentence[_repeat_begin_index:_repeat_end_index + 1],
+                                                  str(_repeat_dict[_repeat_index]))
 
         if _sentence.find('#REPEAT') == -1:
                 return _sentence
