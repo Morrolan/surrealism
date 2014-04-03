@@ -1,6 +1,14 @@
 Changelog
 ---------
 
+0.10.0
+-----
+Finally added the functionality to allow repeating segments.
+
+0.9.5
+-----
+Fixed a few minor DB issues.
+
 0.9.4
 -----
 Fixed a bug where #CAPITALISE wasn't being replaced properly.

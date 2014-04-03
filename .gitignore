@@ -20,6 +20,7 @@ lib64
 __pycache__
 virtualenvs/
 test.py
+release.txt
 
 # Installer logs
 pip-log.txt
