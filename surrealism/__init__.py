@@ -539,7 +539,7 @@ def __replace_random__(_sentence):
 
 def __replace_repeat__(_sentence):
     """
-    HERE BE DRAGONS!
+    Allows the use of repeating random-elements such as in the 'Ten green bottles' type sentences.
 
     :param _sentence:
     """
