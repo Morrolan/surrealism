@@ -3,7 +3,7 @@ Changelog
 
 0.10.2
 -----
-Small change to
+Small change to fix issue with repeating segments and random elements causing bracket matching errors.
 
 0.10.1
 -----
