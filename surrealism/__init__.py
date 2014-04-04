@@ -566,7 +566,8 @@ def __replace_repeat__(_sentence):
             if _sentence.find('#REPEAT') is not None:
                 _repeat_begin_index = _sentence.find('#REPEAT')
                 _repeat_start_index = _repeat_begin_index + 8
-                _repeat_end_index = _sentence.find(']')
+                # by searching from _repeat_index below we don't encounter dodgy bracket-matching errors.
+                _repeat_end_index = _sentence.find(']', _repeat_start_index)
                 _repeat_index = _sentence[_repeat_start_index:_repeat_end_index]
 
                 if _repeat_index in _repeat_dict:

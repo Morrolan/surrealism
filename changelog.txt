@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+0.10.2
+-----
+Small change to
+
 0.10.1
 -----
 No code change - disabled one problematic sentence in the database.

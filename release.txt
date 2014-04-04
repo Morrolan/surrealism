@@ -1,14 +1,55 @@
-#!/bin/bash
+#/bin/bash
 
-cd ~/Documents/Development/Python/virtualenvs
+cd /Users/morrolan/Documents/Development/Python/virtualenvs
 mkdir surrealism27
 
-virtualenv /Library/Frameworks/Python.framework/Versions/2.7/bin/python surrealism27
+virtualenv -p /Library/Frameworks/Python.framework/Versions/2.7/bin/python /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism27
 
-cd surrealism27
+cd /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism27
 git clone https://github.com/Morrolan/surrealism.git
-sudo pip install nose
-sudo pip install rednose
+source /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism27/bin/activate
+pip install nose
+pip install rednose
 
-cd surrealism
-nosetests --red-nose test_surrealism.py
+cd /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism27/surrealism
+nosetests --rednose test_surrealism.py
+deactivate
+
+
+
+
+
+cd /Users/morrolan/Documents/Development/Python/virtualenvs
+mkdir surrealism33
+
+virtualenv -p /Library/Frameworks/Python.framework/Versions/3.3/bin/python3 /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism33
+
+cd /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism33
+git clone https://github.com/Morrolan/surrealism.git
+source /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism33/bin/activate
+pip install nose
+pip install rednose
+
+cd /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism33/surrealism
+nosetests --rednose test_surrealism.py
+deactivate
+
+
+
+
+######################## virtualenv doesn't yet work for 3.4
+
+cd /Users/morrolan/Documents/Development/Python/virtualenvs
+mkdir surrealism34
+
+virtualenv -p /Library/Frameworks/Python.framework/Versions/3.4/bin/python3 /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism34
+
+cd /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism34
+git clone https://github.com/Morrolan/surrealism.git
+source /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism34/bin/activate
+pip install nose
+pip install rednose
+
+cd /Users/morrolan/Documents/Development/Python/virtualenvs/surrealism34/surrealism
+nosetests --rednose test_surrealism.py
+deactivate
