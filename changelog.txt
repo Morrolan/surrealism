@@ -3,7 +3,7 @@ Changelog
 
 0.10.2
 -----
-Small change to
+blah blah blah
 
 0.10.1
 -----
