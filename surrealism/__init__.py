@@ -59,20 +59,6 @@ def version():
     return pkg_resources.require('surrealism')[0].version
 
 
-def showsentences():
-    """
-    Return all valid/active sentences ordered by ID to allow the user to pick and choose.
-
-    :return:
-    """
-    cursor = CONN.cursor()
-
-    _query = "select sen_id, sentence from sursentences where sen_is_valid = 'y' order by sen_id asc"
-    cursor.execute(_query)
-    _result = cursor.fetchall()
-    return _result
-
-
 def showfaults():
     """
     Return all valid/active faults ordered by ID to allow the user to pick and choose.
@@ -87,24 +73,18 @@ def showfaults():
     return _result
 
 
-def sentencetest():
-    """Return 1 random version of each sentence to test sentence structure."""
+def showsentences():
+    """
+    Return all valid/active sentences ordered by ID to allow the user to pick and choose.
 
-    _counts = __gettablelimits__()
-    max_num = _counts['sen_count']
-    counter = 0
+    :return:
+    """
+    cursor = CONN.cursor()
 
-    while counter < max_num:
-        counter += 1
-        print("\nSentence ID:  " + str(counter))
-        _sentence = __getsentence__(counter)
-
-        if _sentence[0] == 'n':
-            print("Sentence is DISABLED - ignoring...")
-
-        if _sentence[0] == 'y':
-            _result = __process_sentence__(_sentence, _counts)
-            print(_result)
+    _query = "select sen_id, sentence from sursentences where sen_is_valid = 'y' order by sen_id asc"
+    cursor.execute(_query)
+    _result = cursor.fetchall()
+    return _result
 
 
 def faulttest():
@@ -116,15 +96,37 @@ def faulttest():
 
     while counter < max_num:
         counter += 1
-        print("\nFault ID:  " + str(counter))
-        _fault = __getfault__(counter)
+        _fault = __getfault__(_counts, fault_id=counter)
+        print("\nFault ID:  " + str(_fault[1]))
 
         if _fault[0] == 'n':
             print("Fault is DISABLED - ignoring...")
 
         if _fault[0] == 'y':
             _result = __process_sentence__(_fault, _counts)
-            print(_result)
+            if _result is not None:
+                print(_result)
+
+
+def sentencetest():
+    """Return 1 random version of each sentence to test sentence structure."""
+
+    _counts = __gettablelimits__()
+    max_num = _counts['sen_count']
+    counter = 0
+
+    while counter < max_num:
+        counter += 1
+        _sentence = __getsentence__(_counts, sentence_id=counter)
+        print("\nSentence ID:  " + str(_sentence[1]))
+
+        if _sentence[0] == 'n':
+            print("Sentence is DISABLED - ignoring...")
+
+        if _sentence[0] == 'y':
+            _result = __process_sentence__(_sentence, _counts)
+            if _result is not None:
+                print(_result)
 
 
 def getfault(fault_id=None):
@@ -259,7 +261,7 @@ def __getsentence__(_counts, sentence_id=None):
     else:
         _id_to_fetch = random.randint(1, _counts['sen_count'])
 
-    _query = ("""select * from sursentences where sen_id = {0}"""
+    _query = ("select * from sursentences where sen_id = {0}"
               .format(_id_to_fetch))
     cursor.execute(_query)
     _result = cursor.fetchone()
@@ -273,7 +275,7 @@ def __getverb__(_counts):
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['verb_count'])
-    _query = """select * from surverbs where verb_id = {0}""".format(_rand)
+    _query = "select * from surverbs where verb_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
     return _result[1]
@@ -286,7 +288,7 @@ def __getnoun__(_counts):
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['noun_count'])
-    _query = """select * from surnouns where noun_id = {0}""".format(_rand)
+    _query = "select * from surnouns where noun_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
     return _result[1]
@@ -299,7 +301,7 @@ def __getadjective__(_counts):
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['adj_count'])
-    _query = """select * from suradjs where adj_id = {0}""".format(_rand)
+    _query = "select * from suradjs where adj_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
     return _result[1]
@@ -311,7 +313,7 @@ def __getname__(_counts):
 
     cursor = CONN.cursor()
     _rand = random.randint(1, _counts['name_count'])
-    _query = """select * from surnames where name_id = {0}""".format(_rand)
+    _query = "select * from surnames where name_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
 
