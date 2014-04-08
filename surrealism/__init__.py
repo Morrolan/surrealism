@@ -61,13 +61,13 @@ def version():
 
 def showsentences():
     """
-
+    Return all valid/active sentences ordered by ID to allow the user to pick and choose.
 
     :return:
     """
     cursor = CONN.cursor()
 
-    _query = "select sen_id, sentence from sursentences order by sen_id asc"
+    _query = "select sen_id, sentence from sursentences where sen_is_valid = 'y' order by sen_id asc"
     cursor.execute(_query)
     _result = cursor.fetchall()
     return _result
@@ -75,16 +75,36 @@ def showsentences():
 
 def showfaults():
     """
-
+    Return all valid/active faults ordered by ID to allow the user to pick and choose.
 
     :return:
     """
     cursor = CONN.cursor()
 
-    _query = "select fau_id, fault from surfaults order by fau_id asc"
+    _query = "select fau_id, fault from surfaults where fau_is_valid = 'y' order by fau_id asc"
     cursor.execute(_query)
     _result = cursor.fetchall()
     return _result
+
+
+def sentencetest():
+    """Return 1 random version of each sentence to test sentence structure."""
+
+    _counts = __gettablelimits__()
+    max_num = _counts['sen_count']
+    counter = 0
+
+    while counter < max_num:
+        counter += 1
+        print("\nSentence ID:  " + str(counter))
+        _sentence = __getsentence__(counter)
+
+        if _sentence[0] == 'n':
+            print("Sentence is DISABLED - ignoring...")
+
+        if _sentence[0] == 'y':
+            _result = __process_sentence__(_sentence, _counts)
+            print(_result)
 
 
 def faulttest():
