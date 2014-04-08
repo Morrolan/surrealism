@@ -25,7 +25,7 @@
 
 #############################################################################
 
-__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest']
+__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest', 'showsentences', 'showfaults']
 
 
 # IMPORTS ###################################################################
@@ -59,24 +59,32 @@ def version():
     return pkg_resources.require('surrealism')[0].version
 
 
-def sentencetest():
-    """Return 1 random version of each sentence to test sentence structure."""
+def showsentences():
+    """
 
-    _counts = __gettablelimits__()
-    max_num = _counts['sen_count']
-    counter = 0
 
-    while counter < max_num:
-        counter += 1
-        print("\nSentence ID:  " + str(counter))
-        _sentence = __getsentence__(counter)
+    :return:
+    """
+    cursor = CONN.cursor()
 
-        if _sentence[0] == 'n':
-            print("Sentence is DISABLED - ignoring...")
+    _query = "select sen_id, sentence from sursentences order by sen_id asc"
+    cursor.execute(_query)
+    _result = cursor.fetchall()
+    return _result
 
-        if _sentence[0] == 'y':
-            _result = __process_sentence__(_sentence, _counts)
-            print(_result)
+
+def showfaults():
+    """
+
+
+    :return:
+    """
+    cursor = CONN.cursor()
+
+    _query = "select fau_id, fault from surfaults order by fau_id asc"
+    cursor.execute(_query)
+    _result = cursor.fetchall()
+    return _result
 
 
 def faulttest():
