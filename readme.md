@@ -1,7 +1,7 @@
 surrealism
 ==========
 
-[![Build Status](https://travis-ci.org/Morrolan/surrealism.svg?branch=master)](https://travis-ci.org/morrolan/surrealism)
+[![Build Status](https://travis-ci.org/Morrolan/surrealism.svg?branch=master)](https://travis-ci.org/Morrolan/surrealism)
 
 [![Coverage Status](https://coveralls.io/repos/Morrolan/surrealism/badge.png)](https://coveralls.io/r/Morrolan/surrealism)
 
