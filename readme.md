@@ -1,6 +1,9 @@
 surrealism
 ==========
 
+[![Build Status](https://travis-ci.org/Morrolan/surrealism.svg?branch=develop)](https://travis-ci.org/morrolan/surrealism)
+
+
 surrealism module for Python
 ----------------------------
 
