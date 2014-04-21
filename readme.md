@@ -1,7 +1,7 @@
 surrealism
 ==========
 
-[![Build Status](https://travis-ci.org/morrolan/surrealism.png?branch=master)[https://travis-ci.org/morrolan/surrealism)
+[![Build Status](https://travis-ci.org/morrolan/surrealism.png?branch=develop)[https://travis-ci.org/morrolan/surrealism)
 
 
 surrealism module for Python
