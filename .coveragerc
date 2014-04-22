@@ -1,8 +1,2 @@
-[report]
-omit =
-    *.*
-    *.txt*
-    *.rst*
-    *.in*
-    *.md*
-    */site-packages/nose/*
+[run]
+source = test_surrealism.py
