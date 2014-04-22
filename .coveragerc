@@ -1,0 +1,8 @@
+[report]
+omit =
+    *.*
+    *.txt*
+    *.rst*
+    *.in*
+    *.md*
+    */site-packages/nose/*
