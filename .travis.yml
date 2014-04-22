@@ -5,5 +5,8 @@ python:
   - "3.3"
 install:
   - "pip install -r requirements.txt"
+  - "pip install coveralls"
 script:
-  - "nosetests test_surrealism.py"
+  - "nosetests  --with-coverage --cover-package=test_surrealism.py"
+after_success:
+  coveralls
