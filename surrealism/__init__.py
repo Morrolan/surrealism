@@ -25,7 +25,8 @@
 
 #############################################################################
 
-__ALL__ = ['getfault', 'getsentence', 'version', 'sentencetest', 'faulttest', 'showsentences', 'showfaults']
+__all__ = ['showfaults', 'showsentences', 'getfault', 'getsentence', 'version',
+           'sentencetest', 'faulttest', 'showsentences', 'showfaults']
 
 
 # IMPORTS ###################################################################
@@ -63,7 +64,7 @@ def showfaults():
     """
     Return all valid/active faults ordered by ID to allow the user to pick and choose.
 
-    :return:
+    :return:  List of Tuples where the Tuple elements are:  (fault id, fault template)
     """
     cursor = CONN.cursor()
 
@@ -77,7 +78,7 @@ def showsentences():
     """
     Return all valid/active sentences ordered by ID to allow the user to pick and choose.
 
-    :return:
+    :return:  List of Tuples where the Tuple elements are:  (sentence id, sentence template)
     """
     cursor = CONN.cursor()
 
