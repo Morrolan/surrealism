@@ -3,7 +3,7 @@ Changelog
 
 0.11.0
 -----
-Added 2 new functions - showsentences and showfaults which allow you to pick and choose sentences.
+Added 2 new functions - showsentences and showfaults which allow you to pick and choose sentences.  I also changed faulttest and sentencetest to return their output as a list of tuples instead of printing them, allowing for more options to the user.
 
 
 0.10.2

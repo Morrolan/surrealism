@@ -94,19 +94,21 @@ def faulttest():
     _counts = __gettablelimits__()
     max_num = _counts['fau_count']
     counter = 0
+    list_of_tuples = []
 
     while counter < max_num:
         counter += 1
         _fault = __getfault__(_counts, fault_id=counter)
-        print("\nFault ID:  " + str(_fault[1]))
+        fau_id = _fault[1]
 
         if _fault[0] == 'n':
-            print("Fault is DISABLED - ignoring...")
+            _fau_result = "Fault is DISABLED - ignoring..."
 
         if _fault[0] == 'y':
-            _result = __process_sentence__(_fault, _counts)
-            if _result is not None:
-                print(_result)
+            _fau_result = __process_sentence__(_fault, _counts)
+
+        list_of_tuples.append((fau_id, _fau_result))
+    return list_of_tuples
 
 
 def sentencetest():
@@ -115,19 +117,21 @@ def sentencetest():
     _counts = __gettablelimits__()
     max_num = _counts['sen_count']
     counter = 0
+    list_of_tuples = []
 
     while counter < max_num:
         counter += 1
         _sentence = __getsentence__(_counts, sentence_id=counter)
-        print("\nSentence ID:  " + str(_sentence[1]))
+        sen_id = _sentence[1]
 
         if _sentence[0] == 'n':
-            print("Sentence is DISABLED - ignoring...")
+            _sen_result = "Sentence is DISABLED - ignoring..."
 
         if _sentence[0] == 'y':
-            _result = __process_sentence__(_sentence, _counts)
-            if _result is not None:
-                print(_result)
+            _sen_result = __process_sentence__(_sentence, _counts)
+
+        list_of_tuples.append((sen_id, _sen_result))
+    return list_of_tuples
 
 
 def getfault(fault_id=None):

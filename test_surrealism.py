@@ -29,6 +29,15 @@ class SurrealismUnittests(unittest.TestCase):
         for tup in sentence_list:
             self.assertIsInstance(tup, tuple)
 
+    def test_sentencetest_does_something(self):
+        sentence_list = s.sentencetest()
+        self.assertIsInstance(sentence_list, list)
+
+    def test_sentencetest_returns_a_list_of_tuples(self):
+        sentence_list = s.sentencetest()
+        for tup in sentence_list:
+            self.assertIsInstance(tup, tuple)
+
     def test_getsentence_returns_a_unicode_string(self):
         sentence = s.getsentence()
         self.assertIsInstance(sentence, self.variable_types)
@@ -99,6 +108,15 @@ class SurrealismUnittests(unittest.TestCase):
 
     def test_showfaults_returns_a_list_of_tuples(self):
         fault_list = s.showfaults()
+        for tup in fault_list:
+            self.assertIsInstance(tup, tuple)
+
+    def test_faulttest_returns_a_list(self):
+        fault_list = s.faulttest()
+        self.assertIsInstance(fault_list, list)
+
+    def test_faulttest_returns_a_list_of_tuples(self):
+        fault_list = s.faulttest()
         for tup in fault_list:
             self.assertIsInstance(tup, tuple)
 
