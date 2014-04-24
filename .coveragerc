@@ -1,2 +1,2 @@
 [run]
-source = test_surrealism.py
+source = surrealism/__init__.py

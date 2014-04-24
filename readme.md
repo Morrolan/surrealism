@@ -1,8 +1,8 @@
 surrealism
 ==========
 
-[![Build Status](https://travis-ci.org/Morrolan/surrealism.svg?branch=develop)](https://travis-ci.org/Morrolan/surrealism)
-[![Coverage Status](https://coveralls.io/repos/Morrolan/surrealism/badge.png?branch=develop)](https://coveralls.io/r/Morrolan/surrealism?branch=develop)
+[![Build Status](https://travis-ci.org/Morrolan/surrealism.svg?branch=coveralls_testing)](https://travis-ci.org/Morrolan/surrealism)
+[![Coverage Status](https://coveralls.io/repos/Morrolan/surrealism/badge.png?branch=coveralls_testing)](https://coveralls.io/r/Morrolan/surrealism?branch=coveralls_testing)
 [![PyPI](http://img.shields.io/pypi/dm/surrealism.svg)](http://img.shields.io/pypi/dm/surrealism.svg)
 [![Gitter](https://badges.gitter.im/Morrolan/surrealism.png)](https://gitter.im/Morrolan/surrealism)
 
