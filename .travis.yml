@@ -1,11 +1,12 @@
 language: python
 python:
   - "2.7"
+  - "3.2"
   - "3.3"
-  - "3.4"
-# command to install dependencies
 install:
-  - "pip install ."
   - "pip install -r requirements.txt"
-# command to run tests
-script: "nosetests test_surrealism.py"
+  - "pip install coveralls"
+script:
+  - "nosetests  --with-coverage --cover-package=test_surrealism.py"
+after_success:
+  coveralls
