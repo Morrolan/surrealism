@@ -629,14 +629,16 @@ def __replace_capitalise__(_sentence):
 
     if _sentence is not None:
         while _sentence.find('#CAPITALISE') != -1:
+
             _cap_index = _sentence.find('#CAPITALISE')
             _part1 = _sentence[:_cap_index]
-            _part2 = _sentence[_cap_index + 12:]
-            _sentence = _part1 + _part2.capitalize()
-            _sentence = _sentence.replace('#CAPITALISE ', '', 1)
+            _part2 = _sentence[_cap_index + 12:_cap_index + 13]
+            _part3 = _sentence[_cap_index + 13:]
 
-            if _sentence.find('#capitalise'):
-                _sentence = _sentence.replace('#capitalise', '#CAPITALISE')
+            if _part2 in "abcdefghijklmnopqrstuvwxyz":
+                _sentence = _part1 + _part2.capitalize() + _part3
+            else:
+                pass
 
         if _sentence.find('#CAPITALISE') == -1:
             return _sentence

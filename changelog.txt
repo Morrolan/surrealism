@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+0.11.1
+-----
+Fixed minor issue with single-letter capitalisation.
+
+
 0.11.0
 -----
 Added 2 new functions - showsentences and showfaults which allow you to pick and choose sentences.  I also changed faulttest and sentencetest to return their output as a list of tuples instead of printing them, allowing for more options to the user.
