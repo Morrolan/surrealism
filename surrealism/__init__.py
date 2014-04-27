@@ -95,6 +95,7 @@ def faulttest():
     max_num = _counts['fau_count']
     counter = 0
     list_of_tuples = []
+    _fau_result = None
 
     while counter < max_num:
         counter += 1
@@ -118,6 +119,7 @@ def sentencetest():
     max_num = _counts['sen_count']
     counter = 0
     list_of_tuples = []
+    _sen_result = None
 
     while counter < max_num:
         counter += 1
