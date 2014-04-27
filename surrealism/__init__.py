@@ -640,7 +640,7 @@ def __replace_capitalise__(_sentence):
             if _part2 in "abcdefghijklmnopqrstuvwxyz":
                 _sentence = _part1 + _part2.capitalize() + _part3
             else:
-                pass
+                _sentence = _part1 + _part2 + _part3
 
         if _sentence.find('#CAPITALISE') == -1:
             return _sentence
