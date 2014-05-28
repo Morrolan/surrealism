@@ -44,7 +44,7 @@ class SurrealismUnittests(unittest.TestCase):
 
     def test_getsentence_returns_a_unicode_string_with_integer_upper_limit(self):
         limits = s.__gettablelimits__()
-        upper_limit = limits['sen_count']
+        upper_limit = limits['max_sen']
         sentence = s.getsentence(upper_limit)
         self.assertIsInstance(sentence, self.variable_types)
 
@@ -55,14 +55,14 @@ class SurrealismUnittests(unittest.TestCase):
 
     def test_getsentence_with_a_random_integer(self):
         limits = s.__gettablelimits__()
-        upper_sentence_limit = limits['sen_count']
+        upper_sentence_limit = limits['max_sen']
         sen_id = random.randint(1, upper_sentence_limit)
         sentence = s.getsentence(sen_id)
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_getsentence_returns_a_unicode_string_over_integer_upper_limit(self):
         limits = s.__gettablelimits__()
-        over_limit = limits['sen_count'] + 1
+        over_limit = limits['max_sen'] + 1
         self.assertRaises(TypeError, (s.getsentence(over_limit)))
 
     def test_getsentence_returns_an_error_when_we_submit_a_string(self):
@@ -126,7 +126,7 @@ class SurrealismUnittests(unittest.TestCase):
 
     def test_getfault_returns_a_unicode_string_with_integer_upper_limit(self):
         limits = s.__gettablelimits__()
-        upper_limit = limits['fau_count']
+        upper_limit = limits['max_fau']
         fault = s.getfault(upper_limit)
         self.assertIsInstance(fault, self.variable_types)
 
@@ -137,14 +137,14 @@ class SurrealismUnittests(unittest.TestCase):
 
     def test_getfault_with_a_random_integer(self):
         limits = s.__gettablelimits__()
-        upper_fault_limit = limits['fau_count']
+        upper_fault_limit = limits['max_fau']
         fau_id = random.randint(1, upper_fault_limit)
         fault = s.getfault(fau_id)
         self.assertIsInstance(fault, self.variable_types)
 
     def test_getfault_returns_a_unicode_string_over_integer_upper_limit(self):
         limits = s.__gettablelimits__()
-        over_limit = limits['fau_count'] + 1
+        over_limit = limits['max_fau'] + 1
         self.assertRaises(TypeError, (s.getsentence(over_limit)))
 
     def test_getfault_returns_an_error_when_we_submit_a_string(self):

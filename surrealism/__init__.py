@@ -92,7 +92,7 @@ def faulttest():
     """Returns 1 instance of each programming fault for testing purposes."""
 
     _counts = __gettablelimits__()
-    max_num = _counts['fau_count']
+    max_num = _counts['max_fau']
     counter = 0
     list_of_tuples = []
     _fau_result = None
@@ -116,7 +116,7 @@ def sentencetest():
     """Return 1 random version of each sentence to test sentence structure."""
 
     _counts = __gettablelimits__()
-    max_num = _counts['sen_count']
+    max_num = _counts['max_sen']
     counter = 0
     list_of_tuples = []
     _sen_result = None
@@ -157,17 +157,17 @@ def getfault(fault_id=None):
                   Rounding number to 0 decimal places.""")
             _id = round(fault_id)
         else:
-            _id = random.randint(1, _counts['fau_count'])
+            _id = random.randint(1, _counts['max_fau'])
 
     except ValueError:
         print("ValueError:  Incorrect parameter type detected.")
 
-    if _id <= _counts['fau_count']:
+    if _id <= _counts['max_fau']:
         _fault = __getfault__(_counts, fault_id=_id)
     else:
         print("""ValueError:  Parameter integer is too high.
-              Maximum permitted value is {0}.""".format(str(_counts['fau_count'])))
-        _id = _counts['fau_count']
+              Maximum permitted value is {0}.""".format(str(_counts['max_fau'])))
+        _id = _counts['max_fau']
         _fault = __getfault__(_counts, fault_id=_id)
 
     if _fault is not None:
@@ -204,17 +204,17 @@ def getsentence(sentence_id=None):
                   Rounding number to 0 decimal places.""")
             _id = round(sentence_id)
         else:
-            _id = random.randint(1, _counts['sen_count'])
+            _id = random.randint(1, _counts['max_sen'])
 
     except ValueError:
         print("ValueError:  Incorrect parameter type detected.")
 
-    if _id <= _counts['sen_count']:
+    if _id <= _counts['max_sen']:
         _sentence = __getsentence__(_counts, sentence_id=_id)
     else:
         print("""ValueError:  Parameter integer is too high.
-              Maximum permitted value is {0}.""".format(str(_counts['sen_count'])))
-        _id = _counts['sen_count']
+              Maximum permitted value is {0}.""".format(str(_counts['max_sen'])))
+        _id = _counts['max_sen']
         _sentence = __getsentence__(_counts, sentence_id=_id)
 
     if _sentence is not None:
@@ -242,15 +242,30 @@ def __getfault__(_counts, fault_id=None):
     """
 
     cursor = CONN.cursor()
+    check_query = "select fau_id from surfaults"
+
+    cursor.execute(check_query)
+    check_result = cursor.fetchall()
+
+    _id_to_fetch = None
+
+    id_list = []
+    for row in check_result:
+        id_list.append(row[0])
+
+    _rand = random.randint(1, _counts['max_fau'])
 
     if fault_id is not None:
         _id_to_fetch = fault_id
     else:
-        _id_to_fetch = random.randint(1, _counts['fau_count'])
+        while _rand not in id_list:
+            _rand = random.randint(1, _counts['max_fau'])
 
-    _query = "select * from surfaults where fau_id = {0}".format(_id_to_fetch)
+    _query = ("select * from surfaults where fau_id = {0}".format(_id_to_fetch))
     cursor.execute(_query)
     _result = cursor.fetchone()
+    cursor.close()
+
     return _result
 
 
@@ -261,17 +276,37 @@ def __getsentence__(_counts, sentence_id=None):
     :param sentence_id:
     """
 
+    # First of all we need a cursor and a query to retrieve our ID's
     cursor = CONN.cursor()
+    check_query = "select sen_id from sursentences"
+
+    # Now we fetch the result of the query and save it into check_result
+    cursor.execute(check_query)
+    check_result = cursor.fetchall()
+
+    # declare an empty list to be populated below
+    id_list = []
+
+    # Populate the id_list variable with all of the ID's we retrieved from the database query.
+    for row in check_result:
+        id_list.append(row[0])
+
+    #
+    _rand = random.randint(1, _counts['max_sen'])
+
+    #_id_to_fetch = None
 
     if sentence_id is not None:
         _id_to_fetch = sentence_id
     else:
-        _id_to_fetch = random.randint(1, _counts['sen_count'])
+        while _rand not in id_list:
+            _id_to_fetch = random.randint(1, _counts['max_sen'])
 
-    _query = ("select * from sursentences where sen_id = {0}"
-              .format(_id_to_fetch))
+    _query = ("select * from sursentences where sen_id = {0}".format(_id_to_fetch))
     cursor.execute(_query)
     _result = cursor.fetchone()
+    cursor.close()
+
     return _result
 
 
@@ -281,10 +316,25 @@ def __getverb__(_counts):
     """
 
     cursor = CONN.cursor()
-    _rand = random.randint(1, _counts['verb_count'])
+    check_query = "select verb_id from surverbs"
+
+    cursor.execute(check_query)
+    check_result = cursor.fetchall()
+
+    id_list = []
+    for row in check_result:
+        id_list.append(row[0])
+
+    _rand = random.randint(1, _counts['max_verb'])
+
+    while _rand not in id_list:
+        _rand = random.randint(1, _counts['max_verb'])
+
     _query = "select * from surverbs where verb_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
+    cursor.close()
+
     return _result[1]
 
 
@@ -294,10 +344,25 @@ def __getnoun__(_counts):
     """
 
     cursor = CONN.cursor()
-    _rand = random.randint(1, _counts['noun_count'])
+    check_query = "select noun_id from surnouns"
+
+    cursor.execute(check_query)
+    check_result = cursor.fetchall()
+
+    id_list = []
+    for row in check_result:
+        id_list.append(row[0])
+
+    _rand = random.randint(1, _counts['max_noun'])
+
+    while _rand not in id_list:
+        _rand = random.randint(1, _counts['max_noun'])
+
     _query = "select * from surnouns where noun_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
+    cursor.close()
+
     return _result[1]
 
 
@@ -307,10 +372,25 @@ def __getadjective__(_counts):
     """
 
     cursor = CONN.cursor()
-    _rand = random.randint(1, _counts['adj_count'])
+    check_query = "select adj_id from suradjs"
+
+    cursor.execute(check_query)
+    check_result = cursor.fetchall()
+
+    id_list = []
+    for row in check_result:
+        id_list.append(row[0])
+
+    _rand = random.randint(1, _counts['max_adj'])
+
+    while _rand not in id_list:
+        _rand = random.randint(1, _counts['max_adj'])
+
     _query = "select * from suradjs where adj_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
+    cursor.close()
+
     return _result[1]
 
 
@@ -319,10 +399,24 @@ def __getname__(_counts):
     :param _counts:"""
 
     cursor = CONN.cursor()
-    _rand = random.randint(1, _counts['name_count'])
+    check_query = "select name_id from surnames"
+
+    cursor.execute(check_query)
+    check_result = cursor.fetchall()
+
+    id_list = []
+    for row in check_result:
+        id_list.append(row[0])
+
+    _rand = random.randint(1, _counts['max_name'])
+
+    while _rand not in id_list:
+        _rand = random.randint(1, _counts['max_name'])
+
     _query = "select * from surnames where name_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
+    cursor.close()
 
     return _result[1]
 
@@ -333,39 +427,39 @@ def __gettablelimits__():
     to the calling function..."""
 
     _table_counts = {
-        'adj_count': None,
-        'name_count': None,
-        'noun_count': None,
-        'sen_count': None,
-        'fau_count': None,
-        'verb_count': None
+        'max_adj': None,
+        'max_name': None,
+        'max_noun': None,
+        'max_sen': None,
+        'max_fau': None,
+        'max_verb': None
     }
 
     cursor = CONN.cursor()
 
     cursor.execute('select count(*) from suradjs')
-    _table_counts['adj_count'] = cursor.fetchone()
-    _table_counts['adj_count'] = _table_counts['adj_count'][0]
+    _table_counts['max_adj'] = cursor.fetchone()
+    _table_counts['max_adj'] = _table_counts['max_adj'][0]
 
     cursor.execute('select count(*) from surnames')
-    _table_counts['name_count'] = cursor.fetchone()
-    _table_counts['name_count'] = _table_counts['name_count'][0]
+    _table_counts['max_name'] = cursor.fetchone()
+    _table_counts['max_name'] = _table_counts['max_name'][0]
 
     cursor.execute('select count(*) from surnouns')
-    _table_counts['noun_count'] = cursor.fetchone()
-    _table_counts['noun_count'] = _table_counts['noun_count'][0]
+    _table_counts['max_noun'] = cursor.fetchone()
+    _table_counts['max_noun'] = _table_counts['max_noun'][0]
 
     cursor.execute('select count(*) from sursentences')
-    _table_counts['sen_count'] = cursor.fetchone()
-    _table_counts['sen_count'] = _table_counts['sen_count'][0]
+    _table_counts['max_sen'] = cursor.fetchone()
+    _table_counts['max_sen'] = _table_counts['max_sen'][0]
 
     cursor.execute('select count(*) from surfaults')
-    _table_counts['fau_count'] = cursor.fetchone()
-    _table_counts['fau_count'] = _table_counts['fau_count'][0]
+    _table_counts['max_fau'] = cursor.fetchone()
+    _table_counts['max_fau'] = _table_counts['max_fau'][0]
 
     cursor.execute('select count(*) from surverbs')
-    _table_counts['verb_count'] = cursor.fetchone()
-    _table_counts['verb_count'] = _table_counts['verb_count'][0]
+    _table_counts['max_verb'] = cursor.fetchone()
+    _table_counts['max_verb'] = _table_counts['max_verb'][0]
 
     return _table_counts
 
