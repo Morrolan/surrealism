@@ -220,6 +220,7 @@ def getsentence(sentence_id=None):
     if _sentence is not None:
         while _sentence[0] == 'n':
             if _id is not None:
+                # here we delibrately pass 'None' to __getsentence__ as it will
                 _sentence = __getsentence__(_counts, None)
             else:
                 _sentence = __getsentence__(_counts, _id)
@@ -241,25 +242,28 @@ def __getfault__(_counts, fault_id=None):
     :param fault_id:
     """
 
+    # First of all we need a cursor and a query to retrieve our ID's
     cursor = CONN.cursor()
     check_query = "select fau_id from surfaults"
 
+    # Now we fetch the result of the query and save it into check_result
     cursor.execute(check_query)
     check_result = cursor.fetchall()
 
-    _id_to_fetch = None
-
+    # declare an empty list to be populated below
     id_list = []
+
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_fau'])
-
     if fault_id is not None:
-        _id_to_fetch = fault_id
+        if type(fault_id) is int:
+            _id_to_fetch = fault_id
     else:
-        while _rand not in id_list:
-            _rand = random.randint(1, _counts['max_fau'])
+        _id_to_fetch = random.randint(1, _counts['max_fau'])
+
+        while _id_to_fetch not in id_list:
+            _id_to_fetch = random.randint(1, _counts['max_fau'])
 
     _query = ("select * from surfaults where fau_id = {0}".format(_id_to_fetch))
     cursor.execute(_query)
@@ -291,15 +295,13 @@ def __getsentence__(_counts, sentence_id=None):
     for row in check_result:
         id_list.append(row[0])
 
-    #
-    _rand = random.randint(1, _counts['max_sen'])
-
-    #_id_to_fetch = None
-
     if sentence_id is not None:
-        _id_to_fetch = sentence_id
+        if type(sentence_id) is int:
+            _id_to_fetch = sentence_id
     else:
-        while _rand not in id_list:
+        _id_to_fetch = random.randint(1, _counts['max_sen'])
+
+        while _id_to_fetch not in id_list:
             _id_to_fetch = random.randint(1, _counts['max_sen'])
 
     _query = ("select * from sursentences where sen_id = {0}".format(_id_to_fetch))
