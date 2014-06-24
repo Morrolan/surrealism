@@ -3,26 +3,30 @@ __author__ = 'morrolan'
 import platform
 import surrealism
 
-count = 0
+
 
 new_file = '/vagrant/results/large_output_{0}.txt'.format(platform.python_version())
 
 with open(new_file, 'w') as _file:
 
-   #_file.writelines("GETSENTENCE()\n".encode('utf-8'))
+    count = 0
+    #_file.writelines("GETSENTENCE()\n".encode('utf-8'))
     while count <= 1000:
 
         s = surrealism.getsentence()
-        _file.writelines(bytes(str(s) + "\n", 'utf-8'))
+        _string = str(s) + "\n"
+        _file.writelines(bytes(_string, 'utf-8'))
         count += 1
 
     #_file.writelines("\n\n")
     #_file.writelines("GETFAULT()\n")
 
+    count = 0
+
     while count <= 100:
 
-        s = surrealism.getfault()
-        _file.writelines(bytes(str(s) + "\n", 'utf-8'))
+        _string = str(s) + "\n"
+        _file.writelines(bytes(_string, 'utf-8'))
         count += 1
 
     _file.close()
