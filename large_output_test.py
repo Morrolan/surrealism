@@ -5,7 +5,7 @@ import surrealism
 
 count = 0
 
-new_file = '/vagrant/results/large_output_{0}.txt'.format(platform.python_version())
+new_file = '/vagrant/results/large_output_{0}.txt'.format(platform.python_version().encode('utf-8'))
 
 with open(new_file, 'wb') as _file:
 
