@@ -13,7 +13,7 @@ with open(new_file, 'wb') as _file:
     while count <= 1000:
 
         s = surrealism.getsentence()
-        _file.writelines(s + bytes("\n", 'utf-8'))
+        _file.writelines(bytes(s + "\n", 'utf-8'))
         count += 1
 
     #_file.writelines("\n\n")
@@ -22,7 +22,7 @@ with open(new_file, 'wb') as _file:
     while count <= 100:
 
         s = surrealism.getfault()
-        _file.writelines(s + bytes("\n", 'utf-8'))
+        _file.writelines(bytes(s + "\n", 'utf-8'))
         count += 1
 
     _file.close()
