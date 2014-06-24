@@ -21,6 +21,7 @@ with open(new_file, 'w') as _file:
     counter = 0
     while counter <= 100:
 
+        s = surrealism.getfault()
         _string = str(s) + "\n"
         _file.writelines(_string)
         counter += 1
