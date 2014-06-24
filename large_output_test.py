@@ -9,15 +9,15 @@ new_file = '/vagrant/results/large_output_{0}.txt'.format(platform.python_versio
 
 with open(new_file, 'wb') as _file:
 
-    _file.writelines("GETSENTENCE()\n".encode('utf-8'))
+   #_file.writelines("GETSENTENCE()\n".encode('utf-8'))
     while count <= 1000:
 
         s = surrealism.getsentence()
         _file.writelines(s + "\n")
         count += 1
 
-    _file.writelines("\n\n")
-    _file.writelines("GETFAULT()\n")
+    #_file.writelines("\n\n")
+    #_file.writelines("GETFAULT()\n")
 
     while count <= 100:
 
