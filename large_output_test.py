@@ -15,7 +15,7 @@ with open(new_file, 'w') as _file:
 
         s = surrealism.getsentence()
         _string = str(s) + "\n"
-        _file.writelines(bytes(_string, 'utf-8'))
+        _file.writelines(_string)
         count += 1
 
     #_file.writelines("\n\n")
@@ -26,7 +26,7 @@ with open(new_file, 'w') as _file:
     while count <= 100:
 
         _string = str(s) + "\n"
-        _file.writelines(bytes(_string, 'utf-8'))
+        _file.writelines(_string)
         count += 1
 
     _file.close()
