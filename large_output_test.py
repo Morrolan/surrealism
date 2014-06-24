@@ -5,7 +5,9 @@ import surrealism
 
 count = 0
 
-with open('results/large_output_{0}.txt'.format(platform.python_version()), 'wb') as _file:
+new_file = 'results/large_output_{0}.txt'.format(platform.python_version())
+
+with open(new_file, 'wb') as _file:
 
     _file.writelines("GETSENTENCE()\n")
     while count <= 1000:
