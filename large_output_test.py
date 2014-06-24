@@ -7,7 +7,7 @@ count = 0
 
 new_file = '/vagrant/results/large_output_{0}.txt'.format(platform.python_version())
 
-with open(new_file, 'wb') as _file:
+with open(new_file, 'w') as _file:
 
    #_file.writelines("GETSENTENCE()\n".encode('utf-8'))
     while count <= 1000:
