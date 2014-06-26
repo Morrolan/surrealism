@@ -1,4 +1,8 @@
 language: python
+branches:
+  only:
+    - master
+    - develop
 python:
   - "2.7"
   - "3.2"
@@ -6,6 +10,6 @@ install:
   - "pip install -r requirements.txt"
   - "pip install coveralls"
 script:
-  - "nosetests --with-coverage --cover-package=surrealism/__init__.py"
+  - "nosetests --with-coverage --cover-package=test_surrealism.py"
 after_success:
   coveralls
