@@ -2,11 +2,10 @@ language: python
 python:
   - "2.7"
   - "3.2"
-  - "3.3"
 install:
   - "pip install -r requirements.txt"
   - "pip install coveralls"
 script:
-  - "nosetests  --with-coverage --cover-package=test_surrealism.py"
+  - "nosetests --with-coverage --cover-package=test_surrealism.py"
 after_success:
   coveralls
