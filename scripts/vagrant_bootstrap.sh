@@ -14,7 +14,6 @@ source /home/vagrant/surrealism27/bin/activate
 pip install nose
 pip install rednose
 pip install coveralls
-pip install coverage
 deactivate
 
 
@@ -26,5 +25,4 @@ source /home/vagrant/surrealism32/bin/activate
 pip install nose
 pip install rednose
 pip install coveralls
-pip install coverage
 deactivate
