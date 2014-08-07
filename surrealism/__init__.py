@@ -252,6 +252,7 @@ def __getfault__(_counts, fault_id=None):
 
     # declare an empty list to be populated below
     id_list = []
+    _id_to_fetch = None
 
     for row in check_result:
         id_list.append(row[0])
@@ -268,7 +269,7 @@ def __getfault__(_counts, fault_id=None):
     _query = ("select * from surfaults where fau_id = {0}".format(_id_to_fetch))
     cursor.execute(_query)
     _result = cursor.fetchone()
-    cursor.close()
+    #cursor.close()
 
     return _result
 
@@ -290,6 +291,7 @@ def __getsentence__(_counts, sentence_id=None):
 
     # declare an empty list to be populated below
     id_list = []
+    _id_to_fetch = None
 
     # Populate the id_list variable with all of the ID's we retrieved from the database query.
     for row in check_result:
@@ -307,7 +309,7 @@ def __getsentence__(_counts, sentence_id=None):
     _query = ("select * from sursentences where sen_id = {0}".format(_id_to_fetch))
     cursor.execute(_query)
     _result = cursor.fetchone()
-    cursor.close()
+    #cursor.close()
 
     return _result
 
@@ -335,7 +337,7 @@ def __getverb__(_counts):
     _query = "select * from surverbs where verb_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
-    cursor.close()
+    #cursor.close()
 
     return _result[1]
 
@@ -363,7 +365,7 @@ def __getnoun__(_counts):
     _query = "select * from surnouns where noun_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
-    cursor.close()
+    #cursor.close()
 
     return _result[1]
 
@@ -391,7 +393,7 @@ def __getadjective__(_counts):
     _query = "select * from suradjs where adj_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
-    cursor.close()
+    #cursor.close()
 
     return _result[1]
 
@@ -418,7 +420,7 @@ def __getname__(_counts):
     _query = "select * from surnames where name_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
-    cursor.close()
+    #cursor.close()
 
     return _result[1]
 
