@@ -1,6 +1,17 @@
 Changelog
 ---------
 
+
+0.11.3
+-----
+Fixes to sursentences database table entries.
+
+
+0.11.2
+-----
+Minor bug fixes.
+
+
 0.11.1
 -----
 Fixed minor issue with single-letter capitalisation.  Need to work on whole-sentence capitalisation and maybe rewrite how it works (stick it in brackets etc).

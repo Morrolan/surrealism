@@ -511,6 +511,8 @@ def __process_sentence__(_sentence_tuple, _counts):
     ############
     _sentence = __replace_capall__(_sentence)
 
+    _sentence = __check_spaces__(_sentence)
+
     return _sentence
 
 
@@ -769,3 +771,17 @@ def __replace_capall__(_sentence):
             #return _sentence
     else:
         return _sentence
+
+
+def __check_spaces__(_sentence):
+    """
+    Here we check to see that we have the correct number of spaces in the correct locations.
+
+    :param _sentence:
+    :return:
+    """
+    # We have to run the process multiple times:
+    #   Once to search for all spaces, and check if there are adjoining spaces;
+    #   The second time to check for 2 spaces after sentence-ending characters such as . and !
+
+    return _sentence

@@ -5,7 +5,7 @@ import sys
 
 
 class SurrealismUnittests(unittest.TestCase):
-    """getsentence() unititests"""
+    """getsentence() unittests"""
 
     def setUp(self):
         self.variable_types = ''
