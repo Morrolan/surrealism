@@ -511,6 +511,7 @@ def __process_sentence__(_sentence_tuple, _counts):
     ############
     _sentence = __replace_capall__(_sentence)
 
+    # check for appropriate spaces in the correct places.
     _sentence = __check_spaces__(_sentence)
 
     return _sentence
@@ -768,7 +769,6 @@ def __replace_capall__(_sentence):
 
         if _sentence.find('#CAPALL') == -1:
             return _sentence
-            #return _sentence
     else:
         return _sentence
 
@@ -782,6 +782,47 @@ def __check_spaces__(_sentence):
     """
     # We have to run the process multiple times:
     #   Once to search for all spaces, and check if there are adjoining spaces;
-    #   The second time to check for 2 spaces after sentence-ending characters such as . and !
+    #   The second time to check for 2 spaces after sentence-ending characters such as . and ! and ?
+
+    if _sentence is not None:
+        _termination_characters = ['.', '!', ':', '?']
+        _space = ' '
+
+        _spaces_list = []
+
+        print(_sentence)
+
+        while _sentence.find(_space) != -1:
+
+            _sentence_list = list(_sentence)
+
+            for _char in _sentence_list:
+
+                print(_sentence_list.index(_char))
+
+                if _char == _space:
+                    _spaces_list.append(_sentence_list.index(_char))
+
+                else:
+                    continue
+
+            print(_spaces_list)
+
+
+
+
+
+        # for character in characters:
+        #     while _sentence.find(character) != -1:
+        #         pass
+
+
+
+
+
+
+
+        # remove any trailing whitespace
+        _sentence = _sentence.rstrip()
 
     return _sentence
