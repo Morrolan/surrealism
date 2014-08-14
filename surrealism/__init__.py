@@ -785,44 +785,20 @@ def __check_spaces__(_sentence):
     #   The second time to check for 2 spaces after sentence-ending characters such as . and ! and ?
 
     if _sentence is not None:
-        _termination_characters = ['.', '!', ':', '?']
-        _space = ' '
 
-        _spaces_list = []
+        words = _sentence.split()
 
-        print(_sentence)
+        new_sentence = ''
 
-        while _sentence.find(_space) != -1:
+        for (i, word) in enumerate(words):
 
-            _sentence_list = list(_sentence)
-
-            for _char in _sentence_list:
-
-                print(_sentence_list.index(_char))
-
-                if _char == _space:
-                    _spaces_list.append(_sentence_list.index(_char))
-
-                else:
-                    continue
-
-            print(_spaces_list)
-
-
-
-
-
-        # for character in characters:
-        #     while _sentence.find(character) != -1:
-        #         pass
-
-
-
-
-
-
+            if word[-1] in set('.!?'):
+                word += ' '
+            new_word = ''.join(word)
+            new_sentence += ' ' + new_word
 
         # remove any trailing whitespace
-        _sentence = _sentence.rstrip()
+        new_sentence = new_sentence.lstrip()
+        new_sentence = new_sentence.rstrip()
 
-    return _sentence
+    return new_sentence
