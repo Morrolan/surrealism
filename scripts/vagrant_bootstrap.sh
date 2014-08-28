@@ -11,9 +11,9 @@ cd /home/vagrant
 virtualenv -p /usr/bin/python2.7 /home/vagrant/surrealism27
 cd /home/vagrant/surrealism27
 source /home/vagrant/surrealism27/bin/activate
-pip install nose
-pip install rednose
-pip install coveralls
+sudo pip install nose
+sudo pip install rednose
+sudo pip install coveralls
 deactivate
 
 
@@ -22,7 +22,7 @@ cd /home/vagrant
 virtualenv -p /usr/bin/python3.2 /home/vagrant/surrealism32
 cd /home/vagrant/surrealism32
 source /home/vagrant/surrealism32/bin/activate
-pip install nose
-pip install rednose
-pip install coveralls
+sudo pip install nose
+sudo pip install rednose
+sudo pip install coveralls
 deactivate
