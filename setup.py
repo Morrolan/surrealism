@@ -17,7 +17,7 @@ setup(name='surrealism',
       long_description=long_desc,
       platforms=['Windows', 'Unix', 'OS X'],
       download_url="https://pypi.python.org/pypi/surrealism/",
-      keywords=["surreal", "surrealism", "error message"],
+      keywords=["surreal", "surrealism", "error message", "fault"],
       classifiers=
       [
           'Programming Language :: Python',
