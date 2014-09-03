@@ -1,1 +1,1 @@
-import surrealism
+import surrealism as surrealism
