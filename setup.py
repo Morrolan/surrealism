@@ -6,7 +6,7 @@ with open('log.rst') as file_desc:
     long_desc = file_desc.read()
 
 setup(name='surrealism',
-      version='0.11.3',
+      version='0.12.0',
       #packages = find_packages(),
       packages=["surrealism"],
       author='Ian Havelock',
@@ -22,6 +22,7 @@ setup(name='surrealism',
       [
           'Programming Language :: Python',
           'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3.2',
           'Programming Language :: Python :: 3.3',
           'Programming Language :: Python :: 3.4',
           'Development Status :: 5 - Production/Stable',

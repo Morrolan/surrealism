@@ -235,7 +235,6 @@ def getsentence(sentence_id=None):
 
 #  INTERNAL METHODS BELOW
 
-
 def __getfault__(_counts, fault_id=None):
     """Let's fetch a random fault that we then need to substitute bits of...
     :param _counts:
