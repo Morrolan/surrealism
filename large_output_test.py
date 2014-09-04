@@ -30,4 +30,4 @@ with open(new_file, 'w') as _file:
 
     _file.close()
 
-print("COMPLETE")
+print("Large output test:  COMPLETE")
