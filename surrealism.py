@@ -21,7 +21,7 @@
 #
 # This is a derivative work (used with permission) from www.ravenblack.net
 # Credit also goes to Kevan Davis on whose work the surrealism generator at
-# Ravenblack.net is based on.
+# Ravenblack.net is based on...
 
 #############################################################################
 
