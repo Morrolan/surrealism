@@ -2,8 +2,7 @@ import unittest
 import random
 import sys
 
-from surrealism import surrealism
-s = surrealism
+import surrealism as s
 
 
 class SurrealismUnittests(unittest.TestCase):
