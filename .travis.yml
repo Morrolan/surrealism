@@ -8,6 +8,6 @@ before_install:
 install:
   - "pip install coveralls"
 script:
-  - "nosetests --with-coverage --cover-package=test_surrealism.py"
+  - "sudo nosetests --with-coverage --cover-package=test_surrealism.py"
 after_success:
   coveralls
