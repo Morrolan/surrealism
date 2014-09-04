@@ -1,1 +1,1 @@
-import surrealism as surrealism
+from surrealism import *

@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-with open('log.rst') as file_desc:
+with open('README.rst') as file_desc:
     long_desc = file_desc.read()
 
 setup(name='surrealism',
