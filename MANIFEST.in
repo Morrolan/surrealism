@@ -1,6 +1,6 @@
 __init__.py
 surrealism.sqlite
 include setup.py
-include log.rst
+include readme.rst
 include readme.md
 include LICENSE.txt
