@@ -5,8 +5,6 @@ python:
   - "3.3"
 before_install:
   - "rm large_output_test.py"
-  - "rm surrealism.pyc"
-  - "rm test_surrealism.pyc"
 install:
   - "pip install coveralls"
   - "pip install nose"
