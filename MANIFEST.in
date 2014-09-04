@@ -1,5 +1,5 @@
-include surrealism/__init__.py
-include surrealism/surrealism.sqlite
+__init__.py
+surrealism.sqlite
 include setup.py
 include log.rst
 include readme.md
