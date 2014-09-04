@@ -9,6 +9,6 @@ install:
   - "pip install coveralls"
   - "pip install nose"
 script:
-  - "nosetests --with-coverage --cover-package=test_surrealism.py"
+  - "sudo nosetests --with-coverage --cover-package=test_surrealism.py"
 after_success:
   coveralls
