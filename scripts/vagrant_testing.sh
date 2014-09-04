@@ -17,5 +17,5 @@ sudo git clone https://github.com/Morrolan/surrealism.git
 cd surrealism
 sudo git checkout develop
 sudo nosetests --rednose --with-xunit --xunit-file=/vagrant/results/nosetests3.2.xml /home/vagrant/surrealism32/surrealism/test_surrealism.py
-python /home/vagrant/surrealism27/surrealism/large_output_test.py
+python /home/vagrant/surrealism32/surrealism/large_output_test.py
 deactivate
