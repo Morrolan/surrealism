@@ -1,8 +1,8 @@
 language: python
 python:
-  - "2.7"
   - "3.2"
   - "3.3"
+  - "2.7"
 before_install:
   - "rm large_output_test.py"
 install:
