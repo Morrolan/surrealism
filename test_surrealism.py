@@ -1,3 +1,4 @@
+import surrealism as s
 import unittest
 import random
 import sys
