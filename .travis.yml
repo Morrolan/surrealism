@@ -7,8 +7,7 @@ before_install:
   - "rm large_output_test.py"
 install:
   - "pip install coveralls"
-  - "pip install nose"
 script:
-  - "sudo nosetests --with-coverage --cover-package=test_surrealism.py"
+  - "nosetests --with-coverage --cover-package=test_surrealism.py"
 after_success:
   coveralls
