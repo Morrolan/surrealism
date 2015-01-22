@@ -1,11 +1,10 @@
 surrealism
 ==========
 
-[![Build Status](https://travis-ci.org/Morrolan/surrealism.svg?branch=master)](https://travis-ci.org/Morrolan/surrealism)
-[![Coverage Status](https://coveralls.io/repos/Morrolan/surrealism/badge.png?branch=master)](https://coveralls.io/r/Morrolan/surrealism?branch=master)
+[![Build Status](https://travis-ci.org/Morrolan/surrealism.svg?branch=release)](https://travis-ci.org/Morrolan/surrealism)
+[![Coverage Status](https://coveralls.io/repos/Morrolan/surrealism/badge.png?branch=release)](https://coveralls.io/r/Morrolan/surrealism?branch=release)
 [![PyPI](http://img.shields.io/pypi/dm/surrealism.svg)](http://img.shields.io/pypi/dm/surrealism.svg)
 [![PyPI Version](http://img.shields.io/pypi/v/surrealism.svg)](http://img.shields.io/pypi/v/surrealism.svg)
-[![Gitter](https://badges.gitter.im/Morrolan/surrealism.png)](https://gitter.im/Morrolan/surrealism)
 
 
 surrealism module for Python
@@ -45,6 +44,12 @@ And it will download and install the latest version from the Python Package Inde
 
 Usage Examples
 --------------
+
+**Generate a surreal sentence from the terminal/command prompt**:
+
+
+
+
 
 **Generate a surreal sentence**:
 

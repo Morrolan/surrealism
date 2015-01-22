@@ -1,7 +1,9 @@
 __author__ = 'morrolan'
 
 import platform
+
 import surrealism
+
 
 new_file = '/vagrant/results/large_output_{0}.txt'.format(platform.python_version())
 
@@ -28,4 +30,4 @@ with open(new_file, 'w') as _file:
 
     _file.close()
 
-print("COMPLETE")
+print("\nLarge output test:  COMPLETE\n")
