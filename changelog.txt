@@ -4,7 +4,7 @@ Changelog
 
 0.12.0
 -----
-Changed structure and moved code from __init__.py to surrealism.py.  This also allows command line/terminal interaction by passing parameters, so no need to open an interactive python session or write a custom wrapper script anymore.
+Changed structure and moved code from __init__.py to surrealism.py.  Fixed a few potential bugs with capitalisation of words and sentences.
 
 
 0.11.3

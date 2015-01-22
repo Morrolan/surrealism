@@ -497,17 +497,9 @@ def __process_sentence__(_sentence_tuple, _counts):
     _sentence = __replace_random__(_sentence)
 
     # now we are going to choose whether to capitalize words/sentences or not
-    ############
-    #NOTE:  Buggy as hell, as it doesn't account for words that are already
-    # capitalized
-    ############
     _sentence = __replace_capitalise__(_sentence)
 
     # here we will choose whether to capitalize all words in the sentence
-    ############
-    #NOTE:  Buggy as hell, as it doesn't account for words that are already
-    # capitalized
-    ############
     _sentence = __replace_capall__(_sentence)
 
     # check for appropriate spaces in the correct places.
@@ -750,10 +742,7 @@ def __replace_capitalise__(_sentence):
 
 def __replace_capall__(_sentence):
     """here we replace all instances of #CAPALL and cap the entire sentence.
-    ############
-    #NOTE:  Buggy as hell, as it doesn't account for words that are already
-    #capitalized
-    ############
+    Don't believe that CAPALL is buggy anymore as it forces all uppercase OK?
 
     :param _sentence:
         """
