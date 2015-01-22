@@ -5,6 +5,7 @@ surrealism module for Python
 ----------------------------
 
 
+
 This module allows you to generate surreal sentences and error messages very easily from within your python programs.  
 
 
