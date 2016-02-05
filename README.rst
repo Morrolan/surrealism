@@ -50,7 +50,7 @@ Usage Examples
 
    >>> import surrealism
    
-   >>> sentence = surrealism.getsentence()
+   >>> sentence = surrealism.get_sentence()
    
    >>> print sentence
    
@@ -62,7 +62,7 @@ You can also specify an integer representing the relevant row ID from the databa
 
    >>> import surrealism
    
-   >>> sentence = surrealism.getsentence(39)
+   >>> sentence = surrealism.get_sentence(39)
    
    >>> print sentence
    
@@ -75,7 +75,7 @@ You can also specify an integer representing the relevant row ID from the databa
 
    >>> import surrealism
    
-   >>> print surrealism.getfault()
+   >>> print surrealism.get_fault()
    
    >>> thing.c:466: fearsome error in 'blow-up doll()' - missing thing-a-ma-jig.
 
@@ -85,7 +85,7 @@ You can also specify an integer representing the relevant row ID from the databa
 
    >>> import surrealism
    
-   >>> print surrealism.getfault(3)
+   >>> print surrealism.get_fault(3)
    
    >>> Traceback (most recent call last):  File '/party popper/fighter plane/glistening_seashell/anti-depressant.py', line 20, in straggly_particle accelerator.  waterproofError: salmon mousse did not deep-fry hand-drill.
 

@@ -25,9 +25,8 @@
 
 #############################################################################
 
-__all__ = ['showfaults', 'showsentences', 'getfault', 'getsentence', 'version',
-           'sentencetest', 'faulttest', 'showsentences', 'showfaults']
-
+__all__ = ['show_faults', 'show_sentences', 'getfault', 'getsentence', 'version',
+           'sentence_test', 'fault_test', 'show_sentences', 'show_faults']
 
 # IMPORTS ###################################################################
 
@@ -62,6 +61,15 @@ def version():
 
 def showfaults():
     """
+    This exists for backwards compatibility
+    :return:
+    """
+    output = show_faults()
+    return output
+
+
+def show_faults():
+    """
     Return all valid/active faults ordered by ID to allow the user to pick and choose.
 
     :return:  List of Tuples where the Tuple elements are:  (fault id, fault template)
@@ -76,22 +84,46 @@ def showfaults():
 
 def showsentences():
     """
+    This exists for backwards compatibility
+    :return:
+    """
+    output = show_sentences()
+    return output
+
+
+def show_sentences():
+    """
     Return all valid/active sentences ordered by ID to allow the user to pick and choose.
 
-    :return:  List of Tuples where the Tuple elements are:  (sentence id, sentence template)
+    :return:  Dict containing the sentence ID as the key and the sentence structure as the value.
     """
     cursor = CONN.cursor()
 
     _query = "select sen_id, sentence from sursentences where sen_is_valid = 'y' order by sen_id asc"
     cursor.execute(_query)
-    _result = cursor.fetchall()
-    return _result
+    result = cursor.fetchall()
+
+    response_dict = {}
+
+    for row in result:
+        response_dict[row[0]] = row[1]
+
+    return response_dict
 
 
 def faulttest():
+    """
+    This exists for backwards compatibility
+    :return:
+    """
+    output = fault_test()
+    return output
+
+
+def fault_test():
     """Returns 1 instance of each programming fault for testing purposes."""
 
-    _counts = __gettablelimits__()
+    _counts = __get_table_limits()
     max_num = _counts['max_fau']
     counter = 0
     list_of_tuples = []
@@ -99,23 +131,32 @@ def faulttest():
 
     while counter < max_num:
         counter += 1
-        _fault = __getfault__(_counts, fault_id=counter)
+        _fault = __get_fault(_counts, fault_id=counter)
         fau_id = _fault[1]
 
         if _fault[0] == 'n':
             _fau_result = "Fault is DISABLED - ignoring..."
 
         if _fault[0] == 'y':
-            _fau_result = __process_sentence__(_fault, _counts)
+            _fau_result = __process_sentence(_fault, _counts)
 
         list_of_tuples.append((fau_id, _fau_result))
     return list_of_tuples
 
 
 def sentencetest():
+    """
+    This exists for backwards compatibility
+    :return:
+    """
+    output = sentence_test()
+    return output
+
+
+def sentence_test():
     """Return 1 random version of each sentence to test sentence structure."""
 
-    _counts = __gettablelimits__()
+    _counts = __get_table_limits()
     max_num = _counts['max_sen']
     counter = 0
     list_of_tuples = []
@@ -123,20 +164,25 @@ def sentencetest():
 
     while counter < max_num:
         counter += 1
-        _sentence = __getsentence__(_counts, sentence_id=counter)
+        _sentence = __get_sentence(_counts, sentence_id=counter)
         sen_id = _sentence[1]
 
         if _sentence[0] == 'n':
             _sen_result = "Sentence is DISABLED - ignoring..."
 
         if _sentence[0] == 'y':
-            _sen_result = __process_sentence__(_sentence, _counts)
+            _sen_result = __process_sentence(_sentence, _counts)
 
         list_of_tuples.append((sen_id, _sen_result))
     return list_of_tuples
 
 
-def getfault(fault_id=None):
+def getfault():
+    output = get_fault()
+    return output
+
+
+def get_fault(fault_id=None):
     """Retrieve a randomly-generated error message as a unicode string.
     
     :param fault_id:
@@ -145,7 +191,7 @@ def getfault(fault_id=None):
         from the database table.  This allows you to retrieve a specific fault
         each time, albeit with different keywords."""
 
-    _counts = __gettablelimits__()
+    _counts = __get_table_limits()
     _result = None
     _id = 0
 
@@ -163,27 +209,32 @@ def getfault(fault_id=None):
         print("ValueError:  Incorrect parameter type detected.")
 
     if _id <= _counts['max_fau']:
-        _fault = __getfault__(_counts, fault_id=_id)
+        _fault = __get_fault(_counts, fault_id=_id)
     else:
         print("""ValueError:  Parameter integer is too high.
               Maximum permitted value is {0}.""".format(str(_counts['max_fau'])))
         _id = _counts['max_fau']
-        _fault = __getfault__(_counts, fault_id=_id)
+        _fault = __get_fault(_counts, fault_id=_id)
 
     if _fault is not None:
         while _fault[0] == 'n':
             if _id is not None:
-                _fault = __getfault__(_counts, None)
+                _fault = __get_fault(_counts, None)
             else:
-                _fault = __getfault__(_counts, _id)
+                _fault = __get_fault(_counts, _id)
         if _fault[0] == 'y':
-            _result = __process_sentence__(_fault, _counts)
+            _result = __process_sentence(_fault, _counts)
         return _result
     else:
         print('ValueError: _fault cannot be None.')
 
 
-def getsentence(sentence_id=None):
+def getsentence():
+    output = get_sentence()
+    return output
+
+
+def get_sentence(sentence_id=None):
     """Retrieve a randomly-generated sentence as a unicode string.
     
     :param sentence_id:
@@ -192,7 +243,7 @@ def getsentence(sentence_id=None):
         from the database table.  This allows you to retrieve a specific
         sentence each time, albeit with different keywords."""
 
-    _counts = __gettablelimits__()
+    _counts = __get_table_limits()
     _result = None
     _id = 0
 
@@ -210,22 +261,22 @@ def getsentence(sentence_id=None):
         print("ValueError:  Incorrect parameter type detected.")
 
     if _id <= _counts['max_sen']:
-        _sentence = __getsentence__(_counts, sentence_id=_id)
+        _sentence = __get_sentence(_counts, sentence_id=_id)
     else:
         print("""ValueError:  Parameter integer is too high.
               Maximum permitted value is {0}.""".format(str(_counts['max_sen'])))
         _id = _counts['max_sen']
-        _sentence = __getsentence__(_counts, sentence_id=_id)
+        _sentence = __get_sentence(_counts, sentence_id=_id)
 
     if _sentence is not None:
         while _sentence[0] == 'n':
             if _id is not None:
                 # here we delibrately pass 'None' to __getsentence__ as it will
-                _sentence = __getsentence__(_counts, None)
+                _sentence = __get_sentence(_counts, None)
             else:
-                _sentence = __getsentence__(_counts, _id)
+                _sentence = __get_sentence(_counts, _id)
         if _sentence[0] == 'y':
-            _result = __process_sentence__(_sentence, _counts)
+            _result = __process_sentence(_sentence, _counts)
         return _result
     else:
         print('ValueError: _sentence cannot be None.')
@@ -235,7 +286,7 @@ def getsentence(sentence_id=None):
 
 #  INTERNAL METHODS BELOW
 
-def __getfault__(_counts, fault_id=None):
+def __get_fault(_counts, fault_id=None):
     """Let's fetch a random fault that we then need to substitute bits of...
     :param _counts:
     :param fault_id:
@@ -268,12 +319,12 @@ def __getfault__(_counts, fault_id=None):
     _query = ("select * from surfaults where fau_id = {0}".format(_id_to_fetch))
     cursor.execute(_query)
     _result = cursor.fetchone()
-    #cursor.close()
+    # cursor.close()
 
     return _result
 
 
-def __getsentence__(_counts, sentence_id=None):
+def __get_sentence(_counts, sentence_id=None):
     """Let's fetch a random sentence that we then need to substitute bits of...
     @
     :param _counts:
@@ -308,12 +359,12 @@ def __getsentence__(_counts, sentence_id=None):
     _query = ("select * from sursentences where sen_id = {0}".format(_id_to_fetch))
     cursor.execute(_query)
     _result = cursor.fetchone()
-    #cursor.close()
+    # cursor.close()
 
     return _result
 
 
-def __getverb__(_counts):
+def __get_verb(_counts):
     """Let's fetch a VERB
     :param _counts:
     """
@@ -336,12 +387,12 @@ def __getverb__(_counts):
     _query = "select * from surverbs where verb_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
-    #cursor.close()
+    # cursor.close()
 
     return _result[1]
 
 
-def __getnoun__(_counts):
+def __get_noun(_counts):
     """Let's fetch a NOUN from the database...
     :param _counts:
     """
@@ -364,12 +415,12 @@ def __getnoun__(_counts):
     _query = "select * from surnouns where noun_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
-    #cursor.close()
+    # cursor.close()
 
     return _result[1]
 
 
-def __getadjective__(_counts):
+def __get_adjective(_counts):
     """Let's fetch an ADJECTIVE from the database...
     :param _counts:
     """
@@ -392,12 +443,12 @@ def __getadjective__(_counts):
     _query = "select * from suradjs where adj_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
-    #cursor.close()
+    # cursor.close()
 
     return _result[1]
 
 
-def __getname__(_counts):
+def __get_name(_counts):
     """Let's fetch a NAME from the database...
     :param _counts:"""
 
@@ -419,12 +470,12 @@ def __getname__(_counts):
     _query = "select * from surnames where name_id = {0}".format(_rand)
     cursor.execute(_query)
     _result = cursor.fetchone()
-    #cursor.close()
+    # cursor.close()
 
     return _result[1]
 
 
-def __gettablelimits__():
+def __get_table_limits():
     """Here we simply take a count of each of the database tables so we know our
     upper limits for our random number calls then return a dictionary of them 
     to the calling function..."""
@@ -440,34 +491,34 @@ def __gettablelimits__():
 
     cursor = CONN.cursor()
 
-    cursor.execute('select count(*) from suradjs')
+    cursor.execute('SELECT count(*) FROM suradjs')
     _table_counts['max_adj'] = cursor.fetchone()
     _table_counts['max_adj'] = _table_counts['max_adj'][0]
 
-    cursor.execute('select count(*) from surnames')
+    cursor.execute('SELECT count(*) FROM surnames')
     _table_counts['max_name'] = cursor.fetchone()
     _table_counts['max_name'] = _table_counts['max_name'][0]
 
-    cursor.execute('select count(*) from surnouns')
+    cursor.execute('SELECT count(*) FROM surnouns')
     _table_counts['max_noun'] = cursor.fetchone()
     _table_counts['max_noun'] = _table_counts['max_noun'][0]
 
-    cursor.execute('select count(*) from sursentences')
+    cursor.execute('SELECT count(*) FROM sursentences')
     _table_counts['max_sen'] = cursor.fetchone()
     _table_counts['max_sen'] = _table_counts['max_sen'][0]
 
-    cursor.execute('select count(*) from surfaults')
+    cursor.execute('SELECT count(*) FROM surfaults')
     _table_counts['max_fau'] = cursor.fetchone()
     _table_counts['max_fau'] = _table_counts['max_fau'][0]
 
-    cursor.execute('select count(*) from surverbs')
+    cursor.execute('SELECT count(*) FROM surverbs')
     _table_counts['max_verb'] = cursor.fetchone()
     _table_counts['max_verb'] = _table_counts['max_verb'][0]
 
     return _table_counts
 
 
-def __process_sentence__(_sentence_tuple, _counts):
+def __process_sentence(_sentence_tuple, _counts):
     """pull the actual sentence from the tuple (tuple contains additional data such as ID)
     :param _sentence_tuple:
     :param _counts:
@@ -476,39 +527,39 @@ def __process_sentence__(_sentence_tuple, _counts):
     _sentence = _sentence_tuple[2]
 
     # now we start replacing words one type at a time...
-    _sentence = __replace_verbs__(_sentence, _counts)
+    _sentence = __replace_verbs(_sentence, _counts)
 
-    _sentence = __replace_nouns__(_sentence, _counts)
+    _sentence = __replace_nouns(_sentence, _counts)
 
-    _sentence = ___replace_adjective_maybe__(_sentence, _counts)
+    _sentence = ___replace_adjective_maybe(_sentence, _counts)
 
-    _sentence = __replace_adjective__(_sentence, _counts)
+    _sentence = __replace_adjective(_sentence, _counts)
 
-    _sentence = __replace_names__(_sentence, _counts)
+    _sentence = __replace_names(_sentence, _counts)
 
     # here we perform a check to see if we need to use A or AN depending on the 
     # first letter of the following word...
-    _sentence = __replace_an__(_sentence)
+    _sentence = __replace_an(_sentence)
 
     # replace the new repeating segments
-    _sentence = __replace_repeat__(_sentence)
+    _sentence = __replace_repeat(_sentence)
 
     # now we will read, choose and substitute each of the RANDOM sentence tuples
-    _sentence = __replace_random__(_sentence)
+    _sentence = __replace_random(_sentence)
 
     # now we are going to choose whether to capitalize words/sentences or not
-    _sentence = __replace_capitalise__(_sentence)
+    _sentence = __replace_capitalise(_sentence)
 
     # here we will choose whether to capitalize all words in the sentence
-    _sentence = __replace_capall__(_sentence)
+    _sentence = __replace_capall(_sentence)
 
     # check for appropriate spaces in the correct places.
-    _sentence = __check_spaces__(_sentence)
+    _sentence = __check_spaces(_sentence)
 
     return _sentence
 
 
-def __replace_verbs__(_sentence, _counts):
+def __replace_verbs(_sentence, _counts):
     """Lets find and replace all instances of #VERB
     :param _sentence:
     :param _counts:
@@ -516,7 +567,7 @@ def __replace_verbs__(_sentence, _counts):
 
     if _sentence is not None:
         while _sentence.find('#VERB') != -1:
-            _sentence = _sentence.replace('#VERB', str(__getverb__(_counts)), 1)
+            _sentence = _sentence.replace('#VERB', str(__get_verb(_counts)), 1)
 
             if _sentence.find('#VERB') == -1:
                 return _sentence
@@ -525,7 +576,7 @@ def __replace_verbs__(_sentence, _counts):
         return _sentence
 
 
-def __replace_nouns__(_sentence, _counts):
+def __replace_nouns(_sentence, _counts):
     """Lets find and replace all instances of #NOUN
     :param _sentence:
     :param _counts:
@@ -533,7 +584,7 @@ def __replace_nouns__(_sentence, _counts):
 
     if _sentence is not None:
         while _sentence.find('#NOUN') != -1:
-            _sentence = _sentence.replace('#NOUN', str(__getnoun__(_counts)), 1)
+            _sentence = _sentence.replace('#NOUN', str(__get_noun(_counts)), 1)
 
             if _sentence.find('#NOUN') == -1:
                 return _sentence
@@ -543,7 +594,7 @@ def __replace_nouns__(_sentence, _counts):
         return _sentence
 
 
-def ___replace_adjective_maybe__(_sentence, _counts):
+def ___replace_adjective_maybe(_sentence, _counts):
     """Lets find and replace all instances of #ADJECTIVE_MAYBE
     :param _sentence:
     :param _counts:
@@ -557,7 +608,7 @@ def ___replace_adjective_maybe__(_sentence, _counts):
 
             if _random_decision % 2 == 0:
                 _sentence = _sentence.replace('#ADJECTIVE_MAYBE',
-                                              ' ' + str(__getadjective__(_counts)), 1)
+                                              ' ' + str(__get_adjective(_counts)), 1)
             elif _random_decision % 2 != 0:
                 _sentence = _sentence.replace('#ADJECTIVE_MAYBE', '', 1)
 
@@ -568,7 +619,7 @@ def ___replace_adjective_maybe__(_sentence, _counts):
         return _sentence
 
 
-def __replace_adjective__(_sentence, _counts):
+def __replace_adjective(_sentence, _counts):
     """Lets find and replace all instances of #ADJECTIVE
     :param _sentence:
     :param _counts:
@@ -578,7 +629,7 @@ def __replace_adjective__(_sentence, _counts):
 
         while _sentence.find('#ADJECTIVE') != -1:
             _sentence = _sentence.replace('#ADJECTIVE',
-                                          str(__getadjective__(_counts)), 1)
+                                          str(__get_adjective(_counts)), 1)
 
             if _sentence.find('#ADJECTIVE') == -1:
                 return _sentence
@@ -587,7 +638,7 @@ def __replace_adjective__(_sentence, _counts):
         return _sentence
 
 
-def __replace_names__(_sentence, _counts):
+def __replace_names(_sentence, _counts):
     """Lets find and replace all instances of #NAME
     :param _sentence:
     :param _counts:
@@ -596,7 +647,7 @@ def __replace_names__(_sentence, _counts):
     if _sentence is not None:
 
         while _sentence.find('#NAME') != -1:
-            _sentence = _sentence.replace('#NAME', str(__getname__(_counts)), 1)
+            _sentence = _sentence.replace('#NAME', str(__get_name(_counts)), 1)
 
             if _sentence.find('#NAME') == -1:
                 return _sentence
@@ -605,7 +656,7 @@ def __replace_names__(_sentence, _counts):
         return _sentence
 
 
-def __replace_an__(_sentence):
+def __replace_an(_sentence):
     """Lets find and replace all instances of #AN
     This is a little different, as this depends on whether the next
     word starts with a vowel or a consonant.
@@ -632,7 +683,7 @@ def __replace_an__(_sentence):
         return _sentence
 
 
-def __replace_random__(_sentence):
+def __replace_random(_sentence):
     """Lets find and replace all instances of #RANDOM
     :param _sentence:
     """
@@ -652,7 +703,7 @@ def __replace_random__(_sentence):
                 _sub_list = _sentence[_start_index:_end_index].split(',')
 
                 _choice = random.randint(1, int(_sub_list[0]))
-                #_sub_list[_choice]
+                # _sub_list[_choice]
 
             _to_be_replaced = _sentence[_random_index:_end_index + 1]
             _sentence = _sentence.replace(_to_be_replaced,
@@ -666,7 +717,7 @@ def __replace_random__(_sentence):
         return _sentence
 
 
-def __replace_repeat__(_sentence):
+def __replace_repeat(_sentence):
     """
     Allows the use of repeating random-elements such as in the 'Ten green bottles' type sentences.
 
@@ -704,13 +755,13 @@ def __replace_repeat__(_sentence):
                                                   str(_repeat_dict[_repeat_index]))
 
         if _sentence.find('#REPEAT') == -1:
-                return _sentence
+            return _sentence
         return _sentence
     else:
         return _sentence
 
 
-def __replace_capitalise__(_sentence):
+def __replace_capitalise(_sentence):
     """here we replace all instances of #CAPITALISE and cap the next word.
     ############
 
@@ -740,18 +791,18 @@ def __replace_capitalise__(_sentence):
         return _sentence
 
 
-def __replace_capall__(_sentence):
+def __replace_capall(_sentence):
     """here we replace all instances of #CAPALL and cap the entire sentence.
     Don't believe that CAPALL is buggy anymore as it forces all uppercase OK?
 
     :param _sentence:
         """
 
-    #print "\nReplacing CAPITALISE:  "
+    # print "\nReplacing CAPITALISE:  "
 
     if _sentence is not None:
         while _sentence.find('#CAPALL') != -1:
-            #_cap_index = _sentence.find('#CAPALL')
+            # _cap_index = _sentence.find('#CAPALL')
             _sentence = _sentence.upper()
             _sentence = _sentence.replace('#CAPALL ', '', 1)
 
@@ -761,7 +812,7 @@ def __replace_capall__(_sentence):
         return _sentence
 
 
-def __check_spaces__(_sentence):
+def __check_spaces(_sentence):
     """
     Here we check to see that we have the correct number of spaces in the correct locations.
 

@@ -21,20 +21,20 @@ class SurrealismUnittests(unittest.TestCase):
         pass
 
     def test_showsentences_returns_a_list(self):
-        sentence_list = s.showsentences()
+        sentence_list = s.show_sentences()
         self.assertIsInstance(sentence_list, list)
 
     def test_showsentences_returns_a_list_of_tuples(self):
-        sentence_list = s.showsentences()
+        sentence_list = s.show_sentences()
         for tup in sentence_list:
             self.assertIsInstance(tup, tuple)
 
     def test_sentencetest_does_something(self):
-        sentence_list = s.sentencetest()
+        sentence_list = s.sentence_test()
         self.assertIsInstance(sentence_list, list)
 
     def test_sentencetest_returns_a_list_of_tuples(self):
-        sentence_list = s.sentencetest()
+        sentence_list = s.sentence_test()
         for tup in sentence_list:
             self.assertIsInstance(tup, tuple)
 
@@ -43,7 +43,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_getsentence_returns_a_unicode_string_with_integer_upper_limit(self):
-        limits = s.__gettablelimits__()
+        limits = s.__get_table_limits()
         upper_limit = limits['max_sen']
         sentence = s.getsentence(upper_limit)
         self.assertIsInstance(sentence, self.variable_types)
@@ -54,14 +54,14 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_getsentence_with_a_random_integer(self):
-        limits = s.__gettablelimits__()
+        limits = s.__get_table_limits()
         upper_sentence_limit = limits['max_sen']
         sen_id = random.randint(1, upper_sentence_limit)
         sentence = s.getsentence(sen_id)
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_getsentence_returns_a_unicode_string_over_integer_upper_limit(self):
-        limits = s.__gettablelimits__()
+        limits = s.__get_table_limits()
         over_limit = limits['max_sen'] + 1
         self.assertRaises(TypeError, (s.getsentence(over_limit)))
 
@@ -103,20 +103,20 @@ class SurrealismUnittests(unittest.TestCase):
     """getfault() unit tests"""
 
     def test_showfaults_returns_a_list(self):
-        fault_list = s.showfaults()
+        fault_list = s.show_faults()
         self.assertIsInstance(fault_list, list)
 
     def test_showfaults_returns_a_list_of_tuples(self):
-        fault_list = s.showfaults()
+        fault_list = s.show_faults()
         for tup in fault_list:
             self.assertIsInstance(tup, tuple)
 
     def test_faulttest_returns_a_list(self):
-        fault_list = s.faulttest()
+        fault_list = s.fault_test()
         self.assertIsInstance(fault_list, list)
 
     def test_faulttest_returns_a_list_of_tuples(self):
-        fault_list = s.faulttest()
+        fault_list = s.fault_test()
         for tup in fault_list:
             self.assertIsInstance(tup, tuple)
 
@@ -125,7 +125,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, self.variable_types)
 
     def test_getfault_returns_a_unicode_string_with_integer_upper_limit(self):
-        limits = s.__gettablelimits__()
+        limits = s.__get_table_limits()
         upper_limit = limits['max_fau']
         fault = s.getfault(upper_limit)
         self.assertIsInstance(fault, self.variable_types)
@@ -136,14 +136,14 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, self.variable_types)
 
     def test_getfault_with_a_random_integer(self):
-        limits = s.__gettablelimits__()
+        limits = s.__get_table_limits()
         upper_fault_limit = limits['max_fau']
         fau_id = random.randint(1, upper_fault_limit)
         fault = s.getfault(fau_id)
         self.assertIsInstance(fault, self.variable_types)
 
     def test_getfault_returns_a_unicode_string_over_integer_upper_limit(self):
-        limits = s.__gettablelimits__()
+        limits = s.__get_table_limits()
         over_limit = limits['max_fau'] + 1
         self.assertRaises(TypeError, (s.getsentence(over_limit)))
 
