@@ -6,7 +6,7 @@ with open('README.rst') as file_desc:
     long_desc = file_desc.read()
 
 setup(name='surrealism',
-      version='0.13.0',
+      version='0.13.1',
       # packages = find_packages(),
       packages=["surrealism"],
       author='Ian Havelock',

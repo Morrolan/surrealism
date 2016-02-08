@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+0.13.1
+-----
+Minor change to facilitate issue with corrupt upload to pypi.
+
 0.13.0
 -----
 Internal refactoring and name cleanup.  Public methods have had underscores added to their names, but old names preserved for backwards-compatibility.  Also changed show_sentences to return a dict instead of a tuple of tuples.
