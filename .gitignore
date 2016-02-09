@@ -51,4 +51,4 @@ results/
 .idea/
 
 # Vagrant
-.vagrant/
+.vagrant/*

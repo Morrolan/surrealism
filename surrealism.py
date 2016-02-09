@@ -177,8 +177,8 @@ def sentence_test():
     return list_of_tuples
 
 
-def getfault():
-    output = get_fault()
+def getfault(fault_id=None):
+    output = get_fault(fault_id)
     return output
 
 
@@ -229,8 +229,8 @@ def get_fault(fault_id=None):
         print('ValueError: _fault cannot be None.')
 
 
-def getsentence():
-    output = get_sentence()
+def getsentence(sentence_id=None):
+    output = get_sentence(sentence_id)
     return output
 
 

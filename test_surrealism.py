@@ -20,14 +20,14 @@ class SurrealismUnittests(unittest.TestCase):
         self.variable_types = ''
         pass
 
-    def test_show_sentences_returns_a_list(self):
-        sentence_list = s.show_sentences()
-        self.assertIsInstance(sentence_list, list)
+    def test_show_sentences_returns_a_dict(self):
+        sentence_dict = s.show_sentences()
+        self.assertIsInstance(sentence_dict, dict)
 
-    def test_show_sentences_returns_a_list_of_tuples(self):
-        sentence_list = s.show_sentences()
-        for tup in sentence_list:
-            self.assertIsInstance(tup, tuple)
+    # def test_show_sentences_returns_a_list_of_tuples(self):
+    #     sentence_list = s.show_sentences()
+    #     for tup in sentence_list:
+    #         self.assertIsInstance(tup, tuple)
 
     def test_sentence_test_does_something(self):
         sentence_list = s.sentence_test()
@@ -39,25 +39,25 @@ class SurrealismUnittests(unittest.TestCase):
             self.assertIsInstance(tup, tuple)
 
     def test_get_sentence_returns_a_unicode_string(self):
-        sentence = s.getsentence()
+        sentence = s.get_sentence()
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_get_sentence_returns_a_unicode_string_with_integer_upper_limit(self):
         limits = s.__get_table_limits()
         upper_limit = limits['max_sen']
-        sentence = s.getsentence(upper_limit)
+        sentence = s.get_sentence(upper_limit)
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_get_sentence_returns_a_unicode_string_with_integer_lower_limit(self):
         lower_limit = 1
-        sentence = s.getsentence(lower_limit)
+        sentence = s.get_sentence(lower_limit)
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_get_sentence_with_a_random_integer(self):
         limits = s.__get_table_limits()
         upper_sentence_limit = limits['max_sen']
         sen_id = random.randint(1, upper_sentence_limit)
-        sentence = s.getsentence(sen_id)
+        sentence = s.get_sentence(sen_id)
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_get_sentence_returns_a_unicode_string_over_integer_upper_limit(self):
@@ -79,23 +79,23 @@ class SurrealismUnittests(unittest.TestCase):
 
     def test_get_sentence_handles_it_when_we_submit_a_float(self):
         _number = 98.9
-        sentence = s.getsentence(_number)
+        sentence = s.get_sentence(_number)
         print(sentence)
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_that_no_hashed_keywords_remain_in_sentence(self):
         keywords = ['#VERB', '#NOUN', '#ADJECTIVE', '#NAME',
                     '#ADJECTIVE_MAYBE', '#AN', '#RANDOM', '#CAPITALISE', '#CAPALL']
-        sentence = s.getsentence()
+        sentence = s.get_sentence()
         for keyword in keywords:
             self.assertNotIn(keyword, sentence)
 
     def test_that_repeating_elements_actually_are_replaced(self):
         _number = 47
-        sentence = s.getsentence(_number)
+        sentence = s.get_sentence(_number)
         self.assertIsInstance(sentence, self.variable_types)
         keywords = ['#REPEAT', '#DEFINE_REPEAT']
-        sentence = s.getsentence()
+        sentence = s.get_sentence()
         for keyword in keywords:
             self.assertNotIn(keyword, sentence)
 
@@ -121,25 +121,25 @@ class SurrealismUnittests(unittest.TestCase):
             self.assertIsInstance(tup, tuple)
 
     def test_get_fault_returns_a_unicode_string(self):
-        fault = s.getfault()
+        fault = s.get_fault()
         self.assertIsInstance(fault, self.variable_types)
 
     def test_get_fault_returns_a_unicode_string_with_integer_upper_limit(self):
         limits = s.__get_table_limits()
         upper_limit = limits['max_fau']
-        fault = s.getfault(upper_limit)
+        fault = s.get_fault(upper_limit)
         self.assertIsInstance(fault, self.variable_types)
 
     def test_get_fault_returns_a_unicode_string_with_integer_lower_limit(self):
         lower_limit = 1
-        fault = s.getfault(lower_limit)
+        fault = s.get_fault(lower_limit)
         self.assertIsInstance(fault, self.variable_types)
 
     def test_get_fault_with_a_random_integer(self):
         limits = s.__get_table_limits()
         upper_fault_limit = limits['max_fau']
         fau_id = random.randint(1, upper_fault_limit)
-        fault = s.getfault(fau_id)
+        fault = s.get_fault(fau_id)
         self.assertIsInstance(fault, self.variable_types)
 
     def test_get_fault_returns_a_unicode_string_over_integer_upper_limit(self):
@@ -161,7 +161,7 @@ class SurrealismUnittests(unittest.TestCase):
 
     def test_get_fault_handles_it_when_we_submit_a_float(self):
         _number = 98.9
-        fault = s.getfault(_number)
+        fault = s.get_fault(_number)
         print(fault)
         self.assertIsInstance(fault, self.variable_types)
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+mkdir /vagrant/results
+
 cd /home/vagrant/surrealism27
 source /home/vagrant/surrealism27/bin/activate
 sudo mkdir surrealism
