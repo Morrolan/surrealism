@@ -50,3 +50,5 @@ results/
 # PyCharm
 .idea/
 
+# Vagrant
+.vagrant/

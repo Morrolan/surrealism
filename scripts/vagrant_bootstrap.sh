@@ -2,7 +2,7 @@
 
 apt-get update
 apt-get install -y python2.7
-apt-get install -y python3.2
+apt-get install -y python3.5
 apt-get install -y python-virtualenv
 apt-get install -y git
 
@@ -17,11 +17,11 @@ sudo pip install coveralls
 deactivate
 
 
-mkdir /home/vagrant/surrealism32
+mkdir /home/vagrant/surrealism35
 cd /home/vagrant
-virtualenv -p /usr/bin/python3.2 /home/vagrant/surrealism32
-cd /home/vagrant/surrealism32
-source /home/vagrant/surrealism32/bin/activate
+virtualenv -p /usr/bin/python3.5 /home/vagrant/surrealism35
+cd /home/vagrant/surrealism35
+source /home/vagrant/surrealism35/bin/activate
 sudo pip install nose --upgrade
 sudo pip install rednose --upgrade
 sudo pip install coveralls --upgrade

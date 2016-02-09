@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+0.13.2
+-----
+Minor fixes to unittest suite.
+
 0.13.1
 -----
 Minor change to facilitate issue with corrupt upload to pypi.

@@ -6,12 +6,12 @@ with open('README.rst') as file_desc:
     long_desc = file_desc.read()
 
 setup(name='surrealism',
-      version='0.13.1',
+      version='0.13.2',
       # packages = find_packages(),
       packages=["surrealism"],
       author='Ian Havelock',
       author_email='ian@morrolan.com',
-      url='http://www.morrolan.com',
+      url='http://morrolan.github.io/surrealism',
       license='GNU General Public License (GPL)',
       description='Surreal sentence and error message generator.',
       long_description=long_desc,
