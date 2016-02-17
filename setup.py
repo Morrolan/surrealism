@@ -8,7 +8,7 @@ with open('README.rst') as file_desc:
 setup(name='surrealism',
       version='0.13.2',
       # packages = find_packages(),
-      packages=["surrealism"],
+      #packages=["surrealism"],
       author='Ian Havelock',
       author_email='ian@morrolan.com',
       url='http://morrolan.github.io/surrealism',
