@@ -74,12 +74,10 @@ def show_faults():
 
     :return:  List of Tuples where the Tuple elements are:  (fault id, fault template)
     """
-    cursor = CONN.cursor()
 
-    _query = "select fau_id, fault from surfaults where fau_is_valid = 'y' order by fau_id asc"
-    cursor.execute(_query)
-    _result = cursor.fetchall()
-    return _result
+    _query = "SELECT fau_id, fault FROM surfaults WHERE fau_is_valid = 'y' ORDER BY fau_id ASC"
+    result = __execute_sql_all(_query)
+    return result
 
 
 def showsentences():
@@ -97,17 +95,13 @@ def show_sentences():
 
     :return:  Dict containing the sentence ID as the key and the sentence structure as the value.
     """
-    cursor = CONN.cursor()
 
-    _query = "select sen_id, sentence from sursentences where sen_is_valid = 'y' order by sen_id asc"
-    cursor.execute(_query)
-    result = cursor.fetchall()
+    _query = "SELECT sen_id, sentence FROM sursentences WHERE sen_is_valid = 'y' ORDER BY sen_id ASC"
+    result = __execute_sql_all(_query)
 
     response_dict = {}
-
     for row in result:
         response_dict[row[0]] = row[1]
-
     return response_dict
 
 
@@ -124,7 +118,7 @@ def fault_test():
     """Returns 1 instance of each programming fault for testing purposes."""
 
     _counts = __get_table_limits()
-    max_num = _counts['max_fau']
+    max_num = _counts['max_faults']
     counter = 0
     list_of_tuples = []
     _fau_result = None
@@ -157,7 +151,7 @@ def sentence_test():
     """Return 1 random version of each sentence to test sentence structure."""
 
     _counts = __get_table_limits()
-    max_num = _counts['max_sen']
+    max_num = _counts['max_sentences']
     counter = 0
     list_of_tuples = []
     _sen_result = None
@@ -203,17 +197,17 @@ def get_fault(fault_id=None):
                   Rounding number to 0 decimal places.""")
             _id = round(fault_id)
         else:
-            _id = random.randint(1, _counts['max_fau'])
+            _id = random.randint(1, _counts['max_faults'])
 
     except ValueError:
         print("ValueError:  Incorrect parameter type detected.")
 
-    if _id <= _counts['max_fau']:
+    if _id <= _counts['max_faults']:
         _fault = __get_fault(_counts, fault_id=_id)
     else:
         print("""ValueError:  Parameter integer is too high.
-              Maximum permitted value is {0}.""".format(str(_counts['max_fau'])))
-        _id = _counts['max_fau']
+              Maximum permitted value is {0}.""".format(str(_counts['max_faults'])))
+        _id = _counts['max_faults']
         _fault = __get_fault(_counts, fault_id=_id)
 
     if _fault is not None:
@@ -255,17 +249,17 @@ def get_sentence(sentence_id=None):
                   Rounding number to 0 decimal places.""")
             _id = round(sentence_id)
         else:
-            _id = random.randint(1, _counts['max_sen'])
+            _id = random.randint(1, _counts['max_sentences'])
 
     except ValueError:
         print("ValueError:  Incorrect parameter type detected.")
 
-    if _id <= _counts['max_sen']:
+    if _id <= _counts['max_sentences']:
         _sentence = __get_sentence(_counts, sentence_id=_id)
     else:
         print("""ValueError:  Parameter integer is too high.
-              Maximum permitted value is {0}.""".format(str(_counts['max_sen'])))
-        _id = _counts['max_sen']
+              Maximum permitted value is {0}.""".format(str(_counts['max_sentences'])))
+        _id = _counts['max_sentences']
         _sentence = __get_sentence(_counts, sentence_id=_id)
 
     if _sentence is not None:
@@ -286,6 +280,22 @@ def get_sentence(sentence_id=None):
 
 #  INTERNAL METHODS BELOW
 
+def __execute_sql_all(query):
+    cursor = CONN.cursor()
+
+    _query = query
+    cursor.execute(_query)
+    return cursor.fetchall()
+
+
+def __execute_sql_one(query):
+    cursor = CONN.cursor()
+
+    _query = query
+    cursor.execute(_query)
+    return cursor.fetchone()
+
+
 def __get_fault(_counts, fault_id=None):
     """Let's fetch a random fault that we then need to substitute bits of...
     :param _counts:
@@ -293,12 +303,8 @@ def __get_fault(_counts, fault_id=None):
     """
 
     # First of all we need a cursor and a query to retrieve our ID's
-    cursor = CONN.cursor()
-    check_query = "select fau_id from surfaults"
-
-    # Now we fetch the result of the query and save it into check_result
-    cursor.execute(check_query)
-    check_result = cursor.fetchall()
+    _query = "SELECT fau_id FROM surfaults"
+    check_result = __execute_sql_all(_query)
 
     # declare an empty list to be populated below
     id_list = []
@@ -311,17 +317,15 @@ def __get_fault(_counts, fault_id=None):
         if type(fault_id) is int:
             _id_to_fetch = fault_id
     else:
-        _id_to_fetch = random.randint(1, _counts['max_fau'])
+        _id_to_fetch = random.randint(1, _counts['max_faults'])
 
         while _id_to_fetch not in id_list:
-            _id_to_fetch = random.randint(1, _counts['max_fau'])
+            _id_to_fetch = random.randint(1, _counts['max_faults'])
 
-    _query = ("select * from surfaults where fau_id = {0}".format(_id_to_fetch))
-    cursor.execute(_query)
-    _result = cursor.fetchone()
-    # cursor.close()
+    _query = "select * from surfaults where fau_id = {0}".format(_id_to_fetch)
+    result = __execute_sql_one(_query)
 
-    return _result
+    return result
 
 
 def __get_sentence(_counts, sentence_id=None):
@@ -332,12 +336,10 @@ def __get_sentence(_counts, sentence_id=None):
     """
 
     # First of all we need a cursor and a query to retrieve our ID's
-    cursor = CONN.cursor()
-    check_query = "select sen_id from sursentences"
+    query = "SELECT sen_id FROM sursentences"
 
     # Now we fetch the result of the query and save it into check_result
-    cursor.execute(check_query)
-    check_result = cursor.fetchall()
+    check_result = __execute_sql_all(query)
 
     # declare an empty list to be populated below
     id_list = []
@@ -351,15 +353,13 @@ def __get_sentence(_counts, sentence_id=None):
         if type(sentence_id) is int:
             _id_to_fetch = sentence_id
     else:
-        _id_to_fetch = random.randint(1, _counts['max_sen'])
+        _id_to_fetch = random.randint(1, _counts['max_sentences'])
 
         while _id_to_fetch not in id_list:
-            _id_to_fetch = random.randint(1, _counts['max_sen'])
+            _id_to_fetch = random.randint(1, _counts['max_sentences'])
 
-    _query = ("select * from sursentences where sen_id = {0}".format(_id_to_fetch))
-    cursor.execute(_query)
-    _result = cursor.fetchone()
-    # cursor.close()
+    _query = "select * from sursentences where sen_id = {0}".format(_id_to_fetch)
+    _result = __execute_sql_one(_query)
 
     return _result
 
@@ -368,26 +368,20 @@ def __get_verb(_counts):
     """Let's fetch a VERB
     :param _counts:
     """
-
-    cursor = CONN.cursor()
-    check_query = "select verb_id from surverbs"
-
-    cursor.execute(check_query)
-    check_result = cursor.fetchall()
+    check_query = "SELECT verb_id FROM surverbs"
+    check_result = __execute_sql_all(check_query)
 
     id_list = []
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_verb'])
+    _rand = random.randint(1, _counts['max_verbs'])
 
     while _rand not in id_list:
-        _rand = random.randint(1, _counts['max_verb'])
+        _rand = random.randint(1, _counts['max_verbs'])
 
     _query = "select * from surverbs where verb_id = {0}".format(_rand)
-    cursor.execute(_query)
-    _result = cursor.fetchone()
-    # cursor.close()
+    _result = __execute_sql_one(_query)
 
     return _result[1]
 
@@ -397,25 +391,20 @@ def __get_noun(_counts):
     :param _counts:
     """
 
-    cursor = CONN.cursor()
-    check_query = "select noun_id from surnouns"
-
-    cursor.execute(check_query)
-    check_result = cursor.fetchall()
+    check_query = "SELECT noun_id FROM surnouns"
+    check_result = __execute_sql_all(check_query)
 
     id_list = []
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_noun'])
+    _rand = random.randint(1, _counts['max_nouns'])
 
     while _rand not in id_list:
-        _rand = random.randint(1, _counts['max_noun'])
+        _rand = random.randint(1, _counts['max_nouns'])
 
     _query = "select * from surnouns where noun_id = {0}".format(_rand)
-    cursor.execute(_query)
-    _result = cursor.fetchone()
-    # cursor.close()
+    _result = __execute_sql_one(_query)
 
     return _result[1]
 
@@ -425,25 +414,20 @@ def __get_adjective(_counts):
     :param _counts:
     """
 
-    cursor = CONN.cursor()
-    check_query = "select adj_id from suradjs"
-
-    cursor.execute(check_query)
-    check_result = cursor.fetchall()
+    check_query = "SELECT adj_id FROM suradjs"
+    check_result = __execute_sql_all(check_query)
 
     id_list = []
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_adj'])
+    _rand = random.randint(1, _counts['max_adjectives'])
 
     while _rand not in id_list:
-        _rand = random.randint(1, _counts['max_adj'])
+        _rand = random.randint(1, _counts['max_adjectives'])
 
     _query = "select * from suradjs where adj_id = {0}".format(_rand)
-    cursor.execute(_query)
-    _result = cursor.fetchone()
-    # cursor.close()
+    _result = __execute_sql_one(_query)
 
     return _result[1]
 
@@ -452,25 +436,20 @@ def __get_name(_counts):
     """Let's fetch a NAME from the database...
     :param _counts:"""
 
-    cursor = CONN.cursor()
-    check_query = "select name_id from surnames"
-
-    cursor.execute(check_query)
-    check_result = cursor.fetchall()
+    check_query = "SELECT name_id FROM surnames"
+    check_result = __execute_sql_all(check_query)
 
     id_list = []
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_name'])
+    _rand = random.randint(1, _counts['max_names'])
 
     while _rand not in id_list:
-        _rand = random.randint(1, _counts['max_name'])
+        _rand = random.randint(1, _counts['max_names'])
 
     _query = "select * from surnames where name_id = {0}".format(_rand)
-    cursor.execute(_query)
-    _result = cursor.fetchone()
-    # cursor.close()
+    _result = __execute_sql_one(_query)
 
     return _result[1]
 
@@ -481,39 +460,37 @@ def __get_table_limits():
     to the calling function..."""
 
     _table_counts = {
-        'max_adj': None,
-        'max_name': None,
-        'max_noun': None,
-        'max_sen': None,
-        'max_fau': None,
-        'max_verb': None
+        'max_adjectives': 0,
+        'max_names': 0,
+        'max_nouns': 0,
+        'max_sentences': 0,
+        'max_faults': 0,
+        'max_verbs': 0
     }
 
-    cursor = CONN.cursor()
+    query = 'SELECT count(*) FROM suradjs'
+    _table_counts['max_adjectives'] = __execute_sql_one(query)
+    _table_counts['max_adjectives'] = _table_counts['max_adjectives'][0]
 
-    cursor.execute('SELECT count(*) FROM suradjs')
-    _table_counts['max_adj'] = cursor.fetchone()
-    _table_counts['max_adj'] = _table_counts['max_adj'][0]
-
-    cursor.execute('SELECT count(*) FROM surnames')
-    _table_counts['max_name'] = cursor.fetchone()
+    query = 'SELECT count(*) FROM surnames'
+    _table_counts['max_name'] = __execute_sql_one(query)
     _table_counts['max_name'] = _table_counts['max_name'][0]
 
-    cursor.execute('SELECT count(*) FROM surnouns')
-    _table_counts['max_noun'] = cursor.fetchone()
-    _table_counts['max_noun'] = _table_counts['max_noun'][0]
+    query = 'SELECT count(*) FROM surnouns'
+    _table_counts['max_nouns'] = __execute_sql_one(query)
+    _table_counts['max_nouns'] = _table_counts['max_nouns'][0]
 
-    cursor.execute('SELECT count(*) FROM sursentences')
-    _table_counts['max_sen'] = cursor.fetchone()
-    _table_counts['max_sen'] = _table_counts['max_sen'][0]
+    query = 'SELECT count(*) FROM sursentences'
+    _table_counts['max_sentences'] = __execute_sql_one(query)
+    _table_counts['max_sentences'] = _table_counts['max_sentences'][0]
 
-    cursor.execute('SELECT count(*) FROM surfaults')
-    _table_counts['max_fau'] = cursor.fetchone()
-    _table_counts['max_fau'] = _table_counts['max_fau'][0]
+    query = 'SELECT count(*) FROM surfaults'
+    _table_counts['max_faults'] = __execute_sql_one(query)
+    _table_counts['max_faults'] = _table_counts['max_faults'][0]
 
-    cursor.execute('SELECT count(*) FROM surverbs')
-    _table_counts['max_verb'] = cursor.fetchone()
-    _table_counts['max_verb'] = _table_counts['max_verb'][0]
+    query = 'SELECT count(*) FROM surverbs'
+    _table_counts['max_verbs'] = __execute_sql_one(query)
+    _table_counts['max_verbs'] = _table_counts['max_verbs'][0]
 
     return _table_counts
 
@@ -724,7 +701,7 @@ def __replace_repeat(_sentence):
     :param _sentence:
     """
 
-    ######### USE SENTENCE_ID 47 for testing!
+    # USE SENTENCE_ID 47 for testing!
 
     _repeat_dict = {}
 
@@ -840,4 +817,4 @@ def __check_spaces(_sentence):
         new_sentence = new_sentence.lstrip()
         new_sentence = new_sentence.rstrip()
 
-    return new_sentence
+        return new_sentence

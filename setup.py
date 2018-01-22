@@ -6,7 +6,7 @@ with open('README.rst') as file_desc:
     long_desc = file_desc.read()
 
 setup(name='surrealism',
-      version='0.13.3',
+      version='0.14.2',
       # packages = find_packages(),
       # packages=["surrealism"],
       author='Ian Havelock',
@@ -21,11 +21,10 @@ setup(name='surrealism',
       classifiers=
       [
           'Programming Language :: Python',
-          'Programming Language :: Python :: 2.7',
-          'Programming Language :: Python :: 3.2',
           'Programming Language :: Python :: 3.3',
           'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
           'Development Status :: 5 - Production/Stable',
           'Environment :: Other Environment',
           'Intended Audience :: Developers',

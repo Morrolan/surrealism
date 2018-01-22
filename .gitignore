@@ -48,7 +48,9 @@ results/
 .DS_Store
 
 # PyCharm
-.idea/
+.idea/*
+test/
+env/
 
 # Vagrant
 .vagrant/*
