@@ -76,10 +76,10 @@ def show_faults():
     """
     cursor = CONN.cursor()
 
-    _query = "select fau_id, fault from surfaults where fau_is_valid = 'y' order by fau_id asc"
-    cursor.execute(_query)
-    _result = cursor.fetchall()
-    return _result
+    query = "select fau_id, fault from surfaults where fau_is_valid = 'y' order by fau_id asc"
+    cursor.execute(query)
+    result = cursor.fetchall()
+    return result
 
 
 def showsentences():
@@ -99,8 +99,8 @@ def show_sentences():
     """
     cursor = CONN.cursor()
 
-    _query = "select sen_id, sentence from sursentences where sen_is_valid = 'y' order by sen_id asc"
-    cursor.execute(_query)
+    query = "select sen_id, sentence from sursentences where sen_is_valid = 'y' order by sen_id asc"
+    cursor.execute(query)
     result = cursor.fetchall()
 
     response_dict = {}
@@ -123,24 +123,24 @@ def faulttest():
 def fault_test():
     """Returns 1 instance of each programming fault for testing purposes."""
 
-    _counts = __get_table_limits()
-    max_num = _counts['max_fau']
+    counts = __get_table_limits()
+    max_num = counts['max_fau']
     counter = 0
     list_of_tuples = []
-    _fau_result = None
+    fault_result = None
 
     while counter < max_num:
         counter += 1
-        _fault = __get_fault(_counts, fault_id=counter)
-        fau_id = _fault[1]
+        fault = __get_fault(counts, fault_id=counter)
+        fault_id = fault[1]
 
-        if _fault[0] == 'n':
-            _fau_result = "Fault is DISABLED - ignoring..."
+        if fault[0] == 'n':
+            fault_result = "Fault is DISABLED - ignoring..."
 
-        if _fault[0] == 'y':
-            _fau_result = __process_sentence(_fault, _counts)
+        if fault[0] == 'y':
+            fault_result = __process_sentence(fault, counts)
 
-        list_of_tuples.append((fau_id, _fau_result))
+        list_of_tuples.append((fault_id, fault_result))
     return list_of_tuples
 
 
@@ -156,24 +156,24 @@ def sentencetest():
 def sentence_test():
     """Return 1 random version of each sentence to test sentence structure."""
 
-    _counts = __get_table_limits()
-    max_num = _counts['max_sen']
+    counts = __get_table_limits()
+    max_num = counts['max_sen']
     counter = 0
     list_of_tuples = []
-    _sen_result = None
+    sentence_result = None
 
     while counter < max_num:
         counter += 1
-        _sentence = __get_sentence(_counts, sentence_id=counter)
-        sen_id = _sentence[1]
+        sentence = __get_sentence(counts, sentence_id=counter)
+        sentence_id = sentence[1]
 
-        if _sentence[0] == 'n':
-            _sen_result = "Sentence is DISABLED - ignoring..."
+        if sentence[0] == 'n':
+            sen_result = "Sentence is DISABLED - ignoring..."
 
-        if _sentence[0] == 'y':
-            _sen_result = __process_sentence(_sentence, _counts)
+        if sentence[0] == 'y':
+            sentence_result = __process_sentence(sentence, counts)
 
-        list_of_tuples.append((sen_id, _sen_result))
+        list_of_tuples.append((sentence_id, sentence_result))
     return list_of_tuples
 
 
@@ -191,8 +191,8 @@ def get_fault(fault_id=None):
         from the database table.  This allows you to retrieve a specific fault
         each time, albeit with different keywords."""
 
-    _counts = __get_table_limits()
-    _result = None
+    counts = __get_table_limits()
+    result = None
     _id = 0
 
     try:
@@ -208,23 +208,23 @@ def get_fault(fault_id=None):
     except ValueError:
         print("ValueError:  Incorrect parameter type detected.")
 
-    if _id <= _counts['max_fau']:
-        _fault = __get_fault(_counts, fault_id=_id)
+    if _id <= counts['max_fau']:
+        fault = __get_fault(counts, fault_id=_id)
     else:
         print("""ValueError:  Parameter integer is too high.
-              Maximum permitted value is {0}.""".format(str(_counts['max_fau'])))
+              Maximum permitted value is {0}.""".format(str(counts['max_fau'])))
         _id = _counts['max_fau']
-        _fault = __get_fault(_counts, fault_id=_id)
+        fault = __get_fault(counts, fault_id=_id)
 
-    if _fault is not None:
-        while _fault[0] == 'n':
+    if fault is not None:
+        while fault[0] == 'n':
             if _id is not None:
-                _fault = __get_fault(_counts, None)
+                fault = __get_fault(counts, None)
             else:
-                _fault = __get_fault(_counts, _id)
-        if _fault[0] == 'y':
-            _result = __process_sentence(_fault, _counts)
-        return _result
+                fault = __get_fault(counts, _id)
+        if fault[0] == 'y':
+            result = __process_sentence(fault, counts)
+        return result
     else:
         print('ValueError: _fault cannot be None.')
 
@@ -243,8 +243,8 @@ def get_sentence(sentence_id=None):
         from the database table.  This allows you to retrieve a specific
         sentence each time, albeit with different keywords."""
 
-    _counts = __get_table_limits()
-    _result = None
+    counts = __get_table_limits()
+    result = None
     _id = 0
 
     try:
@@ -255,29 +255,29 @@ def get_sentence(sentence_id=None):
                   Rounding number to 0 decimal places.""")
             _id = round(sentence_id)
         else:
-            _id = random.randint(1, _counts['max_sen'])
+            _id = random.randint(1, counts['max_sen'])
 
     except ValueError:
         print("ValueError:  Incorrect parameter type detected.")
 
-    if _id <= _counts['max_sen']:
-        _sentence = __get_sentence(_counts, sentence_id=_id)
+    if _id <= counts['max_sen']:
+        sentence = __get_sentence(counts, sentence_id=_id)
     else:
         print("""ValueError:  Parameter integer is too high.
-              Maximum permitted value is {0}.""".format(str(_counts['max_sen'])))
+              Maximum permitted value is {0}.""".format(str(counts['max_sen'])))
         _id = _counts['max_sen']
-        _sentence = __get_sentence(_counts, sentence_id=_id)
+        sentence = __get_sentence(counts, sentence_id=_id)
 
-    if _sentence is not None:
-        while _sentence[0] == 'n':
+    if sentence is not None:
+        while sentence[0] == 'n':
             if _id is not None:
                 # here we delibrately pass 'None' to __getsentence__ as it will
-                _sentence = __get_sentence(_counts, None)
+                sentence = __get_sentence(counts, None)
             else:
-                _sentence = __get_sentence(_counts, _id)
-        if _sentence[0] == 'y':
-            _result = __process_sentence(_sentence, _counts)
-        return _result
+                sentence = __get_sentence(counts, _id)
+        if sentence[0] == 'y':
+            result = __process_sentence(sentence, counts)
+        return result
     else:
         print('ValueError: _sentence cannot be None.')
 
@@ -286,7 +286,7 @@ def get_sentence(sentence_id=None):
 
 #  INTERNAL METHODS BELOW
 
-def __get_fault(_counts, fault_id=None):
+def __get_fault(counts, fault_id=None):
     """Let's fetch a random fault that we then need to substitute bits of...
     :param _counts:
     :param fault_id:
@@ -302,29 +302,29 @@ def __get_fault(_counts, fault_id=None):
 
     # declare an empty list to be populated below
     id_list = []
-    _id_to_fetch = None
+    id_to_fetch = None
 
     for row in check_result:
         id_list.append(row[0])
 
     if fault_id is not None:
         if type(fault_id) is int:
-            _id_to_fetch = fault_id
+            id_to_fetch = fault_id
     else:
-        _id_to_fetch = random.randint(1, _counts['max_fau'])
+        id_to_fetch = random.randint(1, counts['max_fau'])
 
-        while _id_to_fetch not in id_list:
-            _id_to_fetch = random.randint(1, _counts['max_fau'])
+        while id_to_fetch not in id_list:
+            id_to_fetch = random.randint(1, counts['max_fau'])
 
-    _query = ("select * from surfaults where fau_id = {0}".format(_id_to_fetch))
+    query = ("select * from surfaults where fau_id = {0}".format(id_to_fetch))
     cursor.execute(_query)
-    _result = cursor.fetchone()
+    result = cursor.fetchone()
     # cursor.close()
 
-    return _result
+    return result
 
 
-def __get_sentence(_counts, sentence_id=None):
+def __get_sentence(counts, sentence_id=None):
     """Let's fetch a random sentence that we then need to substitute bits of...
     @
     :param _counts:
@@ -341,7 +341,7 @@ def __get_sentence(_counts, sentence_id=None):
 
     # declare an empty list to be populated below
     id_list = []
-    _id_to_fetch = None
+    id_to_fetch = None
 
     # Populate the id_list variable with all of the ID's we retrieved from the database query.
     for row in check_result:
@@ -349,22 +349,22 @@ def __get_sentence(_counts, sentence_id=None):
 
     if sentence_id is not None:
         if type(sentence_id) is int:
-            _id_to_fetch = sentence_id
+            id_to_fetch = sentence_id
     else:
-        _id_to_fetch = random.randint(1, _counts['max_sen'])
+        id_to_fetch = random.randint(1, counts['max_sen'])
 
-        while _id_to_fetch not in id_list:
-            _id_to_fetch = random.randint(1, _counts['max_sen'])
+        while id_to_fetch not in id_list:
+            id_to_fetch = random.randint(1, counts['max_sen'])
 
-    _query = ("select * from sursentences where sen_id = {0}".format(_id_to_fetch))
+    query = ("select * from sursentences where sen_id = {0}".format(id_to_fetch))
     cursor.execute(_query)
-    _result = cursor.fetchone()
+    result = cursor.fetchone()
     # cursor.close()
 
     return _result
 
 
-def __get_verb(_counts):
+def __get_verb(counts):
     """Let's fetch a VERB
     :param _counts:
     """
@@ -379,20 +379,20 @@ def __get_verb(_counts):
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_verb'])
+    rand = random.randint(1, _counts['max_verb'])
 
-    while _rand not in id_list:
-        _rand = random.randint(1, _counts['max_verb'])
+    while rand not in id_list:
+        rand = random.randint(1, counts['max_verb'])
 
-    _query = "select * from surverbs where verb_id = {0}".format(_rand)
+    query = "select * from surverbs where verb_id = {0}".format(rand)
     cursor.execute(_query)
-    _result = cursor.fetchone()
+    result = cursor.fetchone()
     # cursor.close()
 
-    return _result[1]
+    return result[1]
 
 
-def __get_noun(_counts):
+def __get_noun(counts):
     """Let's fetch a NOUN from the database...
     :param _counts:
     """
@@ -407,20 +407,20 @@ def __get_noun(_counts):
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_noun'])
+    rand = random.randint(1, _counts['max_noun'])
 
-    while _rand not in id_list:
-        _rand = random.randint(1, _counts['max_noun'])
+    while rand not in id_list:
+        rand = random.randint(1, counts['max_noun'])
 
-    _query = "select * from surnouns where noun_id = {0}".format(_rand)
+    query = "select * from surnouns where noun_id = {0}".format(_rand)
     cursor.execute(_query)
-    _result = cursor.fetchone()
+    result = cursor.fetchone()
     # cursor.close()
 
-    return _result[1]
+    return result[1]
 
 
-def __get_adjective(_counts):
+def __get_adjective(counts):
     """Let's fetch an ADJECTIVE from the database...
     :param _counts:
     """
@@ -435,20 +435,20 @@ def __get_adjective(_counts):
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_adj'])
+    rand = random.randint(1, counts['max_adj'])
 
     while _rand not in id_list:
-        _rand = random.randint(1, _counts['max_adj'])
+        rand = random.randint(1, counts['max_adj'])
 
-    _query = "select * from suradjs where adj_id = {0}".format(_rand)
+    query = "select * from suradjs where adj_id = {0}".format(rand)
     cursor.execute(_query)
-    _result = cursor.fetchone()
+    result = cursor.fetchone()
     # cursor.close()
 
-    return _result[1]
+    return result[1]
 
 
-def __get_name(_counts):
+def __get_name(counts):
     """Let's fetch a NAME from the database...
     :param _counts:"""
 
@@ -462,17 +462,17 @@ def __get_name(_counts):
     for row in check_result:
         id_list.append(row[0])
 
-    _rand = random.randint(1, _counts['max_name'])
+    rand = random.randint(1, counts['max_name'])
 
-    while _rand not in id_list:
-        _rand = random.randint(1, _counts['max_name'])
+    while rand not in id_list:
+        rand = random.randint(1, counts['max_name'])
 
-    _query = "select * from surnames where name_id = {0}".format(_rand)
-    cursor.execute(_query)
-    _result = cursor.fetchone()
+    query = "select * from surnames where name_id = {0}".format(rand)
+    cursor.execute(query)
+    result = cursor.fetchone()
     # cursor.close()
 
-    return _result[1]
+    return result[1]
 
 
 def __get_table_limits():
@@ -480,7 +480,7 @@ def __get_table_limits():
     upper limits for our random number calls then return a dictionary of them 
     to the calling function..."""
 
-    _table_counts = {
+    table_counts = {
         'max_adj': None,
         'max_name': None,
         'max_noun': None,
@@ -492,150 +492,150 @@ def __get_table_limits():
     cursor = CONN.cursor()
 
     cursor.execute('SELECT count(*) FROM suradjs')
-    _table_counts['max_adj'] = cursor.fetchone()
-    _table_counts['max_adj'] = _table_counts['max_adj'][0]
+    table_counts['max_adj'] = cursor.fetchone()
+    table_counts['max_adj'] = table_counts['max_adj'][0]
 
     cursor.execute('SELECT count(*) FROM surnames')
-    _table_counts['max_name'] = cursor.fetchone()
-    _table_counts['max_name'] = _table_counts['max_name'][0]
+    table_counts['max_name'] = cursor.fetchone()
+    table_counts['max_name'] = table_counts['max_name'][0]
 
     cursor.execute('SELECT count(*) FROM surnouns')
-    _table_counts['max_noun'] = cursor.fetchone()
-    _table_counts['max_noun'] = _table_counts['max_noun'][0]
+    table_counts['max_noun'] = cursor.fetchone()
+    table_counts['max_noun'] = table_counts['max_noun'][0]
 
     cursor.execute('SELECT count(*) FROM sursentences')
-    _table_counts['max_sen'] = cursor.fetchone()
-    _table_counts['max_sen'] = _table_counts['max_sen'][0]
+    table_counts['max_sen'] = cursor.fetchone()
+    table_counts['max_sen'] = table_counts['max_sen'][0]
 
     cursor.execute('SELECT count(*) FROM surfaults')
-    _table_counts['max_fau'] = cursor.fetchone()
-    _table_counts['max_fau'] = _table_counts['max_fau'][0]
+    table_counts['max_fau'] = cursor.fetchone()
+    table_counts['max_fau'] = table_counts['max_fau'][0]
 
     cursor.execute('SELECT count(*) FROM surverbs')
-    _table_counts['max_verb'] = cursor.fetchone()
-    _table_counts['max_verb'] = _table_counts['max_verb'][0]
+    table_counts['max_verb'] = cursor.fetchone()
+    table_counts['max_verb'] = table_counts['max_verb'][0]
 
-    return _table_counts
+    return table_counts
 
 
-def __process_sentence(_sentence_tuple, _counts):
+def __process_sentence(sentence_tuple, counts):
     """pull the actual sentence from the tuple (tuple contains additional data such as ID)
     :param _sentence_tuple:
     :param _counts:
     """
 
-    _sentence = _sentence_tuple[2]
+    sentence = sentence_tuple[2]
 
     # now we start replacing words one type at a time...
-    _sentence = __replace_verbs(_sentence, _counts)
+    sentence = __replace_verbs(sentence, counts)
 
-    _sentence = __replace_nouns(_sentence, _counts)
+    sentence = __replace_nouns(sentence, counts)
 
-    _sentence = ___replace_adjective_maybe(_sentence, _counts)
+    sentence = ___replace_adjective_maybe(sentence, counts)
 
-    _sentence = __replace_adjective(_sentence, _counts)
+    sentence = __replace_adjective(sentence, counts)
 
-    _sentence = __replace_names(_sentence, _counts)
+    sentence = __replace_names(sentence, counts)
 
     # here we perform a check to see if we need to use A or AN depending on the 
     # first letter of the following word...
-    _sentence = __replace_an(_sentence)
+    sentence = __replace_an(sentence)
 
     # replace the new repeating segments
-    _sentence = __replace_repeat(_sentence)
+    sentence = __replace_repeat(sentence)
 
     # now we will read, choose and substitute each of the RANDOM sentence tuples
-    _sentence = __replace_random(_sentence)
+    sentence = __replace_random(sentence)
 
     # now we are going to choose whether to capitalize words/sentences or not
-    _sentence = __replace_capitalise(_sentence)
+    sentence = __replace_capitalise(sentence)
 
     # here we will choose whether to capitalize all words in the sentence
-    _sentence = __replace_capall(_sentence)
+    sentence = __replace_capall(sentence)
 
     # check for appropriate spaces in the correct places.
-    _sentence = __check_spaces(_sentence)
+    sentence = __check_spaces(sentence)
 
-    return _sentence
+    return sentence
 
 
-def __replace_verbs(_sentence, _counts):
+def __replace_verbs(sentence, counts):
     """Lets find and replace all instances of #VERB
     :param _sentence:
     :param _counts:
     """
 
-    if _sentence is not None:
-        while _sentence.find('#VERB') != -1:
-            _sentence = _sentence.replace('#VERB', str(__get_verb(_counts)), 1)
+    if sentence is not None:
+        while sentence.find('#VERB') != -1:
+            sentence = sentence.replace('#VERB', str(__get_verb(counts)), 1)
 
-            if _sentence.find('#VERB') == -1:
-                return _sentence
-        return _sentence
+            if sentence.find('#VERB') == -1:
+                return sentence
+        return sentence
     else:
-        return _sentence
+        return sentence
 
 
-def __replace_nouns(_sentence, _counts):
+def __replace_nouns(sentence, counts):
     """Lets find and replace all instances of #NOUN
     :param _sentence:
     :param _counts:
     """
 
-    if _sentence is not None:
-        while _sentence.find('#NOUN') != -1:
-            _sentence = _sentence.replace('#NOUN', str(__get_noun(_counts)), 1)
+    if sentence is not None:
+        while sentence.find('#NOUN') != -1:
+            sentence = sentence.replace('#NOUN', str(__get_noun(counts)), 1)
 
-            if _sentence.find('#NOUN') == -1:
-                return _sentence
+            if sentence.find('#NOUN') == -1:
+                return sentence
 
-        return _sentence
+        return sentence
     else:
-        return _sentence
+        return sentence
 
 
-def ___replace_adjective_maybe(_sentence, _counts):
+def ___replace_adjective_maybe(sentence, counts):
     """Lets find and replace all instances of #ADJECTIVE_MAYBE
     :param _sentence:
     :param _counts:
     """
 
-    _random_decision = random.randint(0, 1)
+    random_decision = random.randint(0, 1)
 
-    if _sentence is not None:
+    if sentence is not None:
 
-        while _sentence.find('#ADJECTIVE_MAYBE') != -1:
+        while sentence.find('#ADJECTIVE_MAYBE') != -1:
 
-            if _random_decision % 2 == 0:
-                _sentence = _sentence.replace('#ADJECTIVE_MAYBE',
-                                              ' ' + str(__get_adjective(_counts)), 1)
-            elif _random_decision % 2 != 0:
-                _sentence = _sentence.replace('#ADJECTIVE_MAYBE', '', 1)
+            if random_decision % 2 == 0:
+                sentence = sentence.replace('#ADJECTIVE_MAYBE',
+                                              ' ' + str(__get_adjective(counts)), 1)
+            elif random_decision % 2 != 0:
+                sentence = sentence.replace('#ADJECTIVE_MAYBE', '', 1)
 
-            if _sentence.find('#ADJECTIVE_MAYBE') == -1:
-                return _sentence
-        return _sentence
+            if sentence.find('#ADJECTIVE_MAYBE') == -1:
+                return sentence
+        return sentence
     else:
-        return _sentence
+        return sentence
 
 
-def __replace_adjective(_sentence, _counts):
+def __replace_adjective(sentence, counts):
     """Lets find and replace all instances of #ADJECTIVE
     :param _sentence:
     :param _counts:
     """
 
-    if _sentence is not None:
+    if sentence is not None:
 
-        while _sentence.find('#ADJECTIVE') != -1:
-            _sentence = _sentence.replace('#ADJECTIVE',
-                                          str(__get_adjective(_counts)), 1)
+        while sentence.find('#ADJECTIVE') != -1:
+            sentence = sentence.replace('#ADJECTIVE',
+                                          str(__get_adjective(counts)), 1)
 
-            if _sentence.find('#ADJECTIVE') == -1:
-                return _sentence
-        return _sentence
+            if sentence.find('#ADJECTIVE') == -1:
+                return sentence
+        return sentence
     else:
-        return _sentence
+        return sentence
 
 
 def __replace_names(_sentence, _counts):
@@ -761,7 +761,7 @@ def __replace_repeat(_sentence):
         return _sentence
 
 
-def __replace_capitalise(_sentence):
+def __replace_capitalise(sentence):
     """here we replace all instances of #CAPITALISE and cap the next word.
     ############
 
@@ -772,26 +772,26 @@ def __replace_capitalise(_sentence):
     :param _sentence:
     """
 
-    if _sentence is not None:
-        while _sentence.find('#CAPITALISE') != -1:
+    if sentence is not None:
+        while sentence.find('#CAPITALISE') != -1:
 
-            _cap_index = _sentence.find('#CAPITALISE')
-            _part1 = _sentence[:_cap_index]
-            _part2 = _sentence[_cap_index + 12:_cap_index + 13]
-            _part3 = _sentence[_cap_index + 13:]
+            cap_index = _sentence.find('#CAPITALISE')
+            part1 = sentence[:cap_index]
+            part2 = sentence[cap_index + 12:cap_index + 13]
+            part3 = sentence[cap_index + 13:]
 
-            if _part2 in "abcdefghijklmnopqrstuvwxyz":
-                _sentence = _part1 + _part2.capitalize() + _part3
+            if part2 in "abcdefghijklmnopqrstuvwxyz":
+                sentence = part1 + part2.capitalize() + part3
             else:
-                _sentence = _part1 + _part2 + _part3
+                sentence = part1 + part2 + part3
 
-        if _sentence.find('#CAPITALISE') == -1:
-            return _sentence
+        if sentence.find('#CAPITALISE') == -1:
+            return sentence
     else:
-        return _sentence
+        return sentence
 
 
-def __replace_capall(_sentence):
+def __replace_capall(sentence):
     """here we replace all instances of #CAPALL and cap the entire sentence.
     Don't believe that CAPALL is buggy anymore as it forces all uppercase OK?
 
@@ -800,19 +800,19 @@ def __replace_capall(_sentence):
 
     # print "\nReplacing CAPITALISE:  "
 
-    if _sentence is not None:
-        while _sentence.find('#CAPALL') != -1:
+    if sentence is not None:
+        while sentence.find('#CAPALL') != -1:
             # _cap_index = _sentence.find('#CAPALL')
-            _sentence = _sentence.upper()
-            _sentence = _sentence.replace('#CAPALL ', '', 1)
+            sentence = sentence.upper()
+            sentence = sentence.replace('#CAPALL ', '', 1)
 
-        if _sentence.find('#CAPALL') == -1:
-            return _sentence
+        if sentence.find('#CAPALL') == -1:
+            return sentence
     else:
-        return _sentence
+        return sentence
 
 
-def __check_spaces(_sentence):
+def __check_spaces(sentence):
     """
     Here we check to see that we have the correct number of spaces in the correct locations.
 
@@ -823,9 +823,9 @@ def __check_spaces(_sentence):
     #   Once to search for all spaces, and check if there are adjoining spaces;
     #   The second time to check for 2 spaces after sentence-ending characters such as . and ! and ?
 
-    if _sentence is not None:
+    if sentence is not None:
 
-        words = _sentence.split()
+        words = sentence.split()
 
         new_sentence = ''
 
@@ -837,7 +837,6 @@ def __check_spaces(_sentence):
             new_sentence += ' ' + new_word
 
         # remove any trailing whitespace
-        new_sentence = new_sentence.lstrip()
-        new_sentence = new_sentence.rstrip()
+        new_sentence = new_sentence.strip()
 
     return new_sentence
