@@ -1,0 +1,590 @@
+[
+    {
+        "sen_is_valid": "y",
+        "sen_id": 1,
+        "sentence": "You #ADJECTIVE #NOUN!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 2,
+        "sentence": "Your#ADJECTIVE_MAYBE #NOUN #RANDOM[2,is,isn't] #ADJECTIVE!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 3,
+        "sentence": "Beware the #ADJECTIVE #NOUN!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 4,
+        "sentence": "Are you #AN #NOUN or #AN #NOUN?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 5,
+        "sentence": "Would you like #AN #ADJECTIVE #NOUN?  #RANDOM[5,,,,,ANSWER ME!]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 6,
+        "sentence": "I#RANDOM[2, am,'m] #AN #ADJECTIVE #NOUN#RANDOM[5,,, you know, apparently, according to the prophecy].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 9,
+        "sentence": "Is it true that you #VERB#ADJECTIVE_MAYBE #NOUNs? #RANDOM[5,,,,,  ANSWER ME!]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 10,
+        "sentence": "My #NOUN #RANDOM[3,,,'s #NOUN] #RANDOM[3,used to be,is really,looks like] #RANDOM[2,#AN #NOUN,#AN #ADJECTIVE #NOUN].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 13,
+        "sentence": "Have you #RANDOM[3,seen,got,still got] my #ADJECTIVE #NOUN #RANDOM[3,,,'s #NOUN]?#RANDOM[5,,,,,  ANSWER ME!]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 14,
+        "sentence": "Would you rather #VERB #RANDOM[3,#AN #ADJECTIVE #NOUN,#AN #NOUN,#NAME] or #VERB #RANDOM[4,#AN #ADJECTIVE #NOUN,#AN #NOUN,#NAME,me]?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 15,
+        "sentence": "If you #VERB #RANDOM[2,me,my #NOUN], I'll #VERB #RANDOM[2,you,your #NOUN]...",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 18,
+        "sentence": "#RANDOM[3,We all know,I have reason to believe,I've proof] that you #RANDOM[3,,,can't] #VERB #NOUNs!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 19,
+        "sentence": "#RANDOM[3,Mind,Watch out for,Keep away from] those#ADJECTIVE_MAYBE #NOUNs!  #RANDOM[3,,,They might #VERB you!]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 20,
+        "sentence": "My #RANDOM[3,mother,father,parents] always told me I should#RANDOM[3, never,n't,,] #VERB #NOUNs.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 24,
+        "sentence": "Are you trying to #VERB #RANDOM[4,#NAME,my #NOUN,#NAME's #NOUN,that#ADJECTIVE_MAYBE #NOUN]?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 25,
+        "sentence": "Never #VERB #RANDOM[2,#AN #ADJECTIVE #NOUN,#AN #NOUN]!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 26,
+        "sentence": "How dare you #VERB my#ADJECTIVE_MAYBE #NOUN#RANDOM[3,,,'s #NOUN]!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 27,
+        "sentence": "#CAPITALISE #RANDOM[2,#NOUN,#ADJECTIVE #NOUN]s!  #CAPITALISE #RANDOM[6,thousands,hundreds,dozens,lots,billions,three] of them!#CAPITALISE#RANDOM[2,,  all of them #ADJECTIVE!]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 28,
+        "sentence": "#CAPITALISE #NOUNs and #NOUNs - #RANDOM[5,they both,neither of them,it's lucky they don't,I wish they'd,they often get together and] #VERB me.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 30,
+        "sentence": "#CAPITALISE #VERB my#ADJECTIVE_MAYBE #NOUN!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 31,
+        "sentence": "Why isn't my #NOUN #ADJECTIVE?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 32,
+        "sentence": "Why #RANDOM[5,can't,don't,shouldn't,should,do] #NOUNs #VERB #NOUNs?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 33,
+        "sentence": "If you didn't #VERB #NOUNs, #RANDOM[2,#NAME,the #NOUNs] wouldn't #VERB you.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 36,
+        "sentence": "I'd rather #VERB #RANDOM[3,#AN #ADJECTIVE #NOUN,#AN #NOUN,#NAME] than #VERB #RANDOM[3,#AN #NOUN,#AN #ADJECTIVE #NOUN,#NAME].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "n",
+        "sen_id": 40,
+        "sentence": "#sq<0, #NAME>#sq<1,#NAME> #RANDOM<3>,<I hear that>,<It's said that>,<Apparently>> #gq<0> and  <#gq<0>,<#gq<1>>,<I>,<#gq<1>>>  #RANDOM<5>,<like to>,<frequently>,<sometimes>,<have been known to>,<never>>",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 41,
+        "sentence": "I'd #RANDOM[2,hate,love] to #VERB #NAME#RANDOM[2,,'s #NOUN]...",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 47,
+        "sentence": "#DEFINE_REPEAT[1,#ADJECTIVE #NOUN]#DEFINE_REPEAT[2,#NOUN]Ten #REPEAT[1]s, hanging on the #REPEAT[2] - ten #REPEAT[1]s, hanging on the #REPEAT[2] - and if one #REPEAT[1] should accidentally #VERB #RANDOM[2,#NAME,#AN #NOUN], there'd be nine #REPEAT[1]s, hanging on the #REPEAT[2].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "n",
+        "sen_id": 50,
+        "sentence": "Email me at  #RANDOM[2,1,#sto#ADJECTIVE,->->>#sto<<#NOUN>,->@ #RANDOM<3>,<1>,<cyber->,<2>,<net->>#sto<<#NOUN>,> #RANDOM<3>,<1>,<-online>,<2>,<-net>>. #RANDOM<4>,<1>,<co.uk>,<2>,<net>,<3>,<com>,<org>>!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 51,
+        "sentence": "#DEFINE_REPEAT[1,#NAME]#DEFINE_REPEAT[2,#NAME]Who do you think is #RANDOM[3,more #ADJECTIVE,more likely to #VERB #AN #NOUN,better to #VERB] -  #REPEAT[1], #REPEAT[2], me, #REPEAT[2] or #REPEAT[1]?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "n",
+        "sen_id": 52,
+        "sentence": "#CAPITALISE #VERB #AN #NOUN, #VERB #AN #NOUN - #RANDOM[5,it's all the same to me,just don't #RANDOM[2,come running to me when they,expect them to] #VERB you],just don't #VERB #AN #NOUN].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 55,
+        "sentence": "I'm #ADJECTIVE - #RANDOM[3,perhaps I ought to,I think I'll,I'd better not] #VERB #RANDOM[2,#AN #NOUN,#NAME].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 59,
+        "sentence": "I'm #AN #NOUN and I'm okay - I #VERB #NOUNs all night and I #VERB #NOUNs all day.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 62,
+        "sentence": "If I had #AN #NOUN, I'd #VERB it in the #NOUN, I'd #VERB it in the #NOUN...",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 64,
+        "sentence": "I was #ADJECTIVE in the haze of #AN #ADJECTIVE #NOUN, but heaven knows I'm #ADJECTIVE now...",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 67,
+        "sentence": "Is this #AN #NOUN which I see before me, the #NOUN toward my #NOUN?  Come, let me #VERB thee.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 69,
+        "sentence": "#DEFINE_REPEAT[1,#CAPITALISE #VERB #NOUNs]#REPEAT[1], #NAME.  #REPEAT[1] like #AN #ADJECTIVE #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 74,
+        "sentence": "If I can get the #NOUN to #VERB #RANDOM[3,#NAME,#NOUNs,#AN #NOUN], the #NOUN will #VERB #RANDOM[3,#NAME,#NOUNs,#AN #NOUN] and I'll be able to #VERB #RANDOM[3,#NAME,#NOUNs,#AN #NOUN]!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "n",
+        "sen_id": 75,
+        "sentence": "Which of the following #RANDOM[3,has the #RANDOM[3,most,least,largest] #NOUNs,might #VERB #AN #NOUN,might #NAME #VERB]? A. #CAPITALISE #AN #NOUN>. B. #CAPITALISE #AN #NOUN. C. #CAPITALISE #AN #NOUN. ",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "n",
+        "sen_id": 78,
+        "sentence": "#RANDOM[2,I'm #RANDOM[2,terribly sorry, but,I'm afraid] I #RANDOM [2,have to,must] #VERB #RANDOM[3,your,my,that] #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 80,
+        "sentence": "I may have the #NOUN of #AN #ADJECTIVE and #ADJECTIVE #NOUN, but I have the #NOUN and #NOUN of #AN #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 83,
+        "sentence": "#NAME is like #AN #NOUN - #RANDOM[2,all #ADJECTIVE and #ADJECTIVE,#ADJECTIVE and full of #NOUNs].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 85,
+        "sentence": "My #NOUN is full of#ADJECTIVE_MAYBE #NOUNs! Please #VERB my #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 88,
+        "sentence": "#CAPITALISE #NOUNs of the world - #VERB #NOUNs and #VERB #NOUNs!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 89,
+        "sentence": "#CAPITALISE #VERB my #NOUN and tell me that you #VERB #RANDOM[3,me,#NAME,#NOUNs].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 91,
+        "sentence": "My #ADJECTIVE #NOUN said #VERB the #NOUN, and don't #VERB #NOUNs on the way.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 93,
+        "sentence": "Don't you just #RANDOM[2,love,hate] it when you #VERB #NOUNs and your #NOUN gets #ADJECTIVE?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 94,
+        "sentence": "I'm a level #RANDOM[5,1,20,100,12,5] #NOUN, in #NOUN-world! I've got a magic #NOUN and everything!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 95,
+        "sentence": "ALL YOUR #CAPALL #NOUN ARE BELONG TO US!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 96,
+        "sentence": "We are the #ADJECTIVE #NOUNs. We are here to protect you from the #ADJECTIVE #NOUN of #NAME.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 98,
+        "sentence": "#CAPALL DO NOT LEAVE IT IS NOT #ADJECTIVE!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 8,
+        "sentence": "I #VERB#ADJECTIVE_MAYBE #NOUNs!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 7,
+        "sentence": "I've #RANDOM[2,always wanted to be,never been] #RANDOM[2,#ADJECTIVE,#AN #NOUN].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 11,
+        "sentence": "Your mother was #AN #NOUN and your father smelled of #NOUNs.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 12,
+        "sentence": "How will I ever #VERB #AN #NOUN now?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 16,
+        "sentence": "#RANDOM[4,If only,Oh,How I wish,I wish,I remember when] #RANDOM[2,I,my #NOUN] #RANDOM[2,was,wasn't] #ADJECTIVE...",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 17,
+        "sentence": "The #NOUNs - they #VERB me!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 21,
+        "sentence": "I wish you wouldn't #VERB those #NOUNs.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 22,
+        "sentence": "Never try to #VERB #NOUNs#RANDOM[5,,, with, in, on] #AN #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 23,
+        "sentence": "Don't #VERB me!  Not with that#ADJECTIVE_MAYBE #NOUN!  #RANDOM[3,Please!,Mercy!,Use the#ADJECTIVE_MAYBE #NOUN!]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 29,
+        "sentence": "Look at #RANDOM[3,that,#NAME's,my]#ADJECTIVE_MAYBE #NOUN! #RANDOM[3,, Isn't it #ADJECTIVE?, Wouldn't it be nice to #VERB it?]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 34,
+        "sentence": "#CAPITALISE #NOUNs - #VERB them or #VERB them, you can't #VERB them.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 35,
+        "sentence": "Do you mind if I #VERB #RANDOM[2,you,your #NOUN]?  #RANDOM[5,,,,,  ANSWER ME!]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 37,
+        "sentence": "I can't #VERB#ADJECTIVE_MAYBE #NOUNs without my#ADJECTIVE_MAYBE #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 38,
+        "sentence": "If you want to #VERB#ADJECTIVE_MAYBE #NOUNs, you'll need #RANDOM[2,to #VERB,#AN #NOUN].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 39,
+        "sentence": "Don't #VERB#ADJECTIVE_MAYBE #NOUNs - #VERB#ADJECTIVE_MAYBE #NOUNs!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 42,
+        "sentence": "#CAPITALISE #AN #NOUN a day keeps the #NOUN away.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 43,
+        "sentence": "#DEFINE_REPEAT[1,#NAME]#DEFINE_REPEAT[2,#NOUN]And #REPEAT[1] said, 'Let there be #AN #REPEAT[2]', and there was #AN #REPEAT[2]. And #REPEAT[1] saw that the #REPEAT[2] was #ADJECTIVE, and #REPEAT[1] separated the #REPEAT[2] from the #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 44,
+        "sentence": "On the fifth day of Christmas, my #ADJECTIVE love sent to me - five #ADJECTIVE #NOUNs! Four #ADJECTIVE #NOUNs, three #ADJECTIVE #NOUNs, two #ADJECTIVE #NOUNs and #AN #NOUN in #AN #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 45,
+        "sentence": "#DEFINE_REPEAT[1,#NOUN]Jingle #REPEAT[1]s, Jingle #REPEAT[1]s, Jingle all the way - oh what fun it is to #VERB #NOUNs in a one-#NOUN #ADJECTIVE #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 46,
+        "sentence": "I heard that you like #NOUNs #RANDOM[3,spread on the bed,in the bath,in the dark] with #AN #ADJECTIVE #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 48,
+        "sentence": "#NAME #RANDOM[2,said,told me] you #RANDOM[3,had #AN #ADJECTIVE #NOUN,were #ADJECTIVE,might #VERB me]...",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 49,
+        "sentence": "Ooh, #RANDOM[2,,I'm so #ADJECTIVE,] I could #VERB #AN #NOUN!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 53,
+        "sentence": "I wish #NAME would#RANDOM[2,,n't] #VERB #RANDOM[2,me,my #NOUN].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 54,
+        "sentence": "Have you #RANDOM[3,seen,heard about,got] #NAME's#ADJECTIVE_MAYBE #NOUN?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 56,
+        "sentence": "#RANDOM[3,About this time of night, I like to,I think it's time to,I fear it may be too late to] #VERB #RANDOM[2,#AN #NOUN,#NAME].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 57,
+        "sentence": "I'd #VERB #NAME, but I haven't got #AN #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 58,
+        "sentence": "Is that #AN #NOUN in your #NOUN, or are you just #ADJECTIVE?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 60,
+        "sentence": "#CAPITALISE #AN #NOUN in the #NOUN is worth two in the #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 61,
+        "sentence": "#RANDOM[2,That #NOUN would have been mine,And I would have been able to #VERB it, too], if it wasn't for you #ADJECTIVE #NOUNs!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 63,
+        "sentence": "#DEFINE_REPEAT[1,#VERB the #NOUN]I'm #AN #NOUN! I'm #AN #NOUN! I'm #ADJECTIVE!  #CAPITALISE #REPEAT[1], #REPEAT[1]!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 65,
+        "sentence": "Thou shalt not #VERB#ADJECTIVE_MAYBE #NOUNs.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 66,
+        "sentence": "Why did the#ADJECTIVE_MAYBE #NOUN #VERB the#ADJECTIVE_MAYBE #NOUN?  #RANDOM[4,Because it was being penetrated by the #NOUN!,Because it was glued to the #NOUN!,To get to the other #NOUN!,Because it was stapled to the #NOUN!]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 68,
+        "sentence": "#DEFINE_REPEAT[1,#VERB #AN #NOUN]To #REPEAT[1], or not to #REPEAT[1], that is the #RANDOM[2,question,#NOUN]!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 70,
+        "sentence": "Early to #VERB #NOUNs, early to #VERB #NOUNs, makes a man #ADJECTIVE, #ADJECTIVE and #ADJECTIVE.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 71,
+        "sentence": "#RANDOM[3,I'm sorry, but I must,I'm afraid I must,I have to] #VERB #RANDOM[3,your,my,that] #NOUN.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 72,
+        "sentence": "I want#RANDOM[2,, you] to #VERB #RANDOM[2,your,my] #NOUN until it's #ADJECTIVE#RANDOM[2,, and #ADJECTIVE].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 73,
+        "sentence": "We are strongly urging parents to write their state's #NOUN. If a child were to see this show's irresponsible scenes of #NOUNs and how they #VERB themselves with #NOUNs, they may think that they too are able to #VERB #AN #NOUN!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 76,
+        "sentence": "Early to #VERB #NOUNs, early to #VERB #NOUNs, makes a man #ADJECTIVE, #ADJECTIVE and #ADJECTIVE.",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 77,
+        "sentence": "#DEFINE_REPEAT[1,#CAPITALISE #VERB #NAME]#REPEAT[1], #NAME! #REPEAT[1] like #AN #ADJECTIVE #NOUN!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 79,
+        "sentence": "I want#RANDOM[2,, you] to #VERB #RANDOM[3,your,my,#NAME's]#ADJECTIVE_MAYBE #NOUN until it's #ADJECTIVE#RANDOM[4,,,,and #ADJECTIVE]!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 81,
+        "sentence": "Apparently, many #NOUNs will make a #NOUN #VERB #NOUNs...",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "n",
+        "sen_id": 82,
+        "sentence": "#CAPITALISE #RANDOM[2,#NAME,#AN #ADJECTIVE #NOUN] #RANDOM[4,SCANDAL,HORROR,TRAGEDY,ROMP]! #RANDOM[3,,,'#CAPITALISE #VERB the #NOUNs.' says #RANDOM[2,#NAME,#ADJECTIVE #NOUN].]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 84,
+        "sentence": "#NAME summons #AN #ADJECTIVE #NOUN to #VERB #NAME!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 86,
+        "sentence": "Oh yes, you can #VERB me, and you can #VERB me, and you can #VERB my #NOUN, but you won't change the way I #VERB #RANDOM[3,#NAME,my #NOUN,#NOUNs].",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 87,
+        "sentence": "How can someone so #ADJECTIVE #VERB #RANDOM[5,#NOUNs,#NAME,me,#ADJECTIVE #NOUNs,#AN #NOUN]?",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 90,
+        "sentence": "#DEFINE_REPEAT[1,#NOUNs]ATTENTION #NOUNs! You are #REPEAT[1]. Nothing but#ADJECTIVE_MAYBE #REPEAT[1].  #RANDOM[2,,You think you're #ADJECTIVE but you're not.]",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 92,
+        "sentence": "Is it #AN #NOUN? Is it #AN #NOUN? No, it's #RANDOM[2,#NOUN-Man!,#NAME!] More #ADJECTIVE than #AN #ADJECTIVE #NOUN, able to #VERB #ADJECTIVE #NOUNs in a single #NOUN!",
+        "sen_custom": "n"
+    },
+    {
+        "sen_is_valid": "y",
+        "sen_id": 97,
+        "sentence": "You are the most #ADJECTIVE #NOUN. Goodbye!",
+        "sen_custom": "n"
+    }
+]

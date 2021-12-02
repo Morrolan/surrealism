@@ -43,7 +43,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_get_sentence_returns_a_unicode_string_with_integer_upper_limit(self):
-        limits = s.__get_table_limits()
+        limits = s.__get_counts()
         upper_limit = limits['max_sen']
         sentence = s.get_sentence(upper_limit)
         self.assertIsInstance(sentence, self.variable_types)
@@ -54,14 +54,14 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_get_sentence_with_a_random_integer(self):
-        limits = s.__get_table_limits()
+        limits = s.__get_counts()
         upper_sentence_limit = limits['max_sen']
         sen_id = random.randint(1, upper_sentence_limit)
         sentence = s.get_sentence(sen_id)
         self.assertIsInstance(sentence, self.variable_types)
 
     def test_get_sentence_returns_a_unicode_string_over_integer_upper_limit(self):
-        limits = s.__get_table_limits()
+        limits = s.__get_counts()
         over_limit = limits['max_sen'] + 1
         self.assertRaises(TypeError, (s.getsentence(over_limit)))
 
@@ -125,7 +125,7 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, self.variable_types)
 
     def test_get_fault_returns_a_unicode_string_with_integer_upper_limit(self):
-        limits = s.__get_table_limits()
+        limits = s.__get_counts()
         upper_limit = limits['max_fau']
         fault = s.get_fault(upper_limit)
         self.assertIsInstance(fault, self.variable_types)
@@ -136,14 +136,14 @@ class SurrealismUnittests(unittest.TestCase):
         self.assertIsInstance(fault, self.variable_types)
 
     def test_get_fault_with_a_random_integer(self):
-        limits = s.__get_table_limits()
+        limits = s.__get_counts()
         upper_fault_limit = limits['max_fau']
         fau_id = random.randint(1, upper_fault_limit)
         fault = s.get_fault(fau_id)
         self.assertIsInstance(fault, self.variable_types)
 
     def test_get_fault_returns_a_unicode_string_over_integer_upper_limit(self):
-        limits = s.__get_table_limits()
+        limits = s.__get_counts()
         over_limit = limits['max_fau'] + 1
         self.assertRaises(TypeError, (s.getsentence(over_limit)))
 

@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('README.rst') as file_desc:
     long_desc = file_desc.read()
 
 setup(name='surrealism',
-      version='0.14.2',
-      # packages = find_packages(),
+      version='1.0.1',
+      packages=find_packages(),
       # packages=["surrealism"],
       author='Ian Havelock',
       author_email='ian@morrolan.com',
-      url='http://morrolan.github.io/surrealism',
+      url='http://morrolan.github.io/surrealism/',
       license='GNU General Public License (GPL)',
       description='Surreal sentence and error message generator.',
       long_description=long_desc,
       platforms=['Windows', 'Unix', 'OS X'],
-      download_url="https://pypi.python.org/pypi/surrealism/",
+      download_url="https://pypi.org/project/surrealism/",
       keywords=["surreal", "surrealism", "error message", "fault"],
       classifiers=
       [
@@ -25,6 +25,10 @@ setup(name='surrealism',
           'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: 3.5',
           'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
+          'Programming Language :: Python :: 3.8',
+          'Programming Language :: Python :: 3.9',
+          'Programming Language :: Python :: 3.10',
           'Development Status :: 5 - Production/Stable',
           'Environment :: Other Environment',
           'Intended Audience :: Developers',
@@ -37,6 +41,6 @@ setup(name='surrealism',
           'Topic :: Software Development :: Libraries :: Python Modules',
       ],
       install_requires=['setuptools'],
-      package_data={'surrealism': ['surrealism.sqlite']},
+      # package_data={'surrealism': ['data.py']},
       zip_safe=False,
       )

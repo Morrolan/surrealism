@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+1.0.1
+-----
+New numbering system that makes sense to people!  Rewrote large portions to do away with the requirement for SQLite.  The required C extensions were causing problems using surrealism with AWS Lambda.
+
 0.13.2
 -----
 Minor fixes to unittest suite.

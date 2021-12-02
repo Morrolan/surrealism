@@ -4,6 +4,10 @@ surrealism
 surrealism module for Python
 ----------------------------
 
+|   |license|   |versions|  |status|
+|   |test-status|   |quality-status|    |docs|  |code-cov|
+|   |kit|   |downloads| |format|    |repos|
+|   |stars| |forks|
 
 
 This module allows you to generate surreal sentences and error messages very easily from within your python programs.  
@@ -95,3 +99,15 @@ Please feel free to leave bug reports and feature requests on the github homepag
 
 All comments are welcome!
 
+License
+-------
+.. |versions| image: https://img.shields.io/pypi/pyversions/coverages.svg?logo=python&logoColor=FBE072
+    :target: https://pypi.org/projects/surrealism/
+.. |status| image: https://img.shields.io/pypi/status/coverages.svg
+    :target: https://pypi.org/projects/surrealism/
+.. |downloads| image: https://img.shields.io/pypi/dw/coverages.svg
+    :target: https://pypi.org/projects/surrealism/
+.. |license| image: https://img.shields.io/pypi/l/coverages.svg
+    :target: https://pypi.org/projects/surrealism/
+.. |format| image: https://img.shields.io/pypi/format/coverages.svg
+    :target: https://pypi.org/projects/surrealism/

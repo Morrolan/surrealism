@@ -31,6 +31,8 @@ __all__ = ['show_faults', 'show_sentences', 'getfault', 'getsentence', 'version'
 # IMPORTS ###################################################################
 
 import sqlite3
+from pydblite import Base
+
 import random
 import pkg_resources
 
@@ -40,7 +42,10 @@ from pkg_resources import resource_filename
 
 # CONSTANTS #################################################################
 
-CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
+# CONN = sqlite3.connect(resource_filename(__name__, 'surrealism.sqlite'))
+CONN = Base("surrealism.sqlite")
+if CONN.exists():
+    CONN.open()
 
 
 # VARIABLES #################################################################
@@ -178,10 +183,10 @@ def getfault(fault_id=None):
 
 def get_fault(fault_id=None):
     """Retrieve a randomly-generated error message as a unicode string.
-    
+
     :param fault_id:
-        
-        Allows you to optionally specify an integer representing the fault_id 
+
+        Allows you to optionally specify an integer representing the fault_id
         from the database table.  This allows you to retrieve a specific fault
         each time, albeit with different keywords."""
 
@@ -230,9 +235,9 @@ def getsentence(sentence_id=None):
 
 def get_sentence(sentence_id=None):
     """Retrieve a randomly-generated sentence as a unicode string.
-    
+
     :param sentence_id:
-        
+
         Allows you to optionally specify an integer representing the sentence_id
         from the database table.  This allows you to retrieve a specific
         sentence each time, albeit with different keywords."""
@@ -456,7 +461,7 @@ def __get_name(_counts):
 
 def __get_table_limits():
     """Here we simply take a count of each of the database tables so we know our
-    upper limits for our random number calls then return a dictionary of them 
+    upper limits for our random number calls then return a dictionary of them
     to the calling function..."""
 
     _table_counts = {
@@ -473,8 +478,8 @@ def __get_table_limits():
     _table_counts['max_adjectives'] = _table_counts['max_adjectives'][0]
 
     query = 'SELECT count(*) FROM surnames'
-    _table_counts['max_name'] = __execute_sql_one(query)
-    _table_counts['max_name'] = _table_counts['max_name'][0]
+    _table_counts['max_names'] = __execute_sql_one(query)
+    _table_counts['max_names'] = _table_counts['max_names'][0]
 
     query = 'SELECT count(*) FROM surnouns'
     _table_counts['max_nouns'] = __execute_sql_one(query)
@@ -514,7 +519,7 @@ def __process_sentence(_sentence_tuple, _counts):
 
     _sentence = __replace_names(_sentence, _counts)
 
-    # here we perform a check to see if we need to use A or AN depending on the 
+    # here we perform a check to see if we need to use A or AN depending on the
     # first letter of the following word...
     _sentence = __replace_an(_sentence)
 
